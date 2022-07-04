@@ -1,12 +1,12 @@
 [
 {
-  "directory": "/home/bolidnik/Programs/Cpp_SFML_Game_Engine/build",
-  "command": "clang++ -I/home/bolidnik/Programs/Cpp_SFML_Game_Engine/include  -fmodules -std=c++20 -g -std=gnu++20 -o CMakeFiles/main.dir/src/engine.cpp.o -c /home/bolidnik/Programs/Cpp_SFML_Game_Engine/src/engine.cpp",
-  "file": "/home/bolidnik/Programs/Cpp_SFML_Game_Engine/src/engine.cpp"
+  "directory": "C:/Projekty/Cpp_SFML_Game_Engine/build",
+  "command": "C:\\DevStuff\\msys2\\mingw64\\bin\\g++.exe -DSFML_STATIC @CMakeFiles/main.dir/includes_CXX.rsp -g -std=gnu++2a -o CMakeFiles\\main.dir\\src\\engine.cpp.obj -c C:\\Projekty\\Cpp_SFML_Game_Engine\\src\\engine.cpp",
+  "file": "C:/Projekty/Cpp_SFML_Game_Engine/src/engine.cpp"
 },
 {
-  "directory": "/home/bolidnik/Programs/Cpp_SFML_Game_Engine/build",
-  "command": "clang++ -I/home/bolidnik/Programs/Cpp_SFML_Game_Engine/include  -fmodules -std=c++20 -g -std=gnu++20 -o CMakeFiles/main.dir/src/main.cpp.o -c /home/bolidnik/Programs/Cpp_SFML_Game_Engine/src/main.cpp",
-  "file": "/home/bolidnik/Programs/Cpp_SFML_Game_Engine/src/main.cpp"
+  "directory": "C:/Projekty/Cpp_SFML_Game_Engine/build",
+  "command": "C:\\DevStuff\\msys2\\mingw64\\bin\\g++.exe -DSFML_STATIC @CMakeFiles/main.dir/includes_CXX.rsp -g -std=gnu++2a -o CMakeFiles\\main.dir\\src\\main.cpp.obj -c C:\\Projekty\\Cpp_SFML_Game_Engine\\src\\main.cpp",
+  "file": "C:/Projekty/Cpp_SFML_Game_Engine/src/main.cpp"
 }
 ]

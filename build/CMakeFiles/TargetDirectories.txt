@@ -1,3 +1,3 @@
-/home/bolidnik/Programs/Cpp_SFML_Game_Engine/build/CMakeFiles/main.dir
-/home/bolidnik/Programs/Cpp_SFML_Game_Engine/build/CMakeFiles/edit_cache.dir
-/home/bolidnik/Programs/Cpp_SFML_Game_Engine/build/CMakeFiles/rebuild_cache.dir
+C:/Projekty/Cpp_SFML_Game_Engine/build/CMakeFiles/main.dir
+C:/Projekty/Cpp_SFML_Game_Engine/build/CMakeFiles/edit_cache.dir
+C:/Projekty/Cpp_SFML_Game_Engine/build/CMakeFiles/rebuild_cache.dir
