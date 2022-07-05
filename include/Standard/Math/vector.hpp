@@ -1,7 +1,6 @@
 #pragma once
 #include "SFML/Graphics.hpp"
 #include <cmath>
-#include <cassert>
 
 namespace engine
 {
@@ -31,9 +30,16 @@ namespace engine
                 double len = length();
                 return Vec2<double>(x/len,y/len);
             }
+
+            //konwersje
+            operator sf::Vector2<T>() const {
+                return {x, y};
+            }
     };
 
     typedef Vec2<int> Vec2i;
+    typedef Vec2<double> Vec2d;
+    typedef Vec2<float> Vec2f;
 
     //unarny minus
     template<typename T> 

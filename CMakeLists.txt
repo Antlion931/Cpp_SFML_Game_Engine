@@ -1,20 +1,15 @@
-cmake_minimum_required(VERSION 3.4.0 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.20.0 FATAL_ERROR)
 project(Ludum_dare_50_game)
 
 option(STATIC_LIBS "Set static build" OFF)
 
-set(CMAKE_CXX_COMPILER "clang++")
-
-file(GLOB_RECURSE SRC "src/*.cpp")
-file(GLOB_RECURSE INC "include/*.hpp")
+file(GLOB_RECURSE SRC src/*.cpp)
+file(GLOB_RECURSE INC include/*.hpp)
 
 add_executable(main ${SRC} ${INC})
 
 target_include_directories(main PRIVATE include)
 target_compile_features(main PRIVATE cxx_std_20)
-#target_compile_options(main PRIVATE -Wall -Wextra -Wpedantic)
-
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fmodules -std=c++20")
 
 if(STATIC_LIBS)
     set(SFML_STATIC_LIBRARIES TRUE)
@@ -23,4 +18,4 @@ endif()
 set(SFML_DIR "lib/SFML/lib/cmake/SFML")
 find_package(SFML COMPONENTS system audio window graphics REQUIRED)
 
-target_link_libraries(main sfml-graphics sfml-audio sfml-window sfml-system)
+target_link_libraries(main sfml-graphics sfml-audio)

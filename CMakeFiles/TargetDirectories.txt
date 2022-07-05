@@ -1,3 +1,0 @@
-/home/albertk/Game_Jams/Cpp_SFML_Game_Engine/CMakeFiles/main.dir
-/home/albertk/Game_Jams/Cpp_SFML_Game_Engine/CMakeFiles/edit_cache.dir
-/home/albertk/Game_Jams/Cpp_SFML_Game_Engine/CMakeFiles/rebuild_cache.dir
