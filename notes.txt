@@ -1,0 +1,2 @@
+wartstwy renderowania zaimplementowane jako sf::RenderTexture
+wtedy GUI, obiekty etc, maja swoje oddzielne warstwy

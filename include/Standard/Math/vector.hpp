@@ -4,7 +4,6 @@
 
 namespace engine
 {
-
     template<typename T>
     class Vec2
     {

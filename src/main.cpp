@@ -8,7 +8,7 @@ class game : public engine::engine{
         circle = new sf::CircleShape(100.f);
         circle->setFillColor(sf::Color::Green);
     }
-    void update() override
+    void update(const sf::Time& delta) override
     {
         sf::Event event;
         while (window->pollEvent(event))
@@ -19,7 +19,13 @@ class game : public engine::engine{
     }
     void draw() override
     {
-        window->draw(*circle);
+        sf::RectangleShape rect;
+        rect.setSize(sf::Vector2f(100, 50));
+        rect.setOutlineColor(sf::Color::Red);
+        rect.setOutlineThickness(5);
+        rect.setPosition(10, 20);
+        GUIRenderLayer.draw(rect);
+        ObjectRenderLayer.draw(*circle);
     }
     private:
     sf::CircleShape* circle;

@@ -8,28 +8,44 @@ namespace engine
     public:
         engine(const char* windowName = "Gra O_O", unsigned int windowSizeX = 800, unsigned int windowSizeY = 800)
         {
-            window = new sf::RenderWindow(sf::VideoMode(windowSizeX, windowSizeY), windowName);
+            window.create(sf::VideoMode(windowSizeX, windowSizeY), windowName);
         }
         ~engine()
         {
-            delete window;
+
         }
     public:
         void start()
         {
             onStart();
-            while(window->isOpen())
+            ObjectRenderLayer.create(window.getSize().x,window.getSize().y);
+            GUIRenderLayer.create(window.getSize().x,window.getSize().y);
+            sf::Clock deltaClock;
+            while(window.isOpen())
             {
-                update();
-                window->clear();
+                sf::Time delta = deltaClock.restart();
+                update(delta);
+                window.clear();
                 draw();
-                window->display();
+
+                ObjectRenderLayer.display();
+                GUIRenderLayer.display();
+                sf::Sprite GUI(GUIRenderLayer.getTexture());
+                sf::Sprite Objects(ObjectRenderLayer.getTexture());
+
+                window.draw(Objects);
+                window.draw(GUI);
+                window.display();
             }
         }
         virtual void onStart() = 0;
-        virtual void update()  = 0;
+        virtual void update(const sf::Time& delta)  = 0;
         virtual void draw()    = 0;
     protected:
-        sf::RenderWindow* window;
+    // glowne okno
+        sf::RenderWindow window;
+    // wartstwy renderowania
+        sf::RenderTexture GUIRenderLayer;
+        sf::RenderTexture ObjectRenderLayer;
     };
 }
