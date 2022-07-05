@@ -10,10 +10,12 @@ class EventEmitter{
         std::list<std::weak_ptr<std::function<void(Ts...)>>> subscriber_list;
     
     public:
+        //Dodaje danego Listenera do listy słuchających
         void subscribe(EventListener<Ts...> &listener) {
             subscriber_list.push_back(listener.get_func());
         }
 
+        //Powiadamia wszystkich istniejących słuchających i czyści listę z tych, którzy już nie istnieją
         void emit(Ts... values) {
             auto it = subscriber_list.begin();
             while(it != subscriber_list.end()) {
