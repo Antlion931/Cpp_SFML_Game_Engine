@@ -21,9 +21,6 @@ class game : public engine::engine{
     {
         sf::RectangleShape rect;
         rect.setSize(sf::Vector2f(100, 50));
-        rect.setOutlineColor(sf::Color::Red);
-        rect.setOutlineThickness(5);
-        rect.setPosition(10, 20);
         GUIRenderLayer.draw(rect);
         ObjectRenderLayer.draw(*circle);
     }
