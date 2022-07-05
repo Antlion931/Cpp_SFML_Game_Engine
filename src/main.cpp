@@ -11,10 +11,10 @@ class game : public engine::engine{
     void update(const sf::Time& delta) override
     {
         sf::Event event;
-        while (window->pollEvent(event))
+        while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
-                window->close();
+                window.close();
         }
     }
     void draw() override
