@@ -1,73 +1,73 @@
 CMakeFiles/main.dir/src/main.cpp.o: \
-  /home/bolidnik/Programs/Cpp_SFML_Game_Engine/src/main.cpp \
+  /home/albertk/Game_Jams/Cpp_SFML_Game_Engine/src/main.cpp \
   /usr/include/SFML/Graphics.hpp /usr/include/SFML/Window.hpp \
   /usr/include/SFML/System.hpp /usr/include/SFML/Config.hpp \
   /usr/include/SFML/System/Clock.hpp /usr/include/SFML/System/Export.hpp \
   /usr/include/SFML/System/Time.hpp /usr/include/SFML/System/Err.hpp \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/ostream \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/ios \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/iosfwd \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/x86_64-pc-linux-gnu/bits/c++config.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/x86_64-pc-linux-gnu/bits/os_defines.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/ostream \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/ios \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/iosfwd \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/x86_64-redhat-linux/bits/c++config.h \
+  /usr/include/bits/wordsize.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/x86_64-redhat-linux/bits/os_defines.h \
   /usr/include/features.h /usr/include/features-time64.h \
-  /usr/include/bits/wordsize.h /usr/include/bits/timesize.h \
-  /usr/include/stdc-predef.h /usr/include/sys/cdefs.h \
-  /usr/include/bits/long-double.h /usr/include/gnu/stubs.h \
-  /usr/include/gnu/stubs-64.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/x86_64-pc-linux-gnu/bits/cpu_defines.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/pstl/pstl_config.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/stringfwd.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/memoryfwd.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/postypes.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/cwchar \
+  /usr/include/bits/timesize.h /usr/include/stdc-predef.h \
+  /usr/include/sys/cdefs.h /usr/include/bits/long-double.h \
+  /usr/include/gnu/stubs.h /usr/include/gnu/stubs-64.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/x86_64-redhat-linux/bits/cpu_defines.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/pstl/pstl_config.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/stringfwd.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/memoryfwd.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/postypes.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/cwchar \
   /usr/include/wchar.h /usr/include/bits/libc-header-start.h \
   /usr/include/bits/floatn.h /usr/include/bits/floatn-common.h \
-  /usr/lib/clang/13.0.1/include/module.modulemap \
-  /usr/lib/clang/13.0.1/include/stddef.h \
-  /usr/lib/clang/13.0.1/include/stdarg.h /usr/include/bits/wchar.h \
+  /usr/lib64/clang/14.0.0/include/module.modulemap \
+  /usr/lib64/clang/14.0.0/include/stddef.h \
+  /usr/lib64/clang/14.0.0/include/stdarg.h /usr/include/bits/wchar.h \
   /usr/include/bits/types/wint_t.h /usr/include/bits/types/mbstate_t.h \
   /usr/include/bits/types/__mbstate_t.h /usr/include/bits/types/__FILE.h \
   /usr/include/bits/types/FILE.h /usr/include/bits/types/locale_t.h \
   /usr/include/bits/types/__locale_t.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/exception \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/exception.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/exception_ptr.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/exception_defines.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/cxxabi_init_exception.h \
-  /usr/lib/clang/13.0.1/include/__stddef_max_align_t.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/typeinfo \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/hash_bytes.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/new \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/move.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/type_traits \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/nested_exception.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/char_traits.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/compare \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/concepts \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/stl_construct.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/stl_iterator_base_types.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/iterator_concepts.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/ptr_traits.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/ranges_cmp.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/stl_iterator_base_funcs.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/concept_check.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/debug/assertions.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/cstdint \
-  /usr/lib/clang/13.0.1/include/stdint.h /usr/include/stdint.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/exception \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/exception.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/exception_ptr.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/exception_defines.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/cxxabi_init_exception.h \
+  /usr/lib64/clang/14.0.0/include/__stddef_max_align_t.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/typeinfo \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/hash_bytes.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/new \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/move.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/type_traits \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/nested_exception.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/char_traits.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/compare \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/concepts \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/stl_construct.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/stl_iterator_base_types.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/iterator_concepts.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/ptr_traits.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/ranges_cmp.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/stl_iterator_base_funcs.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/concept_check.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/debug/assertions.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/cstdint \
+  /usr/lib64/clang/14.0.0/include/stdint.h /usr/include/stdint.h \
   /usr/include/bits/types.h /usr/include/bits/typesizes.h \
   /usr/include/bits/time64.h /usr/include/bits/stdint-intn.h \
   /usr/include/bits/stdint-uintn.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/localefwd.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/x86_64-pc-linux-gnu/bits/c++locale.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/clocale \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/localefwd.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/x86_64-redhat-linux/bits/c++locale.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/clocale \
   /usr/include/locale.h /usr/include/bits/locale.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/cctype \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/cctype \
   /usr/include/ctype.h /usr/include/bits/endian.h \
   /usr/include/bits/endianness.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/ios_base.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/ext/atomicity.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/x86_64-pc-linux-gnu/bits/gthr.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/x86_64-pc-linux-gnu/bits/gthr-default.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/ios_base.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/ext/atomicity.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/x86_64-redhat-linux/bits/gthr.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/x86_64-redhat-linux/bits/gthr-default.h \
   /usr/include/pthread.h /usr/include/sched.h \
   /usr/include/bits/types/time_t.h \
   /usr/include/bits/types/struct_timespec.h /usr/include/bits/sched.h \
@@ -86,78 +86,78 @@ CMakeFiles/main.dir/src/main.cpp.o: \
   /usr/include/bits/setjmp.h /usr/include/bits/types/__sigset_t.h \
   /usr/include/bits/types/struct___jmp_buf_tag.h \
   /usr/include/bits/pthread_stack_min-dynamic.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/x86_64-pc-linux-gnu/bits/atomic_word.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/x86_64-redhat-linux/bits/atomic_word.h \
   /usr/include/sys/single_threaded.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/locale_classes.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/string \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/allocator.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/x86_64-pc-linux-gnu/bits/c++allocator.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/new_allocator.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/functexcept.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/cpp_type_traits.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/ostream_insert.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/cxxabi_forced.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/stl_iterator.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/ext/type_traits.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/stl_function.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/backward/binders.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/ext/numeric_traits.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/stl_algobase.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/stl_pair.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/utility.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/debug/debug.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/predefined_ops.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/refwrap.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/invoke.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/range_access.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/initializer_list \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/basic_string.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/ext/alloc_traits.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/alloc_traits.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/string_view \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/functional_hash.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/ranges_base.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/max_size_type.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/numbers \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/string_view.tcc \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/ext/string_conversions.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/cstdlib \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/locale_classes.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/string \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/allocator.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/x86_64-redhat-linux/bits/c++allocator.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/new_allocator.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/functexcept.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/cpp_type_traits.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/ostream_insert.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/cxxabi_forced.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/stl_iterator.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/ext/type_traits.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/stl_function.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/backward/binders.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/ext/numeric_traits.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/stl_algobase.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/stl_pair.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/utility.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/debug/debug.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/predefined_ops.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/refwrap.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/invoke.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/range_access.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/initializer_list \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/basic_string.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/ext/alloc_traits.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/alloc_traits.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/string_view \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/functional_hash.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/ranges_base.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/max_size_type.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/numbers \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/string_view.tcc \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/ext/string_conversions.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/cstdlib \
   /usr/include/stdlib.h /usr/include/bits/waitflags.h \
   /usr/include/bits/waitstatus.h /usr/include/sys/types.h \
   /usr/include/endian.h /usr/include/bits/byteswap.h \
   /usr/include/bits/uintn-identity.h /usr/include/sys/select.h \
   /usr/include/bits/select.h /usr/include/bits/types/sigset_t.h \
   /usr/include/alloca.h /usr/include/bits/stdlib-float.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/std_abs.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/cstdio \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/std_abs.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/cstdio \
   /usr/include/stdio.h /usr/include/bits/types/__fpos_t.h \
   /usr/include/bits/types/__fpos64_t.h \
   /usr/include/bits/types/struct_FILE.h \
   /usr/include/bits/types/cookie_io_functions_t.h \
   /usr/include/bits/stdio_lim.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/cerrno \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/cerrno \
   /usr/include/errno.h /usr/include/bits/errno.h \
   /usr/include/linux/errno.h /usr/include/asm/errno.h \
   /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
   /usr/include/bits/types/error_t.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/charconv.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/basic_string.tcc \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/locale_classes.tcc \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/system_error \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/x86_64-pc-linux-gnu/bits/error_constants.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/stdexcept \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/streambuf \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/streambuf.tcc \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/basic_ios.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/locale_facets.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/cwctype \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/charconv.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/basic_string.tcc \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/locale_classes.tcc \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/system_error \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/x86_64-redhat-linux/bits/error_constants.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/stdexcept \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/streambuf \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/streambuf.tcc \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/basic_ios.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/locale_facets.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/cwctype \
   /usr/include/wctype.h /usr/include/bits/wctype-wchar.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/x86_64-pc-linux-gnu/bits/ctype_base.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/streambuf_iterator.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/x86_64-pc-linux-gnu/bits/ctype_inline.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/locale_facets.tcc \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/basic_ios.tcc \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/ostream.tcc \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/x86_64-redhat-linux/bits/ctype_base.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/streambuf_iterator.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/x86_64-redhat-linux/bits/ctype_inline.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/locale_facets.tcc \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/basic_ios.tcc \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/ostream.tcc \
   /usr/include/SFML/System/FileInputStream.hpp \
   /usr/include/SFML/System/InputStream.hpp \
   /usr/include/SFML/System/NonCopyable.hpp \
@@ -165,29 +165,29 @@ CMakeFiles/main.dir/src/main.cpp.o: \
   /usr/include/SFML/System/MemoryInputStream.hpp \
   /usr/include/SFML/System/Mutex.hpp /usr/include/SFML/System/Sleep.hpp \
   /usr/include/SFML/System/String.hpp /usr/include/SFML/System/Utf.hpp \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/algorithm \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/stl_algo.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/algorithmfwd.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/stl_heap.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/stl_tempbuf.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/uniform_int_dist.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/ranges_algo.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/ranges_algobase.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/ranges_util.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/pstl/glue_algorithm_defs.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/pstl/execution_defs.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/locale \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/locale_facets_nonio.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/ctime \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/x86_64-pc-linux-gnu/bits/time_members.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/x86_64-pc-linux-gnu/bits/messages_members.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/algorithm \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/stl_algo.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/algorithmfwd.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/stl_heap.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/stl_tempbuf.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/uniform_int_dist.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/ranges_algo.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/ranges_algobase.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/ranges_util.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/pstl/glue_algorithm_defs.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/pstl/execution_defs.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/locale \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/locale_facets_nonio.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/ctime \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/x86_64-redhat-linux/bits/time_members.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/x86_64-redhat-linux/bits/messages_members.h \
   /usr/include/libintl.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/codecvt.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/locale_facets_nonio.tcc \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/locale_conv.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/codecvt.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/locale_facets_nonio.tcc \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/locale_conv.h \
   /usr/include/SFML/System/Utf.inl \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/iterator \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/stream_iterator.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/iterator \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/stream_iterator.h \
   /usr/include/SFML/System/String.inl \
   /usr/include/SFML/System/Thread.hpp \
   /usr/include/SFML/System/Thread.inl \
@@ -209,11 +209,11 @@ CMakeFiles/main.dir/src/main.cpp.o: \
   /usr/include/SFML/Window/Mouse.hpp /usr/include/SFML/Window/Sensor.hpp \
   /usr/include/SFML/Window/Touch.hpp \
   /usr/include/SFML/Window/VideoMode.hpp \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/vector \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/stl_uninitialized.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/stl_vector.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/stl_bvector.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/vector.tcc \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/vector \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/stl_uninitialized.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/stl_vector.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/stl_bvector.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/vector.tcc \
   /usr/include/SFML/Window/Window.hpp \
   /usr/include/SFML/Window/WindowHandle.hpp \
   /usr/include/SFML/Window/WindowStyle.hpp \
@@ -236,15 +236,15 @@ CMakeFiles/main.dir/src/main.cpp.o: \
   /usr/include/SFML/Graphics/Glyph.hpp \
   /usr/include/SFML/Graphics/Texture.hpp \
   /usr/include/SFML/Graphics/Image.hpp \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/map \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/stl_tree.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/ext/aligned_buffer.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/node_handle.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/stl_map.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/tuple \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/uses_allocator.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/stl_multimap.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/12.1.0/../../../../include/c++/12.1.0/bits/erase_if.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/map \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/stl_tree.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/ext/aligned_buffer.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/node_handle.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/stl_map.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/tuple \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/uses_allocator.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/stl_multimap.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/erase_if.h \
   /usr/include/SFML/Graphics/RectangleShape.hpp \
   /usr/include/SFML/Graphics/RenderTarget.hpp \
   /usr/include/SFML/Graphics/View.hpp \
@@ -256,4 +256,41 @@ CMakeFiles/main.dir/src/main.cpp.o: \
   /usr/include/SFML/Graphics/Sprite.hpp \
   /usr/include/SFML/Graphics/Text.hpp \
   /usr/include/SFML/Graphics/VertexBuffer.hpp \
-  /home/bolidnik/Programs/Cpp_SFML_Game_Engine/include/engine.hpp
+  /home/albertk/Game_Jams/Cpp_SFML_Game_Engine/include/engine.hpp \
+  /home/albertk/Game_Jams/Cpp_SFML_Game_Engine/include/TextureLoaderPrototypeFactory.hpp \
+  /home/albertk/Game_Jams/Cpp_SFML_Game_Engine/include/TextureLoader.hpp \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/iostream \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/istream \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/istream.tcc \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/memory \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/stl_raw_storage_iter.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/align.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bit \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/unique_ptr.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/shared_ptr.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/shared_ptr_base.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/allocated_ptr.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/ext/concurrence.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/shared_ptr_atomic.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/atomic_base.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/atomic_lockfree_defines.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/atomic_wait.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/climits \
+  /usr/lib64/clang/14.0.0/include/limits.h /usr/include/limits.h \
+  /usr/include/bits/posix1_lim.h /usr/include/bits/local_lim.h \
+  /usr/include/linux/limits.h /usr/include/bits/posix2_lim.h \
+  /usr/include/bits/xopen_lim.h /usr/include/bits/uio_lim.h \
+  /usr/include/unistd.h /usr/include/bits/posix_opt.h \
+  /usr/include/bits/environments.h /usr/include/bits/confname.h \
+  /usr/include/bits/getopt_posix.h /usr/include/bits/getopt_core.h \
+  /usr/include/bits/unistd_ext.h /usr/include/linux/close_range.h \
+  /usr/include/syscall.h /usr/include/sys/syscall.h \
+  /usr/include/asm/unistd.h /usr/include/asm/unistd_64.h \
+  /usr/include/bits/syscall.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/std_mutex.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/backward/auto_ptr.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/ranges_uninitialized.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/bits/uses_allocator_args.h \
+  /usr/bin/../lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/pstl/glue_memory_defs.h \
+  /home/albertk/Game_Jams/Cpp_SFML_Game_Engine/include/TestAnimatedCircle.hpp \
+  /home/albertk/Game_Jams/Cpp_SFML_Game_Engine/include/AnimationManager.hpp

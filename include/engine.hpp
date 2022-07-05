@@ -27,6 +27,8 @@ namespace engine
                 sf::Time delta = deltaClock.restart();
                 update(delta);
                 window.clear();
+                ObjectRenderLayer.clear(sf::Color(0,0,0,0));
+                GUIRenderLayer.clear(sf::Color(0,0,0,0));
                 draw();
 
                 ObjectRenderLayer.display();

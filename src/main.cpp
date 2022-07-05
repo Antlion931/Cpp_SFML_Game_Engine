@@ -1,15 +1,22 @@
 #include <SFML/Graphics.hpp>
 #include "engine.hpp"
+#include "TextureLoaderPrototypeFactory.hpp"
+#include "TestAnimatedCircle.hpp"
+#include "MusicSystem.hpp"
+#include "SoundSystem.hpp"
 
 class game : public engine::engine{
     public:
     void onStart() override
     {
-        circle = new sf::CircleShape(100.f);
-        circle->setFillColor(sf::Color::Green);
+        TextureLoaderPrototypeFactory::getInstance("res/textures/");
+        musicSystem = MusicSystem::getInstance();
+        soundSystem = SoundSystem::getInstance();
+        testCircle = new TestAnimatedCircle();
     }
     void update(const sf::Time& delta) override
     {
+        testCircle->update(delta);
         sf::Event event;
         while (window.pollEvent(event))
         {
@@ -22,10 +29,12 @@ class game : public engine::engine{
         sf::RectangleShape rect;
         rect.setSize(sf::Vector2f(100, 50));
         GUIRenderLayer.draw(rect);
-        ObjectRenderLayer.draw(*circle);
+        ObjectRenderLayer.draw(testCircle->draw());
     }
     private:
-    sf::CircleShape* circle;
+    TestAnimatedCircle* testCircle;
+    MusicSystem* musicSystem;
+    SoundSystem* soundSystem;
 };
 
 int main()

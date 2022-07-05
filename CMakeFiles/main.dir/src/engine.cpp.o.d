@@ -1,2 +1,2 @@
 CMakeFiles/main.dir/src/engine.cpp.o: \
-  /home/bolidnik/Programs/Cpp_SFML_Game_Engine/src/engine.cpp
+  /home/albertk/Game_Jams/Cpp_SFML_Game_Engine/src/engine.cpp
