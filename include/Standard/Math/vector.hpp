@@ -1,11 +1,9 @@
 #pragma once
-
 #include "SFML/Graphics.hpp"
 #include <cmath>
 
 namespace engine
 {
-
     template<typename T>
     class Vec2
     {
