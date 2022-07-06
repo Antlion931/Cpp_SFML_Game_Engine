@@ -27,8 +27,13 @@ namespace engine
                 sf::Time delta = deltaClock.restart();
                 update(delta);
                 window.clear();
+<<<<<<< HEAD
                 ObjectRenderLayer.clear(sf::Color(0,0,0,0));
                 GUIRenderLayer.clear(sf::Color(0,0,0,0));
+=======
+                ObjectRenderLayer.clear();
+                GUIRenderLayer.clear();
+>>>>>>> ff14bcc (merge)
                 draw();
 
                 ObjectRenderLayer.display();

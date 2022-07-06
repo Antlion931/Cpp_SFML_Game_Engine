@@ -1,9 +1,13 @@
 #include <SFML/Graphics.hpp>
 #include "engine.hpp"
+<<<<<<< HEAD
 #include "TextureLoaderPrototypeFactory.hpp"
 #include "TestAnimatedCircle.hpp"
 #include "MusicSystem.hpp"
 #include "SoundSystem.hpp"
+=======
+#include "GUI/GUI.hpp"
+>>>>>>> ff14bcc (merge)
 
 class game : public engine::engine{
     public:
@@ -32,9 +36,14 @@ class game : public engine::engine{
         ObjectRenderLayer.draw(testCircle->draw());
     }
     private:
+<<<<<<< HEAD
     TestAnimatedCircle* testCircle;
     MusicSystem* musicSystem;
     SoundSystem* soundSystem;
+=======
+        sf::CircleShape* circle;
+
+>>>>>>> ff14bcc (merge)
 };
 
 int main()
