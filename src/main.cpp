@@ -30,8 +30,8 @@ class game : public engine::engine{
     {
         sf::RectangleShape rect;
         rect.setSize(sf::Vector2f(100, 50));
-        //Layers* layers = Layers::get_instance();
-        //layers->get_layer(0)->draw(testCircle->draw());
+        Layers* layers = Layers::get_instance();
+        layers->get_layer(0)->draw(testCircle->draw());
     }
     private:
     TestAnimatedCircle* testCircle;

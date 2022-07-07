@@ -63,3 +63,5 @@ private:
     Layers(){}
     ~Layers(){}
 };
+
+Layers* Layers::m_instance;
