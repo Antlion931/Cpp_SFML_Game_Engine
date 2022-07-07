@@ -254,10 +254,7 @@ CMakeFiles/main.dir/src/main.cpp.o: \
  /usr/include/c++/12.1.0/tr1/poly_hermite.tcc \
  /usr/include/c++/12.1.0/tr1/poly_laguerre.tcc \
  /usr/include/c++/12.1.0/tr1/riemann_zeta.tcc \
- /home/bolidnik/Programs/Cpp_SFML_Game_Engine/include/TextureLoaderPrototypeFactory.hpp \
- /home/bolidnik/Programs/Cpp_SFML_Game_Engine/include/TextureLoader.hpp \
- /usr/include/c++/12.1.0/iostream /usr/include/c++/12.1.0/istream \
- /usr/include/c++/12.1.0/bits/istream.tcc /usr/include/c++/12.1.0/memory \
+ /usr/include/c++/12.1.0/memory \
  /usr/include/c++/12.1.0/bits/stl_raw_storage_iter.h \
  /usr/include/c++/12.1.0/bits/align.h /usr/include/c++/12.1.0/bit \
  /usr/include/c++/12.1.0/bits/unique_ptr.h \
@@ -287,26 +284,9 @@ CMakeFiles/main.dir/src/main.cpp.o: \
  /usr/include/c++/12.1.0/bits/ranges_uninitialized.h \
  /usr/include/c++/12.1.0/bits/uses_allocator_args.h \
  /usr/include/c++/12.1.0/pstl/glue_memory_defs.h \
+ /home/bolidnik/Programs/Cpp_SFML_Game_Engine/include/TextureLoaderPrototypeFactory.hpp \
+ /home/bolidnik/Programs/Cpp_SFML_Game_Engine/include/TextureLoader.hpp \
+ /usr/include/c++/12.1.0/iostream /usr/include/c++/12.1.0/istream \
+ /usr/include/c++/12.1.0/bits/istream.tcc \
  /home/bolidnik/Programs/Cpp_SFML_Game_Engine/include/TestAnimatedCircle.hpp \
- /home/bolidnik/Programs/Cpp_SFML_Game_Engine/include/AnimationManager.hpp \
- /home/bolidnik/Programs/Cpp_SFML_Game_Engine/include/MusicSystem.hpp \
- /usr/include/SFML/Audio.hpp /usr/include/SFML/Audio/InputSoundFile.hpp \
- /usr/include/SFML/Audio/Export.hpp /usr/include/SFML/Audio/Listener.hpp \
- /usr/include/SFML/Audio/Music.hpp \
- /usr/include/SFML/Audio/SoundStream.hpp \
- /usr/include/SFML/Audio/SoundSource.hpp \
- /usr/include/SFML/Audio/AlResource.hpp \
- /usr/include/SFML/Audio/OutputSoundFile.hpp \
- /usr/include/SFML/Audio/Sound.hpp \
- /usr/include/SFML/Audio/SoundBuffer.hpp /usr/include/c++/12.1.0/set \
- /usr/include/c++/12.1.0/bits/stl_set.h \
- /usr/include/c++/12.1.0/bits/stl_multiset.h \
- /usr/include/SFML/Audio/SoundBufferRecorder.hpp \
- /usr/include/SFML/Audio/SoundRecorder.hpp \
- /usr/include/SFML/Audio/SoundFileFactory.hpp \
- /usr/include/SFML/Audio/SoundFileFactory.inl \
- /usr/include/SFML/Audio/SoundFileReader.hpp \
- /usr/include/SFML/Audio/SoundFileWriter.hpp \
- /home/bolidnik/Programs/Cpp_SFML_Game_Engine/include/SoundSystem.hpp \
- /usr/include/c++/12.1.0/deque /usr/include/c++/12.1.0/bits/stl_deque.h \
- /usr/include/c++/12.1.0/bits/deque.tcc
+ /home/bolidnik/Programs/Cpp_SFML_Game_Engine/include/AnimationManager.hpp

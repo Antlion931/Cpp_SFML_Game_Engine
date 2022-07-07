@@ -153,6 +153,30 @@ src/AnimationManager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/AnimationManager.cpp.s
 .PHONY : src/AnimationManager.cpp.s
 
+src/Layers.o: src/Layers.cpp.o
+.PHONY : src/Layers.o
+
+# target to build an object file
+src/Layers.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Layers.cpp.o
+.PHONY : src/Layers.cpp.o
+
+src/Layers.i: src/Layers.cpp.i
+.PHONY : src/Layers.i
+
+# target to preprocess a source file
+src/Layers.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Layers.cpp.i
+.PHONY : src/Layers.cpp.i
+
+src/Layers.s: src/Layers.cpp.s
+.PHONY : src/Layers.s
+
+# target to generate assembly for a file
+src/Layers.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Layers.cpp.s
+.PHONY : src/Layers.cpp.s
+
 src/MusicSystem.o: src/MusicSystem.cpp.o
 .PHONY : src/MusicSystem.o
 
@@ -357,6 +381,9 @@ help:
 	@echo "... src/AnimationManager.o"
 	@echo "... src/AnimationManager.i"
 	@echo "... src/AnimationManager.s"
+	@echo "... src/Layers.o"
+	@echo "... src/Layers.i"
+	@echo "... src/Layers.s"
 	@echo "... src/MusicSystem.o"
 	@echo "... src/MusicSystem.i"
 	@echo "... src/MusicSystem.s"
