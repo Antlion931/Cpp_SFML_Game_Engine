@@ -7,13 +7,13 @@ namespace engine
     class engine
     {
     public:
-        engine(const char* windowName = "Gra O_O", unsigned int windowSizeX = 800, unsigned int windowSizeY = 800)
+        engine(unsigned int windowSizeX = 800, unsigned int windowSizeY = 800, const char* windowName = "Gra O_O")
         {
             window.create(sf::VideoMode(windowSizeX, windowSizeY), windowName);
         }
         ~engine()
         {
-
+            
         }
     public:
         void start()
@@ -27,13 +27,8 @@ namespace engine
                 sf::Time delta = deltaClock.restart();
                 update(delta);
                 window.clear();
-<<<<<<< HEAD
                 ObjectRenderLayer.clear(sf::Color(0,0,0,0));
                 GUIRenderLayer.clear(sf::Color(0,0,0,0));
-=======
-                ObjectRenderLayer.clear();
-                GUIRenderLayer.clear();
->>>>>>> ff14bcc (merge)
                 draw();
 
                 ObjectRenderLayer.display();
