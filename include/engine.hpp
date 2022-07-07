@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
+#include <unordered_map>
 #include <SFML/Graphics.hpp>
+#include "Layers.hpp"
 
 namespace engine
 {
@@ -18,26 +20,31 @@ namespace engine
     public:
         void start()
         {
-            onStart();
-            ObjectRenderLayer.create(window.getSize().x,window.getSize().y);
-            GUIRenderLayer.create(window.getSize().x,window.getSize().y);
+            layers = Layers::get_instance();
+            layers->add_layer(window, "GUI");
+            layers->add_layer(window, "Objects");
+
             sf::Clock deltaClock;
+
+            onStart();
+
             while(window.isOpen())
             {
                 sf::Time delta = deltaClock.restart();
                 update(delta);
                 window.clear();
-                ObjectRenderLayer.clear(sf::Color(0,0,0,0));
-                GUIRenderLayer.clear(sf::Color(0,0,0,0));
+                for(auto layer : layers->get_layers())
+                {
+                    layer->clear(sf::Color(0,0,0,0));
+                }
+
                 draw();
 
-                ObjectRenderLayer.display();
-                GUIRenderLayer.display();
-                sf::Sprite GUI(GUIRenderLayer.getTexture());
-                sf::Sprite Objects(ObjectRenderLayer.getTexture());
-
-                window.draw(Objects);
-                window.draw(GUI);
+                for(auto layer : layers->get_layers())
+                {
+                    layer->display();
+                    window.draw(sf::Sprite(layer->getTexture()));
+                }
                 window.display();
             }
         }
@@ -48,7 +55,9 @@ namespace engine
     // glowne okno
         sf::RenderWindow window;
     // wartstwy renderowania
-        sf::RenderTexture GUIRenderLayer;
-        sf::RenderTexture ObjectRenderLayer;
+        Layers* layers;
+    // config (TO DO)
+        std::unordered_map<std::string, sf::Keyboard> KeyBindings;
+        std::string lang = "eng";
     };
 }

@@ -3,3 +3,19 @@ wtedy GUI, obiekty etc, maja swoje oddzielne warstwy
 
 - GUI
 - KOLIZJE
+
+
+
+- CONFIG FILE
+#KEYBINDINGS
+up      = "w"
+down    = "s"
+left    = "a"
+right   = "d"
+esc     = "esc"
+etc...
+#WINDOW
+width   = 1920
+height  = 1080
+#ACCESIBILITY
+lang    = "polish"

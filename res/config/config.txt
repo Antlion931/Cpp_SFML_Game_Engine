@@ -1,0 +1,11 @@
+#KEYBINDINGS
+up      = "w"
+down    = "s"
+left    = "a"
+right   = "d"
+esc     = "esc"
+#WINDOW
+width   = 1920
+height  = 1080
+#ACCESIBILITY
+lang    = "polish"

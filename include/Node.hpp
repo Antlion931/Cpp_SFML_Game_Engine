@@ -1,3 +1,5 @@
+#pragma once
+#include <SFML/Graphics.hpp>
 #include <memory>
 #include <vector>
 #include <SFML/Graphics.hpp>
@@ -11,57 +13,25 @@ class Node : std::enable_shared_from_this<Node>, sf::Drawable {
         std::vector<StrongNode> children;
         WeakNode parent;
 
-        sf::Transformable local_transform;
-        sf::Transformable global_transform;
+        sf::RenderTexture& render_layer;
 
         Node() = default;
 
-        virtual void OnDraw(sf::RenderTarget& target, sf::RenderStates states) const {}
-
-        void draw(sf::RenderTarget& target, sf::RenderStates states) const {
-            OnDraw(target, states);
-
-            for (auto child : children) {
-                child->draw(target, states);
-            }
-        }
-
-        virtual void OnUpdate(const sf::Time& delta) {}
-
-        void update(const sf::Time& delta) {
-            OnUpdate(delta);
-
-            for (auto child : children) {
-                child->update(delta);
-            }
-        }
-
     public:
-        void change_parent(StrongNode new_parent) {
-            if(auto locked_parent = parent.lock()){
-                locked_parent->remove_child(shared_from_this());
-            }
-            new_parent->children.push_back(shared_from_this());
-            parent = new_parent;
-        }
+    // MANAGING CHILDREN / PARENTS
+        void change_parent(StrongNode new_parent);
+        void remove_child(StrongNode child);
 
-        void remove_child(StrongNode child) {
-            children.erase(std::find(children.begin(),children.end(),child));
-        }
+    // FACTORY PATTERN
+        static StrongNode create(StrongNode parent);
+        static StrongNode create();
 
-        static StrongNode create(StrongNode parent) {
-            StrongNode new_node = std::shared_ptr<Node>(new Node());
-            
-            parent->children.push_back(new_node);
-            new_node->parent = parent;
+    // GETTERS AND SETTERS
+        void setActive(bool _active);
+        bool isActive();
 
-            return new_node;
-        }
+        void setVisible(bool _visible);
+        bool isVisible();
 
-        static StrongNode create() {
-            StrongNode new_node = std::shared_ptr<Node>(new Node());
-
-            return  new_node;
-        }
-
+    // UPDATE FUNCTIONS
 };
