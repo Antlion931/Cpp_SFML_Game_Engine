@@ -2,11 +2,11 @@
 #include <SFML/Graphics.hpp>
 #include <memory>
 #include <vector>
-#include "Layers.hpp"
 #include "Standard/math.hpp"
+#include "Layers.hpp"
 
 class Node : std::enable_shared_from_this<Node> {
-    
+public:
     using StrongNode = std::shared_ptr<Node>;
     using WeakNode = std::weak_ptr<Node>;
 
@@ -18,6 +18,8 @@ class Node : std::enable_shared_from_this<Node> {
 
         sf::Transformable local_transform;
         sf::Transformable global_transform;
+
+        sf::Color color_id = sf::Color(0,0,0,0);
 
         Node() = default;
         

@@ -153,6 +153,30 @@ src/AnimationManager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/AnimationManager.cpp.s
 .PHONY : src/AnimationManager.cpp.s
 
+src/ColorIDMap.o: src/ColorIDMap.cpp.o
+.PHONY : src/ColorIDMap.o
+
+# target to build an object file
+src/ColorIDMap.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/ColorIDMap.cpp.o
+.PHONY : src/ColorIDMap.cpp.o
+
+src/ColorIDMap.i: src/ColorIDMap.cpp.i
+.PHONY : src/ColorIDMap.i
+
+# target to preprocess a source file
+src/ColorIDMap.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/ColorIDMap.cpp.i
+.PHONY : src/ColorIDMap.cpp.i
+
+src/ColorIDMap.s: src/ColorIDMap.cpp.s
+.PHONY : src/ColorIDMap.s
+
+# target to generate assembly for a file
+src/ColorIDMap.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/ColorIDMap.cpp.s
+.PHONY : src/ColorIDMap.cpp.s
+
 src/Layers.o: src/Layers.cpp.o
 .PHONY : src/Layers.o
 
@@ -405,6 +429,9 @@ help:
 	@echo "... src/AnimationManager.o"
 	@echo "... src/AnimationManager.i"
 	@echo "... src/AnimationManager.s"
+	@echo "... src/ColorIDMap.o"
+	@echo "... src/ColorIDMap.i"
+	@echo "... src/ColorIDMap.s"
 	@echo "... src/Layers.o"
 	@echo "... src/Layers.i"
 	@echo "... src/Layers.s"

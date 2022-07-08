@@ -228,13 +228,9 @@ CMakeFiles/main.dir/src/main.cpp.o: \
  /usr/include/SFML/Graphics/Sprite.hpp \
  /usr/include/SFML/Graphics/Text.hpp \
  /usr/include/SFML/Graphics/VertexBuffer.hpp \
- /home/bolidnik/Programs/Cpp_SFML_Game_Engine/include/engine.hpp \
- /usr/include/c++/12.1.0/unordered_map \
- /usr/include/c++/12.1.0/bits/hashtable.h \
- /usr/include/c++/12.1.0/bits/hashtable_policy.h \
- /usr/include/c++/12.1.0/bits/enable_special_members.h \
- /usr/include/c++/12.1.0/bits/unordered_map.h \
- /home/bolidnik/Programs/Cpp_SFML_Game_Engine/include/Layers.hpp \
+ /home/bolidnik/Programs/Cpp_SFML_Game_Engine/include/Standard/math.hpp \
+ /home/bolidnik/Programs/Cpp_SFML_Game_Engine/include/Standard/Math/transforms.hpp \
+ /home/bolidnik/Programs/Cpp_SFML_Game_Engine/include/Standard/Math/vector.hpp \
  /usr/include/c++/12.1.0/cmath /usr/include/math.h \
  /usr/include/bits/math-vector.h /usr/include/bits/libm-simd-decl-stubs.h \
  /usr/include/bits/flt-eval-method.h /usr/include/bits/fp-logb.h \
@@ -254,6 +250,16 @@ CMakeFiles/main.dir/src/main.cpp.o: \
  /usr/include/c++/12.1.0/tr1/poly_hermite.tcc \
  /usr/include/c++/12.1.0/tr1/poly_laguerre.tcc \
  /usr/include/c++/12.1.0/tr1/riemann_zeta.tcc \
+ /home/bolidnik/Programs/Cpp_SFML_Game_Engine/include/Standard/Math/bounding_box.hpp \
+ /home/bolidnik/Programs/Cpp_SFML_Game_Engine/include/engine.hpp \
+ /usr/include/c++/12.1.0/iostream /usr/include/c++/12.1.0/istream \
+ /usr/include/c++/12.1.0/bits/istream.tcc \
+ /usr/include/c++/12.1.0/unordered_map \
+ /usr/include/c++/12.1.0/bits/hashtable.h \
+ /usr/include/c++/12.1.0/bits/hashtable_policy.h \
+ /usr/include/c++/12.1.0/bits/enable_special_members.h \
+ /usr/include/c++/12.1.0/bits/unordered_map.h \
+ /home/bolidnik/Programs/Cpp_SFML_Game_Engine/include/Layers.hpp \
  /usr/include/c++/12.1.0/memory \
  /usr/include/c++/12.1.0/bits/stl_raw_storage_iter.h \
  /usr/include/c++/12.1.0/bits/align.h /usr/include/c++/12.1.0/bit \
@@ -284,10 +290,11 @@ CMakeFiles/main.dir/src/main.cpp.o: \
  /usr/include/c++/12.1.0/bits/ranges_uninitialized.h \
  /usr/include/c++/12.1.0/bits/uses_allocator_args.h \
  /usr/include/c++/12.1.0/pstl/glue_memory_defs.h \
+ /home/bolidnik/Programs/Cpp_SFML_Game_Engine/include/ColorIDMap.hpp \
+ /home/bolidnik/Programs/Cpp_SFML_Game_Engine/include/Node.hpp \
+ /home/bolidnik/Programs/Cpp_SFML_Game_Engine/include/Standard/Hashers.hpp \
  /home/bolidnik/Programs/Cpp_SFML_Game_Engine/include/TextureLoaderPrototypeFactory.hpp \
  /home/bolidnik/Programs/Cpp_SFML_Game_Engine/include/TextureLoader.hpp \
- /usr/include/c++/12.1.0/iostream /usr/include/c++/12.1.0/istream \
- /usr/include/c++/12.1.0/bits/istream.tcc \
  /home/bolidnik/Programs/Cpp_SFML_Game_Engine/include/TestAnimatedCircle.hpp \
  /home/bolidnik/Programs/Cpp_SFML_Game_Engine/include/AnimationManager.hpp \
  /home/bolidnik/Programs/Cpp_SFML_Game_Engine/include/MusicSystem.hpp \
@@ -311,8 +318,4 @@ CMakeFiles/main.dir/src/main.cpp.o: \
  /home/bolidnik/Programs/Cpp_SFML_Game_Engine/include/SoundSystem.hpp \
  /usr/include/c++/12.1.0/deque /usr/include/c++/12.1.0/bits/stl_deque.h \
  /usr/include/c++/12.1.0/bits/deque.tcc \
- /home/bolidnik/Programs/Cpp_SFML_Game_Engine/include/Node.hpp \
- /home/bolidnik/Programs/Cpp_SFML_Game_Engine/include/Standard/math.hpp \
- /home/bolidnik/Programs/Cpp_SFML_Game_Engine/include/Standard/Math/transforms.hpp \
- /home/bolidnik/Programs/Cpp_SFML_Game_Engine/include/Standard/Math/vector.hpp \
  /home/bolidnik/Programs/Cpp_SFML_Game_Engine/include/GUI/GUI.hpp

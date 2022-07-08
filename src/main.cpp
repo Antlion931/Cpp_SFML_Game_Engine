@@ -33,7 +33,12 @@ class game : public engine::engine{
         sf::RectangleShape rect;
         rect.setSize(sf::Vector2f(100, 50));
         Layers* layers = Layers::get_instance();
-        (*layers)[0]->draw(testCircle->draw());
+        sf::Font font;
+        font.loadFromFile("res/fonts/arial.ttf");
+        sf::Text text("text", font);
+        text.setPosition(sf::Vector2f(100.f,0.f));
+        (*layers)[0]->draw(text);
+        (*layers)[1]->draw(testCircle->draw());
     }
     private:
     TestAnimatedCircle* testCircle;

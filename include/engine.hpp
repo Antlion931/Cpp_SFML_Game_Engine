@@ -1,8 +1,10 @@
 #pragma once
+#include <iostream>
 #include <string>
 #include <unordered_map>
 #include <SFML/Graphics.hpp>
 #include "Layers.hpp"
+#include "ColorIDMap.hpp"
 
 namespace engine
 {
@@ -20,6 +22,8 @@ namespace engine
     public:
         void start()
         {
+            colorIDMap = ColorIDMap::get_instance();
+
             layers = Layers::get_instance();
             layers->add_layer(window, "GUI");
             layers->add_layer(window, "Objects");
@@ -30,21 +34,28 @@ namespace engine
 
             while(window.isOpen())
             {
+                auto layers_vec = layers->get_layers();
+
+                // UPDATE                
                 sf::Time delta = deltaClock.restart();
                 update(delta);
+
+                // CLEAR THE WINDOW AND ALL LAYERS
                 window.clear();
-                for(auto layer : layers->get_layers())
+                for(int i = layers_vec.size()-1; i >= 0; i--)
                 {
-                    layer->clear(sf::Color(0,0,0,0));
+                    layers_vec[i]->clear(sf::Color(0,0,0,0));
                 }
+                colorIDMap->get_color_layer()->clear(sf::Color(0,0,0,0));
 
+                // DRAW TO ALL LAYERS
                 draw();
-
-                for(auto layer : layers->get_layers())
+                for(int i = layers_vec.size()-1; i >= 0; i--)
                 {
-                    layer->display();
-                    window.draw(sf::Sprite(layer->getTexture()));
+                    layers_vec[i]->display();
+                    window.draw(sf::Sprite(layers_vec[i]->getTexture()));
                 }
+                // DISPLAY
                 window.display();
             }
         }
@@ -56,6 +67,7 @@ namespace engine
         sf::RenderWindow window;
     // wartstwy renderowania
         Layers* layers;
+        ColorIDMap* colorIDMap;
     // config (TO DO)
         std::unordered_map<std::string, sf::Keyboard> KeyBindings;
         std::string lang = "eng";
