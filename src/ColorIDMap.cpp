@@ -38,3 +38,16 @@ ColorIDMap::layer_ptr ColorIDMap::get_color_layer()
 {
     return m_color_layer;
 }
+
+std::optional<std::weak_ptr<Node>> ColorIDMap::get_hovered_object()
+{
+    sf::Vector2i position = sf::Mouse::getPosition();
+    auto image = m_color_layer->getTexture().copyToImage();
+    auto color = image.getPixel(position.x,position.y);
+    if(m_color_map.count(color) > 0)
+    {
+        std::cout << "aidwjio\n";
+        return std::optional<std::weak_ptr<Node>>(m_color_map[color]);
+    }
+    return {};
+}
