@@ -14,7 +14,8 @@ public:
     using WeakNode = std::weak_ptr<Node>;
 
     protected:
-    Layers::layer_ptr render_layer = Layers::get_instance()->get_layer(1);
+        Layers::layer_ptr render_layer = Layers::get_instance()->get_layer(1);
+        Node();
     private:
         std::vector<StrongNode> children;
         WeakNode parent;
@@ -22,20 +23,18 @@ public:
         sf::Transformable local_transform;
         sf::Transformable global_transform;
 
-        sf::Color color_id;
-
-        Node();
-        
-    // UPDATE FUNCTIONS
-        void draw() const;
-        void update(const sf::Time& delta);
-        void update_transform();
 
     protected:
+        sf::Color color_id;
+        
         virtual void onDraw() const {}
         virtual void onUpdate(const sf::Time& delta) {}
 
     public:
+    // UPDATE FUNCTIONS
+        void draw() const;
+        void update(const sf::Time& delta);
+        void update_transform();
     // MANAGING CHILDREN / PARENTS
         void change_parent(StrongNode new_parent);
         void remove_child(StrongNode child);
