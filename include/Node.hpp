@@ -10,11 +10,11 @@ class Node : std::enable_shared_from_this<Node> {
     using StrongNode = std::shared_ptr<Node>;
     using WeakNode = std::weak_ptr<Node>;
 
+    protected:
+    Layers::layer_ptr render_layer = Layers::get_instance()->get_layer(1);
     private:
         std::vector<StrongNode> children;
         WeakNode parent;
-
-        Layers::layer_ptr render_layer = Layers::get_instance()->get_layer(1);
 
         sf::Transformable local_transform;
         sf::Transformable global_transform;
@@ -23,12 +23,12 @@ class Node : std::enable_shared_from_this<Node> {
         
     // UPDATE FUNCTIONS
         void draw() const;
-        void update(sf::Time& delta);
+        void update(const sf::Time& delta);
         void update_transform();
 
     protected:
         virtual void onDraw() const {}
-        virtual void onUpdate(sf::Time& delta) {}
+        virtual void onUpdate(const sf::Time& delta) {}
 
     public:
     // MANAGING CHILDREN / PARENTS
@@ -66,6 +66,5 @@ class Node : std::enable_shared_from_this<Node> {
         sf::Vector2f getLocalTranslation() {return local_transform.getPosition();}
         float getLocalRotation() {return local_transform.getRotation();}
         sf::Vector2f getLocalScale() {return local_transform.getScale();}
-
-
+        
 };

@@ -249,6 +249,30 @@ src/SoundSystem.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/SoundSystem.cpp.s
 .PHONY : src/SoundSystem.cpp.s
 
+src/Standard/Math/transforms.o: src/Standard/Math/transforms.cpp.o
+.PHONY : src/Standard/Math/transforms.o
+
+# target to build an object file
+src/Standard/Math/transforms.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Standard/Math/transforms.cpp.o
+.PHONY : src/Standard/Math/transforms.cpp.o
+
+src/Standard/Math/transforms.i: src/Standard/Math/transforms.cpp.i
+.PHONY : src/Standard/Math/transforms.i
+
+# target to preprocess a source file
+src/Standard/Math/transforms.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Standard/Math/transforms.cpp.i
+.PHONY : src/Standard/Math/transforms.cpp.i
+
+src/Standard/Math/transforms.s: src/Standard/Math/transforms.cpp.s
+.PHONY : src/Standard/Math/transforms.s
+
+# target to generate assembly for a file
+src/Standard/Math/transforms.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Standard/Math/transforms.cpp.s
+.PHONY : src/Standard/Math/transforms.cpp.s
+
 src/TestAnimatedCircle.o: src/TestAnimatedCircle.cpp.o
 .PHONY : src/TestAnimatedCircle.o
 
@@ -369,30 +393,6 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
-src/transforms.o: src/transforms.cpp.o
-.PHONY : src/transforms.o
-
-# target to build an object file
-src/transforms.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/transforms.cpp.o
-.PHONY : src/transforms.cpp.o
-
-src/transforms.i: src/transforms.cpp.i
-.PHONY : src/transforms.i
-
-# target to preprocess a source file
-src/transforms.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/transforms.cpp.i
-.PHONY : src/transforms.cpp.i
-
-src/transforms.s: src/transforms.cpp.s
-.PHONY : src/transforms.s
-
-# target to generate assembly for a file
-src/transforms.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/transforms.cpp.s
-.PHONY : src/transforms.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -417,6 +417,9 @@ help:
 	@echo "... src/SoundSystem.o"
 	@echo "... src/SoundSystem.i"
 	@echo "... src/SoundSystem.s"
+	@echo "... src/Standard/Math/transforms.o"
+	@echo "... src/Standard/Math/transforms.i"
+	@echo "... src/Standard/Math/transforms.s"
 	@echo "... src/TestAnimatedCircle.o"
 	@echo "... src/TestAnimatedCircle.i"
 	@echo "... src/TestAnimatedCircle.s"
@@ -432,9 +435,6 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/transforms.o"
-	@echo "... src/transforms.i"
-	@echo "... src/transforms.s"
 .PHONY : help
 
 

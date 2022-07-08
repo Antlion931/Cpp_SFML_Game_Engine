@@ -41,7 +41,7 @@ void Node::draw() const {
     }
 }
 
-void Node::update(sf::Time& delta) {
+void Node::update(const sf::Time& delta) {
     onUpdate(delta);
 
     for(auto child : children) {

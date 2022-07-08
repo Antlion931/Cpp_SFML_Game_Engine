@@ -314,4 +314,5 @@ CMakeFiles/main.dir/src/main.cpp.o: \
  /home/bolidnik/Programs/Cpp_SFML_Game_Engine/include/Node.hpp \
  /home/bolidnik/Programs/Cpp_SFML_Game_Engine/include/Standard/math.hpp \
  /home/bolidnik/Programs/Cpp_SFML_Game_Engine/include/Standard/Math/transforms.hpp \
- /home/bolidnik/Programs/Cpp_SFML_Game_Engine/include/Standard/Math/vector.hpp
+ /home/bolidnik/Programs/Cpp_SFML_Game_Engine/include/Standard/Math/vector.hpp \
+ /home/bolidnik/Programs/Cpp_SFML_Game_Engine/include/GUI/GUI.hpp
