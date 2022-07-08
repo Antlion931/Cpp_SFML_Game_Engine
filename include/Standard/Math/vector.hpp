@@ -12,6 +12,7 @@ namespace engine
             T y;
             
             Vec2() : x(0), y(0) {}
+            Vec2(sf::Vector2<T> vec) : x(vec.x), y(vec.y) {}
             Vec2(T x, T y) : x(x), y(y) {}
 
             T dot(const Vec2<T> &rhs) const {
@@ -29,6 +30,10 @@ namespace engine
             Vec2<float> norm() const {
                 float len = length();
                 return Vec2<float>(x/len,y/len);
+            }
+
+            Vec2<T> perpendicular() const  {
+                return {-y,x};
             }
 
             //konwersje
