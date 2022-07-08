@@ -2,8 +2,8 @@
 #include "engine.hpp"
 #include "TextureLoaderPrototypeFactory.hpp"
 #include "TestAnimatedCircle.hpp"
-//#include "MusicSystem.hpp"
-//#include "SoundSystem.hpp"
+#include "MusicSystem.hpp"
+#include "SoundSystem.hpp"
 //#include "Node.hpp"
 //#include "Layers.hpp"
 
@@ -12,9 +12,13 @@ class game : public engine::engine{
     void onStart() override
     {
         TextureLoaderPrototypeFactory::getInstance("res/textures/");
-        //musicSystem = MusicSystem::getInstance();
-        //soundSystem = SoundSystem::getInstance();
+        musicSystem = MusicSystem::getInstance("res/musics/");
+        soundSystem = SoundSystem::getInstance("res/sounds/");
         testCircle = new TestAnimatedCircle();
+        musicSystem->playMusic("GamePlayMusic.wav");
+        soundSystem->playSound("dead.wav");
+        soundSystem->setVolume("dead.wav", 100.0f);
+        soundSystem->playSound("punch.wav");
     }
     void update(const sf::Time& delta) override
     {
@@ -35,8 +39,8 @@ class game : public engine::engine{
     }
     private:
     TestAnimatedCircle* testCircle;
-    //MusicSystem* musicSystem;
-    //SoundSystem* soundSystem;
+    MusicSystem* musicSystem;
+    SoundSystem* soundSystem;
 };
 
 int main()
