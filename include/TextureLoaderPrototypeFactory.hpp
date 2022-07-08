@@ -9,7 +9,7 @@ public:
 
 private:
     TextureLoaderPrototypeFactory(std::string directoryPath);
-    std::map<std::string, TextureLoader> prototypes;
+    std::map<std::string, std::shared_ptr<TextureLoader>> prototypes;
 
     static TextureLoaderPrototypeFactory* instance;
 };

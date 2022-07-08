@@ -1,59 +1,65 @@
-#include"SoundSystem.hpp"
-#include<iostream>
-#include<filesystem>
+#include "SoundSystem.hpp"
+#include <iostream>
+#include <assert.h>
+#include <filesystem>
+#include <math.h>
 
 SoundSystem* SoundSystem::instance = nullptr;
 
-SoundSystem::SoundSystem(){
-    for(const auto &entry: std::filesystem::directory_iterator("./res/sounds/")){
-        sf::SoundBuffer sb;
-        if(!sb.loadFromFile(entry.path().string())){
+SoundSystem::SoundSystem(std::string directoryPath)
+{
+    for(const auto &entry: std::filesystem::directory_iterator(directoryPath))
+    {
+        sf::SoundBuffer* sb = new sf::SoundBuffer();
+        if(!sb->loadFromFile(entry.path().string()))
+        {
             std::cerr<<"Error while loading audio!"<<std::endl;
             continue;
         };
-        std::string str = entry.path().string();
-        str.erase(0,13);
-        soundBuffer.insert({str,sb});
+        std::string soundName = entry.path().string();
+        soundName.erase(0,directoryPath.length());
+        sounds[soundName] = sf::Sound(*sb);
+        volumes[soundName]  = 50.0;
+        sounds[soundName].setVolume(volumes[soundName] * masterVolume / 100.0);
+        std::cout << sounds[soundName].getBuffer() << std::endl;
     }
 }
 
-void SoundSystem::playSound(std::string _fileName){
-    soundQueque.push_back(sf::Sound(soundBuffer.at(_fileName)));
-    soundQueque.back().setVolume(volume);
-    soundQueque.back().play();
+void SoundSystem::playSound(std::string trackName)
+{
+    sounds[trackName].play();
 }
 
-void SoundSystem::playSound(std::string _fileName, sf::Vector2f _position){
-    soundQueque.push_back(sf::Sound(soundBuffer.at(_fileName)));
-    sf::Sound &ref = soundQueque.back();
-    ref.setRelativeToListener(true);
-    ref.setPosition(_position.x,0.f,_position.y);   //TOTWEAK
-    ref.setMinDistance(50.f);   //TOTWEAK
-    ref.setAttenuation(1.f);    //TOTWEAK
-    ref.play();
+void SoundSystem::setVolume(std::string soundName, float volume)
+{
+    volume = std::max(0.0f, volume);
+    volume = std::min(100.0f, volume);
+    volumes[soundName] = volume;
+    sounds[soundName].setVolume(volumes[soundName] * masterVolume / 100.0);
 }
 
-void SoundSystem::update(){
-    for(int i=0; i<soundQueque.size(); i++)
-        if(soundQueque.at(i).getStatus() == sf::Sound::Stopped){
-            soundQueque.erase(soundQueque.begin()+i--);
-        }
+void SoundSystem::setMasterVolume(float volume)
+{
+    volume = std::max(0.0f, volume);
+    volume = std::min(100.0f, volume);
+    masterVolume = volume;
+    for(auto[soundName, sfSound] : sounds)
+    {
+        sfSound.setVolume(volumes[soundName] * masterVolume / 100.0);
+    }
 }
 
-void SoundSystem::setVolume(float _volume){
-    volume = _volume;
+float SoundSystem::returnMasterVolume() const
+{
+    return masterVolume;
 }
 
-float SoundSystem::returnVolume() const{
-    return volume;
-}
-
-SoundSystem* SoundSystem::getInstance()
+SoundSystem* SoundSystem::getInstance(std::string directoryPath)
 {
     if(instance == nullptr)
     {
-        instance = new SoundSystem();
+        assert(directoryPath != "");
+        instance = new SoundSystem(directoryPath);
     }
-
     return instance;
 }

@@ -1,27 +1,26 @@
 #pragma once
 #include<SFML/Audio.hpp>
+#include<map>
 #include<string>
 
 class MusicSystem{
 public:
-    static MusicSystem* getInstance();
+    static MusicSystem* getInstance(std::string directoryPath = "");
 
-    void setVolume(float _volume);
-    float returnVolume() const;
+    void setVolume(std::string trackName,float volume);
+    void setMasterVolume(float volume);
+    float returnMasterVolume() const;
 
-    void setTrack(std::string _fileName);
-    std::string returnTrack() const;
-    void setRepeat(bool _repeat);
+    void setRepeat(std::string trackName, bool repeat);
 
-    void stopMusic();
-    void playMusic();
+    void stopMusic(std::string trackName);
+    void playMusic(std::string trackName);
 
 private:
-    MusicSystem();
+    MusicSystem(std::string directoryPath);
     static MusicSystem* instance;
 
-    sf::Music music;
-    float volume = 50.f;
-    bool repeat = true;
-    std::string track = "GamePlayMusic.wav";
+    std::map<std::string, sf::Music*> musics;
+    std::map<std::string, float> volumes;
+    float masterVolume = 100;
 };
