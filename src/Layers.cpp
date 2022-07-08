@@ -39,7 +39,7 @@ void Layers::add_layer(const sf::RenderWindow &window,std::string name)
 layer_ptr Layers::get_layer(unsigned long id)
 {
     // we return the furthest layer
-    id = std::min(m_layers.size() - 1, id);
+    id = std::min((unsigned long)m_layers.size() - 1, id);
     return m_layers[id];
 }
 layer_ptr Layers::get_layer(std::string name)
@@ -49,6 +49,6 @@ layer_ptr Layers::get_layer(std::string name)
         // POTENTIALLY DANGEROUS!
         // MOZLIWE ZE NIE ISTNIEJE WARSTWA O TAKIEJ NAZWIE
         // TRZEBA JAKOS TMEU ZAPOBIEC
-    return m_mappings[name];
+    return m_mappings.at(name);
 }
-std::vector<layer_ptr> Layers::get_layers() { return m_layers; }
+std::vector<layer_ptr>& Layers::get_layers() { return m_layers; }
