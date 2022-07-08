@@ -1,3 +1,4 @@
+#include "ColorIDMap.hpp"
 #include <memory>
 #include <vector>
 #include <algorithm>
@@ -5,6 +6,11 @@
 
 using StrongNode = std::shared_ptr<Node>;
 using WeakNode = std::weak_ptr<Node>;
+
+Node::Node()
+{
+    color_id = ColorIDMap::get_instance()->generate_unique_color_id(weak_from_this());
+}
 
 void Node::change_parent(StrongNode new_parent) {
     if(auto locked_parent = parent.lock()){

@@ -1,3 +1,4 @@
+#include "Node.hpp"
 #include "ColorIDMap.hpp"
 
 ColorIDMap* ColorIDMap::m_instance = nullptr;
@@ -12,7 +13,7 @@ ColorIDMap* ColorIDMap::get_instance()
 }
 
 
-sf::Color ColorIDMap::generate_unique_color_id(Node::WeakNode node)
+sf::Color ColorIDMap::generate_unique_color_id(std::weak_ptr<Node> node)
 {
     u_int8_t blue  = 0;
     u_int8_t green = 0;

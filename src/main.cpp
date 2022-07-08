@@ -21,6 +21,8 @@ class game : public engine::engine{
         soundSystem->playSound("dead.wav");
         soundSystem->setVolume("dead.wav", 100.0f);
         soundSystem->playSound("punch.wav");
+        font = new sf::Font();
+        font->loadFromFile("res/fonts/arial.ttf");
     }
     void update(const sf::Time& delta) override
     {
@@ -37,9 +39,7 @@ class game : public engine::engine{
         sf::RectangleShape rect;
         rect.setSize(sf::Vector2f(100, 50));
         Layers* layers = Layers::get_instance();
-        sf::Font font;
-        font.loadFromFile("res/fonts/arial.ttf");
-        sf::Text text("text", font);
+        sf::Text text("text", *font);
         text.setPosition(sf::Vector2f(100.f,0.f));
         (*layers)[0]->draw(text);
         (*layers)[1]->draw(testCircle->draw());
@@ -48,6 +48,7 @@ class game : public engine::engine{
     TestAnimatedCircle* testCircle;
     MusicSystem* musicSystem;
     SoundSystem* soundSystem;
+    sf::Font* font;
 };
 
 int main()

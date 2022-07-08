@@ -4,6 +4,9 @@
 #include <vector>
 #include "Standard/math.hpp"
 #include "Layers.hpp"
+#include "ColorIDMap.hpp"
+
+class ColorIDMap;
 
 class Node : std::enable_shared_from_this<Node> {
 public:
@@ -19,9 +22,9 @@ public:
         sf::Transformable local_transform;
         sf::Transformable global_transform;
 
-        sf::Color color_id = sf::Color(0,0,0,0);
+        sf::Color color_id;
 
-        Node() = default;
+        Node();
         
     // UPDATE FUNCTIONS
         void draw() const;
