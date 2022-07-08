@@ -7,15 +7,22 @@
 #include "SoundSystem.hpp"
 #include "Node.hpp"
 #include "Layers.hpp"
+#include "GUI/GUI.hpp"
 
 class game : public engine::engine{
     public:
     void onStart() override
     {
         TextureLoaderPrototypeFactory::getInstance("res/textures/");
-        //musicSystem = MusicSystem::getInstance();
-        //soundSystem = SoundSystem::getInstance();
+        musicSystem = MusicSystem::getInstance("res/musics/");
+        soundSystem = SoundSystem::getInstance("res/sounds/");
         testCircle = new TestAnimatedCircle();
+        musicSystem->playMusic("GamePlayMusic.wav");
+        soundSystem->playSound("dead.wav");
+        soundSystem->setVolume("dead.wav", 100.0f);
+        soundSystem->playSound("punch.wav");
+        font = new sf::Font();
+        font->loadFromFile("res/fonts/arial.ttf");
     }
     void update(const sf::Time& delta) override
     {
@@ -32,12 +39,16 @@ class game : public engine::engine{
         sf::RectangleShape rect;
         rect.setSize(sf::Vector2f(100, 50));
         Layers* layers = Layers::get_instance();
-        layers->get_layer(0)->draw(testCircle->draw());
+        sf::Text text("text", *font);
+        text.setPosition(sf::Vector2f(100.f,0.f));
+        (*layers)[0]->draw(text);
+        (*layers)[1]->draw(testCircle->draw());
     }
     private:
     TestAnimatedCircle* testCircle;
-    //MusicSystem* musicSystem;
-    //SoundSystem* soundSystem;
+    MusicSystem* musicSystem;
+    SoundSystem* soundSystem;
+    sf::Font* font;
 };
 
 int main()

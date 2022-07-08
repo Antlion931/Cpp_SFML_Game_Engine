@@ -6,19 +6,19 @@
 
 class SoundSystem{
 public:
-    static SoundSystem* getInstance();
-    void update();
+    static SoundSystem* getInstance(std::string directoryPath = "");
 
-    void playSound(std::string _fileName);
-    void playSound(std::string _fileName, sf::Vector2f _position); // Spacial sounds require mono audio files. Also sf::Listener::setPosition() has to be set to the players position.
+    void playSound(std::string soundName);
 
-    void setVolume(float _volume);
-    float returnVolume() const;
+    void setVolume(std::string soundName, float volume);
+    void setMasterVolume(float volume);
+
+    float returnMasterVolume() const;
     
 private:
-    SoundSystem();
+    SoundSystem(std::string directoryPath);
     static SoundSystem* instance;
-    float volume = 50.f;
-    std::deque<sf::Sound> soundQueque;
-    std::map<std::string,sf::SoundBuffer> soundBuffer;
+    float masterVolume = 50.f;
+    std::map<std::string, sf::Sound> sounds;
+    std::map<std::string, float> volumes;
 };

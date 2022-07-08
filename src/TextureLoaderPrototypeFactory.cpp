@@ -11,7 +11,7 @@ std::shared_ptr<TextureLoader> TextureLoaderPrototypeFactory::make(std::string n
     {
         std::cerr << "There's no directory " << name << " in your textures directory  " << std::endl;
     }
-    return std::make_shared<TextureLoader>(prototypes[name]);
+    return prototypes[name];
 }
 
 TextureLoaderPrototypeFactory* TextureLoaderPrototypeFactory::getInstance(std::string directoryPath)
@@ -34,6 +34,6 @@ TextureLoaderPrototypeFactory::TextureLoaderPrototypeFactory(std::string directo
         std::string name = entry.path().string();
         name.erase(0,directoryPath.length());
 
-        prototypes[name] = loader;
+        prototypes[name] = std::make_shared<TextureLoader>(loader);
     }
 }
