@@ -14,21 +14,21 @@ namespace engine
             Vec2() : x(0), y(0) {}
             Vec2(T x, T y) : x(x), y(y) {}
 
-            T dot(const Vec2<T> &rhs) {
+            T dot(const Vec2<T> &rhs) const {
                 return x*rhs.x + y*rhs.y;
             }
 
-            T length_sq() {
+            T length_sq() const {
                 return x*x + y*y;
             }
 
-            double length() {
+            float length() const {
                 return std::sqrt(length_sq());
             }
 
-            Vec2<double> norm() {
-                double len = length();
-                return Vec2<double>(x/len,y/len);
+            Vec2<float> norm() const {
+                float len = length();
+                return Vec2<float>(x/len,y/len);
             }
 
             //konwersje
@@ -75,17 +75,17 @@ namespace engine
 
     //mnożenie przez skalar
     template<typename T> 
-    Vec2<T> operator*(T &lhs, const Vec2<T> &rhs) {
+    Vec2<T> operator*(T lhs, const Vec2<T> &rhs) {
         return Vec2(lhs * rhs.x,lhs * rhs.y);
     }
 
     template<typename T> 
-    Vec2<T> operator*(const Vec2<T> &lhs, T &rhs) {
+    Vec2<T> operator*(const Vec2<T> &lhs, T rhs) {
         return Vec2(lhs.x * rhs,lhs.y * rhs);
     }
     
     template<typename T> 
-    Vec2<T>& operator*=(Vec2<T> &lhs, const T &rhs) {
+    Vec2<T>& operator*=(Vec2<T> &lhs, const T rhs) {
         lhs.x *= rhs;
         lhs.y *= rhs;
         return lhs;
@@ -93,12 +93,12 @@ namespace engine
 
     //dzielenie przez skalar
     template<typename T> 
-    Vec2<T> operator/(const Vec2<T> &lhs, T &rhs) {
+    Vec2<T> operator/(const Vec2<T> &lhs, T rhs) {
         return Vec2(lhs.x / rhs,lhs.y / rhs);
     }
     
     template<typename T> 
-    Vec2<T>& operator/=(Vec2<T> &lhs, const T &rhs) {
+    Vec2<T>& operator/=(Vec2<T> &lhs, const T rhs) {
         lhs.x /= rhs;
         lhs.y /= rhs;
         return lhs;
