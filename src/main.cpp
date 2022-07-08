@@ -1,11 +1,12 @@
 #include <SFML/Graphics.hpp>
+#include "Standard/math.hpp"
 #include "engine.hpp"
 #include "TextureLoaderPrototypeFactory.hpp"
 #include "TestAnimatedCircle.hpp"
 #include "MusicSystem.hpp"
 #include "SoundSystem.hpp"
-//#include "Node.hpp"
-//#include "Layers.hpp"
+#include "Node.hpp"
+#include "Layers.hpp"
 
 class game : public engine::engine{
     public:

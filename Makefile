@@ -369,6 +369,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/transforms.o: src/transforms.cpp.o
+.PHONY : src/transforms.o
+
+# target to build an object file
+src/transforms.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/transforms.cpp.o
+.PHONY : src/transforms.cpp.o
+
+src/transforms.i: src/transforms.cpp.i
+.PHONY : src/transforms.i
+
+# target to preprocess a source file
+src/transforms.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/transforms.cpp.i
+.PHONY : src/transforms.cpp.i
+
+src/transforms.s: src/transforms.cpp.s
+.PHONY : src/transforms.s
+
+# target to generate assembly for a file
+src/transforms.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/transforms.cpp.s
+.PHONY : src/transforms.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -408,6 +432,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/transforms.o"
+	@echo "... src/transforms.i"
+	@echo "... src/transforms.s"
 .PHONY : help
 
 

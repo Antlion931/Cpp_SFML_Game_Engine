@@ -10,13 +10,13 @@
 
 class Layers
 {
-    using layer_ptr = std::shared_ptr<sf::RenderTexture>;
 public:
+    using layer_ptr = std::shared_ptr<sf::RenderTexture>;
     static Layers *get_instance();
     void add_layer(const sf::RenderWindow &window,std::string name = "layer");
     layer_ptr get_layer(unsigned long id = 1);
     layer_ptr get_layer(std::string name);
-    std::vector<layer_ptr> get_layers();
+    std::vector<layer_ptr>& get_layers();
 
 private:
     static Layers* m_instance;
