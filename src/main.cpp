@@ -42,12 +42,7 @@ class game : public engine::engine{
 
 int main()
 {
-    engine::BoundingBox b1(5, 5, 10, 10);
-    engine::BoundingBox b2(9, 9, 11, 11);
-
-    std::cout << (b1 & b2) << std::endl;
-
-    //game test;
-    //test.start();
+    game test;
+    test.start();
     return 0;
 }
