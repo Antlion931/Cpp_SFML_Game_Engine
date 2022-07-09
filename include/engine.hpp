@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include "Layers.hpp"
 #include "ColorIDMap.hpp"
+#include "Node.hpp"
 
 namespace engine
 {
