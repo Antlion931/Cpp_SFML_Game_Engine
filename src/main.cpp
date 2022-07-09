@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "Standard/math.hpp"
 #include "engine.hpp"
-#include "TextureLoaderPrototypeFactory.hpp"
+#include "Loaders/TextureLoaderPrototypeFactory.hpp"
 #include "TestAnimatedCircle.hpp"
 #include "MusicSystem.hpp"
 #include "SoundSystem.hpp"
@@ -12,6 +12,7 @@
 #include "test/SpriteNode.hpp"
 #include "Standard/line.hpp"
 #include <memory>
+#include "GUI/text.hpp"
 
 class game : public engine::engineer{
     public:
@@ -26,8 +27,6 @@ class game : public engine::engineer{
         soundSystem->playSound("punch.wav");
         track = new Track({100.0, 100.0}, {150.0, 100.0});
         isNewTrackUnderConstruct = false;
-        font = new sf::Font();
-        font->loadFromFile("res/fonts/arial.ttf");
         spriteNode = Node::create<SpriteNode>();
     }
     void update(const sf::Time& delta) override
@@ -71,15 +70,17 @@ class game : public engine::engineer{
         Layers* layers = Layers::get_instance();
         //layers->get_layer(0))->draw(testCircle->draw());
         track->Draw(window);
-        sf::Text text("text", *font);
+        sf::Text text("text", *ResourceLoader::get_instance()->get_font(0).get());
         text.setPosition(sf::Vector2f(100.f,0.f));
         (*layers)[0]->draw(text);
 
         spriteNode->draw();
         auto l = (*layers)[0];
         pl.draw(*l, sf::RenderStates());
-        //if(colorIDMap->get_hovered_object())
-           // std::cout << "hover!\n";
+        if(colorIDMap->get_hovered_object())
+            std::cout << "hover!\n";
+        std::shared_ptr<engine::Text> eng_text = engine::Text::create<engine::Text>();
+        eng_text->draw();
     }
     private:
     // systems
@@ -88,7 +89,6 @@ class game : public engine::engineer{
     Track* track; 
     sf::Vector2f newTrack[2];
     bool isNewTrackUnderConstruct;
-    sf::Font* font;
 
     std::shared_ptr<SpriteNode> spriteNode;
     engine::PolyLine pl = engine::PolyLine(sf::Vertex({100,100}, sf::Color(255,0,0,255)), 20); 

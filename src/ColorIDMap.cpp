@@ -41,13 +41,20 @@ ColorIDMap::layer_ptr ColorIDMap::get_color_layer()
 
 std::optional<std::weak_ptr<Node>> ColorIDMap::get_hovered_object()
 {
-    sf::Vector2i position = sf::Mouse::getPosition();
+    sf::Vector2i position = sf::Mouse::getPosition(*window);
     auto image = m_color_layer->getTexture().copyToImage();
-    auto color = image.getPixel(position.x,position.y);
-    if(m_color_map.count(color) > 0)
+    if(!((position.x < 0 || position.x > image.getSize().x) || (position.y < 0 || position.y > image.getSize().y)) )
     {
-        std::cout << "aidwjio\n";
-        return std::optional<std::weak_ptr<Node>>(m_color_map[color]);
+        auto color = image.getPixel(position.x,position.y);
+        if(m_color_map.count(color) > 0)
+        {
+            return std::optional<std::weak_ptr<Node>>(m_color_map[color]);
+        }
     }
     return {};
+}
+
+void ColorIDMap::set_window(sf::RenderWindow* _window)
+{
+    window = _window;
 }

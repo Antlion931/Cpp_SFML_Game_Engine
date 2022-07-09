@@ -3,7 +3,7 @@
 #include <iostream>
 
 #include "AnimationManager.hpp"
-#include "TextureLoaderPrototypeFactory.hpp"
+#include "Loaders/TextureLoaderPrototypeFactory.hpp"
 
 AnimationManager::AnimationManager(std::string animationDirectoryName, std::map<std::string, float> times, std::string _defaultAnimation) 
 : defaultAnimation(_defaultAnimation)

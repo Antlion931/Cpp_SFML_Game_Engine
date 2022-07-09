@@ -4,7 +4,6 @@
 #include <vector>
 #include "Standard/math.hpp"
 #include "Layers.hpp"
-#include "ColorIDMap.hpp"
 #include <optional>
 #include <unordered_map>
 #include "Standard/Hashers.hpp"
@@ -23,6 +22,8 @@ public:
     layer_ptr get_color_layer();
 
     std::optional<std::weak_ptr<Node>> get_hovered_object();
+
+    void set_window(sf::RenderWindow* _window);
     
 private:
     static ColorIDMap* m_instance;
@@ -31,6 +32,8 @@ private:
     std::unordered_map<sf::Color, std::weak_ptr<Node>> m_color_map;
 
     layer_ptr m_color_layer;
+
+    const sf::RenderWindow* window;
 
     ColorIDMap()
     {
@@ -65,7 +68,8 @@ public:
         
         virtual void onDraw() const {}
         virtual void onUpdate(const sf::Time& delta) {}
-        virtual void onCreate() {};
+    public:
+        virtual void onCreate() {}
 
     public:
     // UPDATE FUNCTIONS
