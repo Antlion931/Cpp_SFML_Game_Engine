@@ -16,7 +16,6 @@ namespace engine
         void set_text(const std::string& _text)
         {
             ResourceLoader* resourceLoader = ResourceLoader::get_instance();
-            resourceLoader->load_font("arial.ttf");
             text.setFont(*resourceLoader->get_font(0));
             text.setString(_text);
         }
@@ -30,7 +29,6 @@ namespace engine
     public:
         virtual void onReady() override{
             ResourceLoader* resourceLoader = ResourceLoader::get_instance();
-            resourceLoader->load_font("arial.ttf");
             text.setFont(*resourceLoader->get_font(0));
         }
     };
