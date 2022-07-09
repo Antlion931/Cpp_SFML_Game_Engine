@@ -1,4 +1,4 @@
-#include "Node.hpp"
+#include "Nodes/Node.hpp"
 #include "ColorIDMap.hpp"
 
 ColorIDMap* ColorIDMap::m_instance = nullptr;

@@ -5,7 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include "Layers.hpp"
 #include "ColorIDMap.hpp"
-#include "Node.hpp"
+#include "Nodes/Node.hpp"
 #include "Loaders/ResourceLoader.hpp"
 
 //#define COLOR_ID_MAP_DEBUG
