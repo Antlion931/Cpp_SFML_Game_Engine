@@ -1,6 +1,8 @@
+#pragma once
 #include "Nodes/Node.hpp"
 #include "Track.hpp"
 #include "AnimationManager.hpp"
+#include "Nodes/smoke.hpp"
 
 class Train : public Node
 {
@@ -20,4 +22,5 @@ private:
     AnimationManager animationManager;
     sf::RectangleShape body;
     sf::RectangleShape trackModel;
+    std::shared_ptr<SmokeParticles> sp;
 };

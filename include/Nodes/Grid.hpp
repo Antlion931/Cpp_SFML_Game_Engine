@@ -19,11 +19,11 @@ public:
         // LOAD VERTICES
         vertices.setPrimitiveType(sf::Quads);
         vertices.resize(size.x * size.y * 4);
-        for (unsigned int i = 0; i < size.x; ++i)
-        for (unsigned int j = 0; j < size.y; ++j)
+        for (int i = 0; i < size.x; ++i)
+        for (int j = 0; j < size.y; ++j)
         {
-            float offsetx = (j % 2 == 1) * 16;
-            float offsety = j * 10;
+            float offsetx = (j % 2) * 15 - 2 * i;
+            float offsety = j * 12;
 
             sf::Vertex *quad = &vertices[(i + j * size.x) * 4];
 

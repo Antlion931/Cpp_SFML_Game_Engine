@@ -17,6 +17,7 @@
 #include "GUI/text.hpp"
 #include "Loaders/ResourceLoader.hpp"
 #include "Nodes/Grid.hpp"
+#include "Nodes/smoke.hpp"
 
 class game : public engine::engineer{
     using animation_map = std::unordered_map<std::string,AtlasManager::animation>;
@@ -100,8 +101,6 @@ class game : public engine::engineer{
         warszawa->draw();
         berlin->draw();
         train->draw();
-        auto l = (*layers)[0];
-        pl.draw(*l, sf::RenderStates());
         if(colorIDMap->get_hovered_object())
             std::cout << "hover!\n";
         std::string t("dwaijidja");
@@ -116,7 +115,6 @@ class game : public engine::engineer{
     std::shared_ptr<SpriteNode> spriteNode;
     std::shared_ptr<Town> warszawa;
     std::shared_ptr<Town> berlin;
-    engine::PolyLine pl = engine::PolyLine(sf::Vertex({100,100}, sf::Color(255,0,0,255)), 20); 
 
     AtlasManager* atlasManager;
     std::shared_ptr<Grid> grid;
