@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "Layers.hpp"
+#include "Standard/line.hpp"
 
 class Track
 {
@@ -14,6 +15,9 @@ private:
     std::vector<sf::Vertex*> bars;
     std::vector<sf::Vertex*> leftTrack;
     std::vector<sf::Vertex*> rightTrack;
+    engine::PolyLine left_line;
+    engine::PolyLine right_line;
+    engine::DisconnectedLine bar_line;
     sf::Color trackColor;
     sf::Color barsColor;
     float barsMultiplayer;
