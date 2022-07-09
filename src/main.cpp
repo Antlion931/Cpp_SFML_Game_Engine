@@ -83,8 +83,8 @@ class game : public engine::engineer{
         spriteNode->draw();
         auto l = (*layers)[0];
         pl.draw(*l, sf::RenderStates());
-        //if(colorIDMap->get_hovered_object())
-           // std::cout << "hover!\n";
+        if(colorIDMap->get_hovered_object())
+            std::cout << "hover!\n";
     }
     private:
     // systems
