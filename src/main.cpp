@@ -5,7 +5,7 @@
 #include "TestAnimatedCircle.hpp"
 #include "MusicSystem.hpp"
 #include "SoundSystem.hpp"
-#include "Node.hpp"
+#include "Nodes/Node.hpp"
 #include "Layers.hpp"
 #include "Track.hpp"
 #include "GUI/GUI.hpp"

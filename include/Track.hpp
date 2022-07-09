@@ -2,8 +2,9 @@
 #include <SFML/Graphics.hpp>
 #include "Layers.hpp"
 #include "Standard/line.hpp"
+#include "Nodes/Node.hpp"
 
-class Track
+class Track : public Node
 {
 public:
     Track(sf::Vector2f left, sf::Vector2f right);

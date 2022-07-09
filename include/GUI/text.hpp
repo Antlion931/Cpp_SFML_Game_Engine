@@ -15,12 +15,6 @@ namespace engine
         }
     private:
         sf::Text text;
-    public:
-        virtual void onCreate() override {
-            auto r = ResourceLoader::get_instance();
-            text.setString("basic_text");
-            text.setFont(*r->get_font(0).get());
-        }
     protected:
         virtual void onDraw() const {
             render_layer->draw(text);

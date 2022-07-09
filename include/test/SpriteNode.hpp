@@ -1,5 +1,5 @@
 #pragma once
-#include "Node.hpp"
+#include "Nodes/Node.hpp"
 #include <SFML/Graphics.hpp>
 #include "AnimationManager.hpp"
 

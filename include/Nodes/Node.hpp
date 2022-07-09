@@ -43,8 +43,8 @@ private:
 };
 
 
-template<class T>
-concept DerivedFromNode = std::is_base_of<Node, T>::value;
+template<class T, typename... Us>
+concept DerivedFromNode = std::derived_from<T, Node> && std::constructible_from<T,Us...>;
 
 
 class Node : std::enable_shared_from_this<Node> {
@@ -68,8 +68,6 @@ public:
         
         virtual void onDraw() const {}
         virtual void onUpdate(const sf::Time& delta) {}
-    public:
-        virtual void onCreate() {}
 
     public:
     // UPDATE FUNCTIONS
@@ -81,10 +79,12 @@ public:
         void remove_child(StrongNode child);
 
     // FACTORY PATTERN
-        template<DerivedFromNode T>
-        static std::shared_ptr<T> create(StrongNode parent);
-        template<DerivedFromNode T>
-        static std::shared_ptr<T> create();
+        template<class T, typename... Us>
+        requires DerivedFromNode<T,Us...>
+        static std::shared_ptr<T> create(StrongNode parent, Us...);
+        template<class T, typename... Us>
+        requires DerivedFromNode<T,Us...>
+        static std::shared_ptr<T> create(Us...);
 
     // GETTERS AND SETTERS
         void setActive(bool _active);
@@ -116,20 +116,20 @@ public:
         
 };
 
-template<DerivedFromNode T>
-std::shared_ptr<T> Node::create() {
-    std::shared_ptr<T> new_node = std::shared_ptr<T>(new T());
+template<class T, typename... Us>
+requires DerivedFromNode<T,Us...>
+std::shared_ptr<T> Node::create(Us... values) {
+    std::shared_ptr<T> new_node = std::shared_ptr<T>(new T(values...));
     
     new_node->color_id = ColorIDMap::get_instance()->generate_unique_color_id(new_node);
-
-    new_node->onCreate();
 
     return new_node;
 }
 
-template<DerivedFromNode T>
-std::shared_ptr<T> Node::create(StrongNode parent) {
-    std::shared_ptr<T> new_node = create<T>();
+template<class T, typename... Us>
+requires DerivedFromNode<T,Us...>
+std::shared_ptr<T> Node::create(StrongNode parent, Us... values) {
+    std::shared_ptr<T> new_node = create<T>(values...);
     
     parent->children.push_back(new_node);
     new_node->parent = parent;
