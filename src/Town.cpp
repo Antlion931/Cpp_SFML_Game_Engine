@@ -15,7 +15,10 @@ void Town::Repair()
 void Town::onReady()
 {
     text = engine::Text::create<engine::Text>(shared_from_this());
-    text->setTranslation(body.getPosition());
+    sf::Vector2f newTextPosition = body.getPosition();
+    newTextPosition.y -= body.getSize().y / 5.0;
+    text->setTranslation(newTextPosition);
+
     text->set_text(name);
 }
 

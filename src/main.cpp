@@ -17,6 +17,7 @@
 #include "GUI/text.hpp"
 #include "Loaders/ResourceLoader.hpp"
 #include "Nodes/Grid.hpp"
+#include "Standard/CenterString.hpp"
 #include "Nodes/smoke.hpp"
 
 class game : public engine::engineer{
@@ -27,13 +28,11 @@ class game : public engine::engineer{
         TextureLoaderPrototypeFactory::getInstance("res/textures/");
         musicSystem = MusicSystem::getInstance("res/musics/");
         soundSystem = SoundSystem::getInstance("res/sounds/");
-        musicSystem->playMusic("GamePlayMusic.wav");
-        soundSystem->playSound("dead.wav");
-        soundSystem->setVolume("dead.wav", 100.0f);
-        soundSystem->playSound("punch.wav");
+        musicSystem->playMusic("winter.wav");
+        musicSystem->setRepeat("winter.wav", true);
         spriteNode = Node::create<SpriteNode>();
-        warszawa = Node::create<Town>("Warszawa", true, sf::Vector2f(500.0f, 500.0f));
-        berlin = Node::create<Town>("Berlin", false, sf::Vector2f(600.0f, 500.0f));
+        warszawa = Node::create<Town>(center("Warszawa"), true, sf::Vector2f(500.0f, 500.0f));
+        berlin = Node::create<Town>(center("Berlin"), false, sf::Vector2f(350.0f, 500.0f));
         train = Node::create<Train>();
         animation_map m;
         m["test"] = {1.f,{0,0},4};
@@ -103,6 +102,7 @@ class game : public engine::engineer{
         //(*layers)[1]->draw(triangle);
         
 
+        train->draw();
         spriteNode->draw();
         warszawa->draw();
         berlin->draw();

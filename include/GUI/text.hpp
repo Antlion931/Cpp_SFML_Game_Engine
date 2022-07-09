@@ -12,11 +12,19 @@ namespace engine
         {
             text.setString(_text);
         }
+        sf::FloatRect getGlobalBounds()
+        {
+            return text.getGlobalBounds();
+        }
         Text() {}
         void set_text(const std::string& _text)
         {
             ResourceLoader* resourceLoader = ResourceLoader::get_instance();
-            text.setFont(*resourceLoader->get_font(0));
+            
+            text.setFont(*resourceLoader->get_font(1));
+            text.setOutlineColor(sf::Color::Black);
+            text.setOutlineThickness(2);
+            text.setCharacterSize(15);
             text.setString(_text);
         }
     private:
@@ -29,7 +37,8 @@ namespace engine
     public:
         virtual void onReady() override{
             ResourceLoader* resourceLoader = ResourceLoader::get_instance();
-            text.setFont(*resourceLoader->get_font(0));
+            text.setCharacterSize(20);
+            text.setFont(*resourceLoader->get_font(1));
         }
     };
 }
