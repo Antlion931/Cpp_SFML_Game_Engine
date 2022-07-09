@@ -47,7 +47,7 @@ template<class T, typename... Us>
 concept DerivedFromNode = std::derived_from<T, Node> && std::constructible_from<T,Us...>;
 
 
-class Node : std::enable_shared_from_this<Node> {
+class Node : public std::enable_shared_from_this<Node> {
 public:
     using StrongNode = std::shared_ptr<Node>;
     using WeakNode = std::weak_ptr<Node>;

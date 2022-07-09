@@ -1,4 +1,4 @@
-#include "Node.hpp"
+#include "Nodes/Node.hpp"
 #include "Track.hpp"
 #include "AnimationManager.hpp"
 
@@ -10,9 +10,11 @@ public:
     void onDraw() const;
 
 private:
+    float currentTime = 0.0;
+    float tracksMakingTime = 1.0;
     float speed = -100.0f;
     float angle = 0.0f;
-    //Track track;
+    std::shared_ptr<Track> track;
     AnimationManager animationManager;
     sf::RectangleShape body;
 };

@@ -5,10 +5,19 @@ Train::Train() :  animationManager("train", {{"idle", 1}}, "idle"), body({100.0,
 {
     body.setOrigin(50.0, 200.0);
     body.setPosition(300.0, 300.0);
+    track = Node::create<Track>(shared_from_this(), body.getPoint(2), body.getPoint(3));
 }
 
 void Train::onUpdate(const sf::Time& delta)
 {
+    currentTime += delta.asSeconds();
+
+    if(currentTime > tracksMakingTime)
+    {
+        currentTime -= tracksMakingTime;
+        track->add(body.getPoint(2), body.getPoint(3));
+    }
+
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
     {
         angle += 40.0 * delta.asSeconds();
