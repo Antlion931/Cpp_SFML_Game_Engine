@@ -1,3 +1,4 @@
+#include "ColorIDMap.hpp"
 #include <memory>
 #include <vector>
 #include <algorithm>
@@ -18,21 +19,6 @@ void Node::remove_child(StrongNode child) {
     children.erase(std::find(children.begin(),children.end(),child));
 }
 
-StrongNode Node::create(StrongNode parent) {
-    StrongNode new_node = std::shared_ptr<Node>(new Node());
-    
-    parent->children.push_back(new_node);
-    new_node->parent = parent;
-
-    return new_node;
-}
-
-StrongNode Node::create() {
-    StrongNode new_node = std::shared_ptr<Node>(new Node());
-
-    return  new_node;
-}
-
 void Node::draw() const {
     onDraw();
 
@@ -41,7 +27,7 @@ void Node::draw() const {
     }
 }
 
-void Node::update(sf::Time& delta) {
+void Node::update(const sf::Time& delta) {
     onUpdate(delta);
 
     for(auto child : children) {

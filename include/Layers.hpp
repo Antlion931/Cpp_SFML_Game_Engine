@@ -18,6 +18,11 @@ public:
     layer_ptr get_layer(std::string name);
     std::vector<layer_ptr>& get_layers();
 
+    layer_ptr get_color_layer();
+
+    layer_ptr operator[](unsigned long id);
+    layer_ptr operator[](std::string name);
+
 private:
     static Layers* m_instance;
 

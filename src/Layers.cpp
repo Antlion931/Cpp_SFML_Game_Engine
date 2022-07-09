@@ -52,3 +52,12 @@ layer_ptr Layers::get_layer(std::string name)
     return m_mappings.at(name);
 }
 std::vector<layer_ptr>& Layers::get_layers() { return m_layers; }
+
+layer_ptr Layers::operator[](unsigned long id)
+{
+    return get_layer(id);
+}
+layer_ptr Layers::operator[](std::string name)
+{
+    return get_layer(name);
+}

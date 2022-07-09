@@ -8,25 +8,35 @@
 #include "Node.hpp"
 #include "Layers.hpp"
 #include "Track.hpp"
+#include "GUI/GUI.hpp"
+#include "test/SpriteNode.hpp"
+#include "Standard/line.hpp"
+#include <memory>
 
-class game : public engine::engine{
+class game : public engine::engineer{
     public:
     void onStart() override
     {
         TextureLoaderPrototypeFactory::getInstance("res/textures/");
         musicSystem = MusicSystem::getInstance("res/musics/");
         soundSystem = SoundSystem::getInstance("res/sounds/");
-        testCircle = new TestAnimatedCircle();
         musicSystem->playMusic("GamePlayMusic.wav");
         soundSystem->playSound("dead.wav");
         soundSystem->setVolume("dead.wav", 100.0f);
         soundSystem->playSound("punch.wav");
         track = new Track({100.0, 100.0}, {150.0, 100.0});
         isNewTrackUnderConstruct = false;
+        font = new sf::Font();
+        font->loadFromFile("res/fonts/arial.ttf");
+        spriteNode = Node::create<SpriteNode>();
+        pl.append_vertex(sf::Vertex({100,200}, sf::Color(255,0,0,255)));
+        pl.append_vertex(sf::Vertex({150,150}, sf::Color(255,0,0,255)));
+        pl.append_vertex(sf::Vertex({250,200}, sf::Color(255,0,0,255)));
+        pl.append_vertex(sf::Vertex({300,300}, sf::Color(255,0,0,255)));
+        pl.append_vertex(sf::Vertex({355,310}, sf::Color(255,0,0,255)));
     }
     void update(const sf::Time& delta) override
     {
-        testCircle->update(delta);
         sf::Event event;
         while (window.pollEvent(event))
         {
@@ -49,7 +59,12 @@ class game : public engine::engine{
                 }
             }
             
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+            {
+                
+            }
         }
+        spriteNode->update(delta);
     }
     void draw() override
     {
@@ -58,14 +73,30 @@ class game : public engine::engine{
         Layers* layers = Layers::get_instance();
         //layers->get_layer(0))->draw(testCircle->draw());
         track->Draw(window);
+        sf::Text text("text", *font);
+        text.setPosition(sf::Vector2f(100.f,0.f));
+        (*layers)[0]->draw(text);
+
+        spriteNode->draw();
+        auto l = (*layers)[0];
+        pl.draw(*l, sf::RenderStates());
+        //if(colorIDMap->get_hovered_object())
+           // std::cout << "hover!\n";
     }
     private:
-    TestAnimatedCircle* testCircle;
+    // systems
     MusicSystem* musicSystem;
     SoundSystem* soundSystem;
     Track* track; 
     sf::Vector2f newTrack[2];
     bool isNewTrackUnderConstruct;
+    sf::Font* font;
+
+    std::shared_ptr<SpriteNode> spriteNode;
+    engine::PolyLine pl = engine::PolyLine(sf::Vertex({100,100}, sf::Color(255,0,0,255)), 20); 
+
+    
+
 };
 
 int main()
