@@ -5,10 +5,39 @@
 #include "Standard/math.hpp"
 #include "Layers.hpp"
 #include "ColorIDMap.hpp"
+#include <optional>
+#include <unordered_map>
+#include "Standard/Hashers.hpp"
 
 class Node;
-class ColorIDMap;
 class SpriteNode;
+
+class ColorIDMap
+{
+public:
+    using layer_ptr = std::shared_ptr<sf::RenderTexture>;
+
+    static ColorIDMap* get_instance();
+    sf::Color generate_unique_color_id(std::weak_ptr<Node> node);
+
+    layer_ptr get_color_layer();
+
+    std::optional<std::weak_ptr<Node>> get_hovered_object();
+    
+private:
+    static ColorIDMap* m_instance;
+
+    unsigned long long curr_node_id = 255;
+    std::unordered_map<sf::Color, std::weak_ptr<Node>> m_color_map;
+
+    layer_ptr m_color_layer;
+
+    ColorIDMap()
+    {
+        m_color_layer = std::make_shared<sf::RenderTexture>();
+        m_color_layer->create(800,800);
+    }
+};
 
 
 template<class T>
@@ -84,21 +113,22 @@ public:
 };
 
 template<DerivedFromNode T>
-std::shared_ptr<T> Node::create(StrongNode parent) {
-    std::shared_ptr<T> new_node = create();
-    
-    parent->children.push_back(new_node);
-    new_node->parent = parent;
-
-    return new_node;
-}
-template<DerivedFromNode T>
 std::shared_ptr<T> Node::create() {
     std::shared_ptr<T> new_node = std::shared_ptr<T>(new T());
     
     new_node->color_id = ColorIDMap::get_instance()->generate_unique_color_id(new_node);
 
     new_node->onCreate();
+
+    return new_node;
+}
+
+template<DerivedFromNode T>
+std::shared_ptr<T> Node::create(StrongNode parent) {
+    std::shared_ptr<T> new_node = create<T>();
+    
+    parent->children.push_back(new_node);
+    new_node->parent = parent;
 
     return new_node;
 }

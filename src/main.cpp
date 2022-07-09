@@ -7,6 +7,7 @@
 #include "SoundSystem.hpp"
 #include "Node.hpp"
 #include "Layers.hpp"
+#include "Track.hpp"
 #include "GUI/GUI.hpp"
 #include "test/SpriteNode.hpp"
 #include "Standard/line.hpp"
@@ -23,6 +24,8 @@ class game : public engine::engineer{
         soundSystem->playSound("dead.wav");
         soundSystem->setVolume("dead.wav", 100.0f);
         soundSystem->playSound("punch.wav");
+        track = new Track({100.0, 100.0}, {150.0, 100.0});
+        isNewTrackUnderConstruct = false;
         font = new sf::Font();
         font->loadFromFile("res/fonts/arial.ttf");
         spriteNode = Node::create<SpriteNode>();
@@ -39,6 +42,23 @@ class game : public engine::engineer{
         {
             if (event.type == sf::Event::Closed)
                 window.close();
+            if (event.type == sf::Event::MouseButtonPressed)
+            { 
+                if(!isNewTrackUnderConstruct)
+                {
+                    newTrack[0].x = sf::Mouse::getPosition(window).x;
+                    newTrack[0].y = sf::Mouse::getPosition(window).y;
+                    isNewTrackUnderConstruct = true;
+                }
+                else
+                {
+                    newTrack[1].x = sf::Mouse::getPosition(window).x;
+                    newTrack[1].y = sf::Mouse::getPosition(window).y;
+                    isNewTrackUnderConstruct = false;
+                    track->add(newTrack[0], newTrack[1]);
+                }
+            }
+            
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
             {
                 
@@ -53,6 +73,9 @@ class game : public engine::engineer{
     {
         sf::RectangleShape rect;
         rect.setSize(sf::Vector2f(100, 50));
+        Layers* layers = Layers::get_instance();
+        //layers->get_layer(0))->draw(testCircle->draw());
+        track->Draw(window);
         sf::Text text("text", *font);
         text.setPosition(sf::Vector2f(100.f,0.f));
         (*layers)[0]->draw(text);
@@ -67,6 +90,9 @@ class game : public engine::engineer{
     // systems
     MusicSystem* musicSystem;
     SoundSystem* soundSystem;
+    Track* track; 
+    sf::Vector2f newTrack[2];
+    bool isNewTrackUnderConstruct;
     sf::Font* font;
 
     std::shared_ptr<SpriteNode> spriteNode;
