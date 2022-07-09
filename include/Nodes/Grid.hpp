@@ -43,7 +43,6 @@ public:
         if(tileID == -1)
             return;
 
-        std::cout << size.x << ", " << tileSize.x << std::endl;
         int tu = tileID % (atlasManager->get_texture()->getSize().x / tileSize.x);
         int tv = tileID / (atlasManager->get_texture()->getSize().x / tileSize.x);
 
