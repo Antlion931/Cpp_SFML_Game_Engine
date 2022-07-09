@@ -1,7 +1,7 @@
 #pragma once
 #include "GUI.hpp"
 #include "engine.hpp"
-#include "ResourceLoader.hpp"
+#include "Loaders/ResourceLoader.hpp"
 
 namespace engine
 {

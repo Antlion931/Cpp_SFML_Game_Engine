@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "Standard/math.hpp"
 #include "engine.hpp"
-#include "TextureLoaderPrototypeFactory.hpp"
+#include "Loaders/TextureLoaderPrototypeFactory.hpp"
 #include "TestAnimatedCircle.hpp"
 #include "MusicSystem.hpp"
 #include "SoundSystem.hpp"

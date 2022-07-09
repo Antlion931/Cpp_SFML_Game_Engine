@@ -3,7 +3,7 @@
 #include <memory>
 #include <iostream>
 #include <vector>
-#include "TextureLoader.hpp"
+#include "Loaders/TextureLoader.hpp"
 
 class AnimationManager
 {
