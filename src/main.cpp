@@ -73,6 +73,9 @@ class game : public engine::engineer{
         train->update(delta);
         atlasManager->update(delta);
 
+
+
+        // UPDATE VIEW (CAMERA FOLLOWS PLAYER)
         sf::View new_view = window.getView();
         new_view.setCenter(train->getBodyTranslation());
         auto layers_vec = Layers::get_instance()->get_layers();
