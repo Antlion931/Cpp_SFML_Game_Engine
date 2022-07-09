@@ -2,7 +2,7 @@
 #include <iostream>
 
 Track::Track(sf::Vector2f left, sf::Vector2f right) : 
-    trackColor(100,100,100), barsColor(134,82,45), barsMultiplayer(1.5f), 
+    trackColor(100,100,100), barsColor(134,82,45), barsMultiplayer(1.9f), 
     left_line(sf::Vertex(left, {100,100,100}), 10), right_line(sf::Vertex(right, {100,100,100}), 10),
     bar_line(10)
 {
@@ -84,7 +84,7 @@ void Track::add(sf::Vector2f left, sf::Vector2f right)
     right_line.append_vertex(sf::Vertex(right, trackColor));
 }
 
-void Track::Draw(sf::RenderWindow& window)
+void Track::Draw(sf::RenderWindow& window) const
 {
     bar_line.draw(window, sf::RenderStates());
     left_line.draw(window, sf::RenderStates());

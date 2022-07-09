@@ -9,7 +9,7 @@ public:
     Track(sf::Vector2f left, sf::Vector2f right);
     ~Track();
     void add(sf::Vector2f left, sf::Vector2f right);
-    void Draw(sf::RenderWindow& window);
+    void Draw(sf::RenderWindow& window) const;
 
 private:
     std::vector<sf::Vertex*> bars;

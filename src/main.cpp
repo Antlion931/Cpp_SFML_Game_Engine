@@ -11,6 +11,7 @@
 #include "GUI/GUI.hpp"
 #include "test/SpriteNode.hpp"
 #include "Standard/line.hpp"
+#include "Train.hpp"
 #include <memory>
 #include "GUI/text.hpp"
 
@@ -25,9 +26,9 @@ class game : public engine::engineer{
         soundSystem->playSound("dead.wav");
         soundSystem->setVolume("dead.wav", 100.0f);
         soundSystem->playSound("punch.wav");
-        track = new Track({100.0, 100.0}, {150.0, 100.0});
-        isNewTrackUnderConstruct = false;
         spriteNode = Node::create<SpriteNode>();
+
+        train = Node::create<Train>();
     }
     void update(const sf::Time& delta) override
     {
@@ -36,22 +37,6 @@ class game : public engine::engineer{
         {
             if (event.type == sf::Event::Closed)
                 window.close();
-            if (event.type == sf::Event::MouseButtonPressed)
-            { 
-                if(!isNewTrackUnderConstruct)
-                {
-                    newTrack[0].x = sf::Mouse::getPosition(window).x;
-                    newTrack[0].y = sf::Mouse::getPosition(window).y;
-                    isNewTrackUnderConstruct = true;
-                }
-                else
-                {
-                    newTrack[1].x = sf::Mouse::getPosition(window).x;
-                    newTrack[1].y = sf::Mouse::getPosition(window).y;
-                    isNewTrackUnderConstruct = false;
-                    track->add(newTrack[0], newTrack[1]);
-                }
-            }
             
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
             {
@@ -62,6 +47,7 @@ class game : public engine::engineer{
             }
         }
         spriteNode->update(delta);
+        train->update(delta);
     }
     void draw() override
     {
@@ -69,12 +55,12 @@ class game : public engine::engineer{
         rect.setSize(sf::Vector2f(100, 50));
         Layers* layers = Layers::get_instance();
         //layers->get_layer(0))->draw(testCircle->draw());
-        track->Draw(window);
         sf::Text text("text", *ResourceLoader::get_instance()->get_font(0).get());
         text.setPosition(sf::Vector2f(100.f,0.f));
         (*layers)[0]->draw(text);
 
         spriteNode->draw();
+        train->draw();
         auto l = (*layers)[0];
         pl.draw(*l, sf::RenderStates());
         if(colorIDMap->get_hovered_object())
@@ -86,14 +72,9 @@ class game : public engine::engineer{
     // systems
     MusicSystem* musicSystem;
     SoundSystem* soundSystem;
-    Track* track; 
-    sf::Vector2f newTrack[2];
-    bool isNewTrackUnderConstruct;
-
+    std::shared_ptr<Train> train;
     std::shared_ptr<SpriteNode> spriteNode;
     engine::PolyLine pl = engine::PolyLine(sf::Vertex({100,100}, sf::Color(255,0,0,255)), 20); 
-
-    
 
 };
 
