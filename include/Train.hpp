@@ -12,6 +12,8 @@ public:
     void onDraw() const;
     void onReady();
 
+    sf::Vector2f getBodyTranslation(){ return body.getPosition(); }
+
 private:
     float currentTime = 0.0;
     float tracksMakingTime = 0.07;
