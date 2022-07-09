@@ -1,10 +1,13 @@
-#pragma once
-#include <memory>
-#include "Node.hpp"
+/*#pragma once
+#include <iostream>
+#include <string>
 #include <unordered_map>
-#include "Standard/Hashers.hpp"
 #include <SFML/Graphics.hpp>
+#include "Layers.hpp"
+#include "ColorIDMap.hpp"
+#include "Node.hpp"
 #include <optional>
+#include "Standard/Hashers.hpp"
 
 class Node;
 
@@ -33,4 +36,4 @@ private:
         m_color_layer = std::make_shared<sf::RenderTexture>();
         m_color_layer->create(800,800);
     }
-};
+};*/
