@@ -44,7 +44,7 @@ public:
     }
     std::tuple<sf::Vector2f,sf::Vector2f,sf::Vector2f,sf::Vector2f> get_texture_coords_at(unsigned int id)
     {
-        engine::Vec2i c = {id % tileSize.x, id / tileSize.x};
+        engine::Vec2i c = {(int)(id % tileSize.x),(int)(id / tileSize.x)};
         return {sf::Vector2f(c.x * tileSize.x, c.y * tileSize.y),
                 sf::Vector2f((c.x + 1) * tileSize.x, c.y * tileSize.y),
                 sf::Vector2f((c.x + 1) * tileSize.x, (c.y + 1) * tileSize.y),
