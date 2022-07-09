@@ -5,7 +5,7 @@
 
 class SpriteNode : public Node{
 public:
-    virtual void onCreate()
+    SpriteNode()
     {
         if(!shader.loadFromFile("res/shaders/color_id_shader.vert","res/shaders/color_id_shader.frag"))
             std::cout << "Failed to load shaders!\n";
