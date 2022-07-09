@@ -47,7 +47,7 @@ template<class T, typename... Us>
 concept DerivedFromNode = std::derived_from<T, Node> && std::constructible_from<T,Us...>;
 
 
-class Node : std::enable_shared_from_this<Node> {
+class Node : public std::enable_shared_from_this<Node> {
 public:
     using StrongNode = std::shared_ptr<Node>;
     using WeakNode = std::weak_ptr<Node>;
@@ -55,12 +55,13 @@ public:
     protected:
         Layers::layer_ptr render_layer = Layers::get_instance()->get_layer(1);
         Node() = default;
+        sf::Transformable local_transform;
+        sf::Transformable global_transform;
+        
     private:
         std::vector<StrongNode> children;
         WeakNode parent;
 
-        sf::Transformable local_transform;
-        sf::Transformable global_transform;
 
 
     protected:
@@ -68,6 +69,7 @@ public:
         
         virtual void onDraw() const {}
         virtual void onUpdate(const sf::Time& delta) {}
+        virtual void onReady() {};
 
     public:
     // UPDATE FUNCTIONS
@@ -122,6 +124,8 @@ std::shared_ptr<T> Node::create(Us... values) {
     std::shared_ptr<T> new_node = std::shared_ptr<T>(new T(values...));
     
     new_node->color_id = ColorIDMap::get_instance()->generate_unique_color_id(new_node);
+
+    new_node->onReady();
 
     return new_node;
 }

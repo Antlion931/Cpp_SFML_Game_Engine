@@ -2,9 +2,9 @@
 #include <iostream>
 
 Track::Track(sf::Vector2f left, sf::Vector2f right) : 
-    trackColor(100,100,100), barsColor(134,82,45), barsMultiplayer(1.5f), 
-    left_line(sf::Vertex(left, {100,100,100}), 10), right_line(sf::Vertex(right, {100,100,100}), 10),
-    bar_line(10)
+    trackColor(100,100,100), barsColor(134,82,45), barsMultiplayer(1.9f), 
+    left_line(sf::Vertex(left, {100,100,100}), 5), right_line(sf::Vertex(right, {100,100,100}), 5),
+    bar_line(5)
 {
     sf::Vertex* buffor = new sf::Vertex[2];
 
@@ -84,11 +84,11 @@ void Track::add(sf::Vector2f left, sf::Vector2f right)
     right_line.append_vertex(sf::Vertex(right, trackColor));
 }
 
-void Track::Draw(sf::RenderWindow& window)
+void Track::onDraw() const
 {
-    bar_line.draw(window, sf::RenderStates());
-    left_line.draw(window, sf::RenderStates());
-    right_line.draw(window, sf::RenderStates());
+    bar_line.draw(*render_layer, global_transform.getTransform());
+    left_line.draw(*render_layer, global_transform.getTransform());
+    right_line.draw(*render_layer, global_transform.getTransform());
 }
 
 Track::~Track()

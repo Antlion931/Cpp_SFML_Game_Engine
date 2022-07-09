@@ -11,6 +11,7 @@
 #include "GUI/GUI.hpp"
 #include "test/SpriteNode.hpp"
 #include "Standard/line.hpp"
+#include "Train.hpp"
 #include <memory>
 #include "GUI/text.hpp"
 #include "Loaders/ResourceLoader.hpp"
