@@ -17,6 +17,7 @@
 #include "GUI/text.hpp"
 #include "Loaders/ResourceLoader.hpp"
 #include "Nodes/Grid.hpp"
+#include "Standard/CenterString.hpp"
 
 class game : public engine::engineer{
     using animation_map = std::unordered_map<std::string,AtlasManager::animation>;
@@ -31,8 +32,8 @@ class game : public engine::engineer{
         soundSystem->setVolume("dead.wav", 100.0f);
         soundSystem->playSound("punch.wav");
         spriteNode = Node::create<SpriteNode>();
-        warszawa = Node::create<Town>("Warszawa", true, sf::Vector2f(500.0f, 500.0f));
-        berlin = Node::create<Town>("Berlin", false, sf::Vector2f(600.0f, 500.0f));
+        warszawa = Node::create<Town>(center("Warszawa"), true, sf::Vector2f(500.0f, 500.0f));
+        berlin = Node::create<Town>(center("Berlin"), false, sf::Vector2f(350.0f, 500.0f));
         train = Node::create<Train>();
         animation_map m;
         m["test"] = {1.f,{0,0},4};
@@ -96,10 +97,10 @@ class game : public engine::engineer{
         //(*layers)[1]->draw(triangle);
         
 
+        train->draw();
         spriteNode->draw();
         warszawa->draw();
         berlin->draw();
-        train->draw();
         auto l = (*layers)[0];
         pl.draw(*l, sf::RenderStates());
         if(colorIDMap->get_hovered_object())
