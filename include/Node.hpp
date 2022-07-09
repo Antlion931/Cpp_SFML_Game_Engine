@@ -4,7 +4,6 @@
 #include <vector>
 #include "Standard/math.hpp"
 #include "Layers.hpp"
-#include "ColorIDMap.hpp"
 #include <optional>
 #include <unordered_map>
 #include "Standard/Hashers.hpp"
