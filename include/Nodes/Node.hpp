@@ -3,10 +3,12 @@
 #include <memory>
 #include <vector>
 #include "Standard/math.hpp"
+#include "Standard/event.hpp"
 #include "Layers.hpp"
 #include <optional>
 #include <unordered_map>
 #include "Standard/Hashers.hpp"
+
 
 class Node;
 class SpriteNode;
@@ -21,27 +23,17 @@ public:
 
     layer_ptr get_color_layer();
 
-    std::optional<std::weak_ptr<Node>> get_hovered_object();
+    std::optional<sf::Color> get_color_at(engine::Vec2i at);
 
     void set_window(sf::RenderWindow* _window);
 
     static sf::Shader* color_id_shader;
     
-    void print_map()
-    {
-        for(auto[key,value] : m_color_map)
-        {
-            std::cout << key.toInteger() << ": " << value.lock() << "\n";
-        }
-    }
-    
 private:
     static ColorIDMap* m_instance;
 
-    unsigned long long curr_node_id = 240;
-    std::unordered_map<sf::Color, std::weak_ptr<Node>> m_color_map;
-
     layer_ptr m_color_layer;
+    int curr_node_id = 1050;
 
     const sf::RenderWindow* window;
 

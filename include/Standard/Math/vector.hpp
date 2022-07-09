@@ -36,6 +36,10 @@ namespace engine
                 return {-y,x};
             }
 
+            Vec2<float> interpolate(float scalar) const {
+                return (*this) * scalar;
+            }
+
             //konwersje
             operator sf::Vector2<T>() const {
                 return {x, y};
