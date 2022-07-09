@@ -107,8 +107,6 @@ class game : public engine::engineer{
         warszawa->draw();
         berlin->draw();
         train->draw();
-        if(colorIDMap->get_hovered_object())
-            std::cout << "hover!\n";
     }
     private:
     // systems
