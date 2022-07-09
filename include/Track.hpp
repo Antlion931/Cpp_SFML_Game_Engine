@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "Layers.hpp"
 #include "Standard/line.hpp"
-#include "Node.hpp"
+#include "Nodes/Node.hpp"
 
 class Track : public Node
 {
