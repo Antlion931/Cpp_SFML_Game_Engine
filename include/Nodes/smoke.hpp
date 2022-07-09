@@ -1,6 +1,7 @@
 #pragma once
 #include "Node.hpp"
 #include <SFML/Graphics.hpp>
+#include <cmath>
 #include <vector>
 #include <cmath>
 #include "Loaders/ResourceLoader.hpp"

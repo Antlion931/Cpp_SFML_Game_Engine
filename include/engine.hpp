@@ -36,7 +36,8 @@ namespace engine
 
             ResourceLoader* resourceLoader = ResourceLoader::get_instance();
             resourceLoader->load_font("arial.ttf");
-
+            resourceLoader->load_font("PixelCombat-Wajz.ttf");
+            
             sf::Clock deltaClock;
 
             onStart();
