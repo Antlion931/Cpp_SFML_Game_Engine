@@ -1,7 +1,10 @@
 #include "Track.hpp"
 #include <iostream>
 
-Track::Track(sf::Vector2f left, sf::Vector2f right) : trackColor(100,100,100), barsColor(134,82,45), barsMultiplayer(1.3f)
+Track::Track(sf::Vector2f left, sf::Vector2f right) : 
+    trackColor(100,100,100), barsColor(134,82,45), barsMultiplayer(1.5f), 
+    left_line(sf::Vertex(left, {100,100,100}), 10), right_line(sf::Vertex(right, {100,100,100}), 10),
+    bar_line(10)
 {
     sf::Vertex* buffor = new sf::Vertex[2];
 
@@ -24,6 +27,8 @@ Track::Track(sf::Vector2f left, sf::Vector2f right) : trackColor(100,100,100), b
     rightTrack.push_back(buffor);
 
     bars.push_back(makeBar(left, right));
+
+
 }
 
 sf::Vertex* Track::makeBar(sf::Vector2f left, sf::Vector2f right)
@@ -67,25 +72,23 @@ void Track::add(sf::Vector2f left, sf::Vector2f right)
 
     rightTrack.push_back(buffor);
 
-    bars.push_back(makeBar(left, right));
+    buffor = new sf::Vertex[2];
+    
+    buffor = makeBar(left,right);
+
+    bars.push_back(buffor);
+
+    bar_line.append_segment(buffor[0], buffor[1]);
+
+    left_line.append_vertex(sf::Vertex(left, trackColor));
+    right_line.append_vertex(sf::Vertex(right, trackColor));
 }
 
 void Track::Draw(sf::RenderWindow& window)
 {
-    for(auto line : bars)
-    {
-       window.draw(line, 2, sf::Lines);
-    }
-
-    for(auto line : leftTrack)
-    {
-        window.draw(line, 2, sf::Lines);
-    }
-    
-    for(auto line : rightTrack)
-    {
-        window.draw(line, 2, sf::Lines);
-    }
+    bar_line.draw(window, sf::RenderStates());
+    left_line.draw(window, sf::RenderStates());
+    right_line.draw(window, sf::RenderStates());
 }
 
 Track::~Track()
