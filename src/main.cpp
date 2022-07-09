@@ -31,9 +31,9 @@ class game : public engine::engineer{
         spriteNode = Node::create<SpriteNode>();
         pl.append_vertex(sf::Vertex({100,200}, sf::Color(255,0,0,255)));
         pl.append_vertex(sf::Vertex({150,150}, sf::Color(255,0,0,255)));
-        pl.append_vertex(sf::Vertex({250,200}, sf::Color(255,0,0,255)));
+        pl.append_vertex(sf::Vertex({250,200}, sf::Color(0,255,0,255)));
         pl.append_vertex(sf::Vertex({300,300}, sf::Color(255,0,0,255)));
-        pl.append_vertex(sf::Vertex({355,310}, sf::Color(255,0,0,255)));
+        pl.append_vertex(sf::Vertex({355,310}, sf::Color(255,0,255,255)));
     }
     void update(const sf::Time& delta) override
     {
@@ -63,6 +63,9 @@ class game : public engine::engineer{
             {
                 
             }
+            if (event.type == sf::Event::MouseButtonPressed) {
+                pl.append_vertex(sf::Vertex({(float)event.mouseButton.x,(float)event.mouseButton.y}, sf::Color(255,0,0,255)));
+            }
         }
         spriteNode->update(delta);
     }
@@ -80,8 +83,8 @@ class game : public engine::engineer{
         spriteNode->draw();
         auto l = (*layers)[0];
         pl.draw(*l, sf::RenderStates());
-        //if(colorIDMap->get_hovered_object())
-           // std::cout << "hover!\n";
+        if(colorIDMap->get_hovered_object())
+            std::cout << "hover!\n";
     }
     private:
     // systems

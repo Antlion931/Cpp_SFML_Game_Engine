@@ -16,7 +16,8 @@ protected:
     void onDraw() const override
     {
         Layers* layers = Layers::get_instance();
-        (*layers)[1]->draw(sprite, &shader);
+        ColorIDMap::get_instance()->get_color_layer()->draw(sprite, &shader);
+        (*layers)[1]->draw(sprite);
     }
     void onUpdate(const sf::Time& delta) override
     {

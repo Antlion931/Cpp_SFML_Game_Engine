@@ -33,25 +33,20 @@ namespace engine {
             }
 
             PolyLine(sf::Vertex start_point, float thickness) {
-                if (triangled_vertices.create(1000)) {
-                    printf("haha");
-                }
-                else {
-                    printf("haha nie");
-                }
                 last_vertex = start_point;
                 this->thickness = thickness;
             }
 
             void append_vertex(sf::Vertex vertex) {
-                sf::Vertex* points = &triangulate_line(last_vertex, vertex)[0];
+                std::vector<sf::Vertex> result = triangulate_line(last_vertex, vertex);
+
+                sf::Vertex* points = &result[0];
+
+                sf::VertexBuffer temp_buffer = triangled_vertices;
+                triangled_vertices.create(vertices_in_buffer + 4);
+                triangled_vertices.update(temp_buffer);
                 
-                if (triangled_vertices.update(points, 4, vertices_in_buffer)) {
-                    printf("haha");
-                }
-                else {
-                    printf("haha nie");
-                }
+                triangled_vertices.update(points, 4, vertices_in_buffer);
                 vertices_in_buffer += 4;
                 last_vertex = vertex;
             }
