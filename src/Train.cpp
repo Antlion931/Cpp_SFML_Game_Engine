@@ -1,8 +1,15 @@
 #include "Train.hpp"
 #include "Layers.hpp"
 
+<<<<<<< HEAD
 //const float M_PI = 3.14159;
+=======
+<<<<<<< HEAD
+=======
+const float M_PI = 3.14159;
+>>>>>>> refs/remotes/origin/ver1.0
 
+>>>>>>> origin/ver1.0
 Train::Train() :  animationManager("train", {{"idle", 1}}, "idle"), body({100.0, 200.0})
 {
     body.setOrigin(50.0, 200.0);
