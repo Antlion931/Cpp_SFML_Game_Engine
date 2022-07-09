@@ -6,7 +6,7 @@
 #include "Layers.hpp"
 #include "ColorIDMap.hpp"
 #include "Node.hpp"
-
+#include "ResourceLoader.hpp"
 
 //#define COLOR_ID_MAP_DEBUG
 
@@ -33,6 +33,9 @@ namespace engine
             layers = Layers::get_instance();
             layers->add_layer(window, "GUI");
             layers->add_layer(window, "Objects");
+
+            ResourceLoader* resourceLoader = ResourceLoader::get_instance();
+            resourceLoader->load_font("arial.ttf");
 
             sf::Clock deltaClock;
 
