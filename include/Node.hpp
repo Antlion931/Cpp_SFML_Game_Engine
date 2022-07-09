@@ -68,7 +68,8 @@ public:
         
         virtual void onDraw() const {}
         virtual void onUpdate(const sf::Time& delta) {}
-        virtual void onCreate() {};
+    public:
+        virtual void onCreate() {}
 
     public:
     // UPDATE FUNCTIONS

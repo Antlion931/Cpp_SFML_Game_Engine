@@ -84,7 +84,7 @@ class game : public engine::engineer{
         pl.draw(*l, sf::RenderStates());
         if(colorIDMap->get_hovered_object())
             std::cout << "hover!\n";
-        std::shared_ptr<engine::Text> eng_text = Node::create<engine::Text>();
+        std::shared_ptr<engine::Text> eng_text = engine::Text::create<engine::Text>();
         eng_text->draw();
     }
     private:
