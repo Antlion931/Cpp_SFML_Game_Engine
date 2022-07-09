@@ -25,6 +25,14 @@ public:
 
     void set_window(sf::RenderWindow* _window);
     
+    void print_map()
+    {
+        for(auto[key,value] : m_color_map)
+        {
+            std::cout << key.toInteger() << ": " << &value << "\n";
+        }
+    }
+    
 private:
     static ColorIDMap* m_instance;
 
@@ -122,7 +130,7 @@ template<class T, typename... Us>
 requires DerivedFromNode<T,Us...>
 std::shared_ptr<T> Node::create(Us... values) {
     std::shared_ptr<T> new_node = std::shared_ptr<T>(new T(values...));
-    
+
     new_node->color_id = ColorIDMap::get_instance()->generate_unique_color_id(new_node);
 
     new_node->onReady();

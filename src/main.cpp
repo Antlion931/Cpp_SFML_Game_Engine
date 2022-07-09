@@ -57,7 +57,7 @@ class game : public engine::engineer{
             
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
             {
-                warszawa->Repair();
+                colorIDMap->print_map();
             }
             if (event.type == sf::Event::MouseButtonPressed) {
                 //pl.append_vertex(sf::Vertex({(float)event.mouseButton.x,(float)event.mouseButton.y}, sf::Color(255,0,0,255)));
