@@ -41,6 +41,7 @@ class game : public engine::engineer{
         grid = Node::create<Grid>(engine::Vec2i(5,5), std::string("tilesheet.png"), engine::Vec2i(32,32));
         grid->scale({5.f,5.f});
         grid->loadTileDataFromFile("");
+        grid->setTile({0,0},5);
     }
     void update(const sf::Time& delta) override
     {
