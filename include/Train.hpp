@@ -1,6 +1,8 @@
+#pragma once
 #include "Nodes/Node.hpp"
 #include "Track.hpp"
 #include "AnimationManager.hpp"
+#include "Nodes/smoke.hpp"
 
 class Train : public Node
 {
@@ -11,6 +13,7 @@ public:
     void onReady();
 
 private:
+    sf::Shader shader;
     float currentTime = 0.0;
     float tracksMakingTime = 0.07;
     float turningRate = 90.0;
@@ -20,4 +23,5 @@ private:
     AnimationManager animationManager;
     sf::RectangleShape body;
     sf::RectangleShape trackModel;
+    std::shared_ptr<SmokeParticles> sp;
 };

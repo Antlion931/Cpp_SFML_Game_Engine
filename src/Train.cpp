@@ -1,7 +1,6 @@
 #include "Train.hpp"
 #include "Layers.hpp"
 
-
 const float pi = 3.14159;
 
 Train::Train() :  animationManager("train", {{"idle", 1}}, "idle"), body({40.0, 80.0}),trackModel({12.5, 10.0})
@@ -10,10 +9,16 @@ Train::Train() :  animationManager("train", {{"idle", 1}}, "idle"), body({40.0, 
     trackModel.setOrigin(6.25, 10.0);
     body.setPosition(300.0, 300.0);
     trackModel.setPosition(300.0, 300.0);
+
+    if(!shader.loadFromFile("res/shaders/color_id_shader.vert","res/shaders/color_id_shader.frag"))
+        std::cout << "Failed to load shaders!\n";
+    shader.setParameter("texture", sf::Shader::CurrentTexture);
+    shader.setParameter("color_id", color_id);
 }
 
 void Train::onReady() {
     track = Node::create<Track>(shared_from_this(),(global_transform.getTransform() * trackModel.getTransform()) * ((trackModel.getPoint(1) + trackModel.getPoint(2))/2.f),(global_transform.getTransform() * trackModel.getTransform()) * ((trackModel.getPoint(3)+trackModel.getPoint(4))/2.f));
+    sp = Node::create<SmokeParticles>(shared_from_this());
 }
 
 void Train::onUpdate(const sf::Time& delta)
@@ -47,11 +52,12 @@ void Train::onUpdate(const sf::Time& delta)
 
     body.setRotation(-angle);
     trackModel.setRotation(body.getRotation());
-    body.move({(float)(speed * delta.asSeconds() * std::sin(angle / 180.0 * M_PI)), (float)(speed * delta.asSeconds() * std::cos(angle / 180.0 * M_PI))});
+    body.move({(float)(speed * delta.asSeconds() * std::sin(angle / 180.0 * pi)), (float)(speed * delta.asSeconds() * std::cos(angle / 180.0 * pi))});
     trackModel.setPosition(body.getPosition());
     body.move({(float)(speed * delta.asSeconds() * std::sin(angle / 180.0 * pi)), (float)(speed * delta.asSeconds() * std::cos(angle / 180.0 * pi))});
     body.setTexture(animationManager.getTexture().get());
     body.setTextureRect(animationManager.getIntRect());
+    sp->changeOrigin((global_transform.getTransform() * body.getTransform()) * (body.getPoint(angle > 0.0) + sf::Vector2f{0,10}));
 
     if(angle > 0.0)
     {
@@ -65,5 +71,8 @@ void Train::onUpdate(const sf::Time& delta)
 
 void Train::onDraw() const
 {
-    Layers::get_instance()->get_layer(1)->draw(body, global_transform.getTransform());
+    //std::cout << color_id.r << ", " << color_id.g << ", " << color_id.b << std::endl;
+    Layers* layers = Layers::get_instance();
+    layers->get_layer(1)->draw(body, global_transform.getTransform());
+    ColorIDMap::get_instance()->get_color_layer()->draw(body, &shader);
 }

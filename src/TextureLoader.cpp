@@ -10,7 +10,7 @@ void TextureLoader::loadTextures(){
     for(const auto &entry: std::filesystem::directory_iterator(directoryPath)){
         sf::Texture texture;
         if(!texture.loadFromFile(entry.path().string())){
-            std::cerr<<"Error while loading audio!"<<std::endl;
+            std::cerr<<"Error while loading texture!"<<std::endl;
             continue;
         };
         std::string str = entry.path().string();

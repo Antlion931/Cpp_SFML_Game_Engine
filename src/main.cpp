@@ -18,6 +18,7 @@
 #include "Loaders/ResourceLoader.hpp"
 #include "Nodes/Grid.hpp"
 #include "Standard/CenterString.hpp"
+#include "Nodes/smoke.hpp"
 
 class game : public engine::engineer{
     using animation_map = std::unordered_map<std::string,AtlasManager::animation>;
@@ -27,10 +28,8 @@ class game : public engine::engineer{
         TextureLoaderPrototypeFactory::getInstance("res/textures/");
         musicSystem = MusicSystem::getInstance("res/musics/");
         soundSystem = SoundSystem::getInstance("res/sounds/");
-        musicSystem->playMusic("GamePlayMusic.wav");
-        soundSystem->playSound("dead.wav");
-        soundSystem->setVolume("dead.wav", 100.0f);
-        soundSystem->playSound("punch.wav");
+        musicSystem->playMusic("winter.wav");
+        musicSystem->setRepeat("winter.wav", true);
         spriteNode = Node::create<SpriteNode>();
         warszawa = Node::create<Town>(center("Warszawa"), true, sf::Vector2f(500.0f, 500.0f));
         berlin = Node::create<Town>(center("Berlin"), false, sf::Vector2f(350.0f, 500.0f));
@@ -42,6 +41,7 @@ class game : public engine::engineer{
         grid = Node::create<Grid>(engine::Vec2i(5,5), std::string("tilesheet.png"), engine::Vec2i(32,32));
         grid->scale({5.f,5.f});
         grid->loadTileDataFromFile("");
+        grid->setTile({0,0},5);
     }
     void update(const sf::Time& delta) override
     {
@@ -57,7 +57,7 @@ class game : public engine::engineer{
             
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
             {
-                warszawa->Repair();
+                colorIDMap->print_map();
             }
             if (event.type == sf::Event::MouseButtonPressed) {
                 //pl.append_vertex(sf::Vertex({(float)event.mouseButton.x,(float)event.mouseButton.y}, sf::Color(255,0,0,255)));
@@ -101,8 +101,7 @@ class game : public engine::engineer{
         spriteNode->draw();
         warszawa->draw();
         berlin->draw();
-        auto l = (*layers)[0];
-        pl.draw(*l, sf::RenderStates());
+        train->draw();
         if(colorIDMap->get_hovered_object())
             std::cout << "hover!\n";
         std::string t("dwaijidja");
@@ -117,7 +116,6 @@ class game : public engine::engineer{
     std::shared_ptr<SpriteNode> spriteNode;
     std::shared_ptr<Town> warszawa;
     std::shared_ptr<Town> berlin;
-    engine::PolyLine pl = engine::PolyLine(sf::Vertex({100,100}, sf::Color(255,0,0,255)), 20); 
 
     AtlasManager* atlasManager;
     std::shared_ptr<Grid> grid;
