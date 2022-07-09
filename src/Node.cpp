@@ -7,11 +7,6 @@
 using StrongNode = std::shared_ptr<Node>;
 using WeakNode = std::weak_ptr<Node>;
 
-Node::Node()
-{
-    color_id = ColorIDMap::get_instance()->generate_unique_color_id(weak_from_this());
-}
-
 void Node::change_parent(StrongNode new_parent) {
     if(auto locked_parent = parent.lock()){
         locked_parent->remove_child(shared_from_this());
@@ -22,21 +17,6 @@ void Node::change_parent(StrongNode new_parent) {
 
 void Node::remove_child(StrongNode child) {
     children.erase(std::find(children.begin(),children.end(),child));
-}
-
-StrongNode Node::create(StrongNode parent) {
-    StrongNode new_node = std::shared_ptr<Node>(new Node());
-    
-    parent->children.push_back(new_node);
-    new_node->parent = parent;
-
-    return new_node;
-}
-
-StrongNode Node::create() {
-    StrongNode new_node = std::shared_ptr<Node>(new Node());
-
-    return  new_node;
 }
 
 void Node::draw() const {

@@ -8,14 +8,14 @@
 
 namespace engine
 {
-    class engine
+    class engineer
     {
     public:
-        engine(unsigned int windowSizeX = 800, unsigned int windowSizeY = 800, const char* windowName = "Gra O_O")
+        engineer(unsigned int windowSizeX = 800, unsigned int windowSizeY = 800, const char* windowName = "Gra O_O")
         {
             window.create(sf::VideoMode(windowSizeX, windowSizeY), windowName);
         }
-        ~engine()
+        ~engineer()
         {
             
         }

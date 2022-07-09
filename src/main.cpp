@@ -9,9 +9,10 @@
 #include "Layers.hpp"
 #include "GUI/GUI.hpp"
 #include "test/SpriteNode.hpp"
+#include "Standard/line.hpp"
 #include <memory>
 
-class game : public engine::engine{
+class game : public engine::engineer{
     public:
     void onStart() override
     {
@@ -24,7 +25,12 @@ class game : public engine::engine{
         soundSystem->playSound("punch.wav");
         font = new sf::Font();
         font->loadFromFile("res/fonts/arial.ttf");
-        spriteNode = std::make_shared<SpriteNode>();
+        spriteNode = Node::create<SpriteNode>();
+        pl.append_vertex(sf::Vertex({100,200}, sf::Color(255,0,0,255)));
+        pl.append_vertex(sf::Vertex({150,150}, sf::Color(255,0,0,255)));
+        pl.append_vertex(sf::Vertex({250,200}, sf::Color(255,0,0,255)));
+        pl.append_vertex(sf::Vertex({300,300}, sf::Color(255,0,0,255)));
+        pl.append_vertex(sf::Vertex({355,310}, sf::Color(255,0,0,255)));
     }
     void update(const sf::Time& delta) override
     {
@@ -49,8 +55,10 @@ class game : public engine::engine{
         (*layers)[0]->draw(text);
 
         spriteNode->draw();
-        if(colorIDMap->get_hovered_object())
-            std::cout << "hover!\n";
+        auto l = (*layers)[0];
+        pl.draw(*l, sf::RenderStates());
+        //if(colorIDMap->get_hovered_object())
+           // std::cout << "hover!\n";
     }
     private:
     // systems
@@ -59,6 +67,9 @@ class game : public engine::engine{
     sf::Font* font;
 
     std::shared_ptr<SpriteNode> spriteNode;
+    engine::PolyLine pl = engine::PolyLine(sf::Vertex({100,100}, sf::Color(255,0,0,255)), 20); 
+
+    
 
 };
 

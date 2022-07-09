@@ -5,7 +5,7 @@
 
 class SpriteNode : public Node{
 public:
-    SpriteNode() : animationManager("test", {{"run",1}},"run")
+    virtual void onCreate()
     {
         if(!shader.loadFromFile("res/shaders/color_id_shader.vert","res/shaders/color_id_shader.frag"))
             std::cout << "Failed to load shaders!\n";
@@ -26,7 +26,7 @@ protected:
         sprite.setTextureRect(animationManager.getIntRect());
     }
 private:
-    AnimationManager animationManager;
+    AnimationManager animationManager = AnimationManager("test", {{"run",1}},"run");
     sf::Sprite sprite;
 
     sf::Shader shader;

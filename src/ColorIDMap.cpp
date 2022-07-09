@@ -15,9 +15,9 @@ ColorIDMap* ColorIDMap::get_instance()
 
 sf::Color ColorIDMap::generate_unique_color_id(std::weak_ptr<Node> node)
 {
-    u_int8_t blue  = 0;
-    u_int8_t green = 0;
-    u_int8_t red   = 0;
+    int blue  = 0;
+    int green = 0;
+    int red   = 0;
     unsigned int id = curr_node_id;
 
     blue =  id % 256;

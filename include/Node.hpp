@@ -6,7 +6,14 @@
 #include "Layers.hpp"
 #include "ColorIDMap.hpp"
 
+class Node;
 class ColorIDMap;
+class SpriteNode;
+
+
+template<class T>
+concept DerivedFromNode = std::is_base_of<Node, T>::value;
+
 
 class Node : std::enable_shared_from_this<Node> {
 public:
@@ -15,7 +22,7 @@ public:
 
     protected:
         Layers::layer_ptr render_layer = Layers::get_instance()->get_layer(1);
-        Node();
+        Node() = default;
     private:
         std::vector<StrongNode> children;
         WeakNode parent;
@@ -29,6 +36,7 @@ public:
         
         virtual void onDraw() const {}
         virtual void onUpdate(const sf::Time& delta) {}
+        virtual void onCreate() {};
 
     public:
     // UPDATE FUNCTIONS
@@ -40,8 +48,10 @@ public:
         void remove_child(StrongNode child);
 
     // FACTORY PATTERN
-        static StrongNode create(StrongNode parent);
-        static StrongNode create();
+        template<DerivedFromNode T>
+        static std::shared_ptr<T> create(StrongNode parent);
+        template<DerivedFromNode T>
+        static std::shared_ptr<T> create();
 
     // GETTERS AND SETTERS
         void setActive(bool _active);
@@ -72,3 +82,23 @@ public:
         sf::Vector2f getLocalScale() {return local_transform.getScale();}
         
 };
+
+template<DerivedFromNode T>
+std::shared_ptr<T> Node::create(StrongNode parent) {
+    std::shared_ptr<T> new_node = create();
+    
+    parent->children.push_back(new_node);
+    new_node->parent = parent;
+
+    return new_node;
+}
+template<DerivedFromNode T>
+std::shared_ptr<T> Node::create() {
+    std::shared_ptr<T> new_node = std::shared_ptr<T>(new T());
+    
+    new_node->color_id = ColorIDMap::get_instance()->generate_unique_color_id(new_node);
+
+    new_node->onCreate();
+
+    return new_node;
+}
