@@ -55,12 +55,13 @@ public:
     protected:
         Layers::layer_ptr render_layer = Layers::get_instance()->get_layer(1);
         Node() = default;
+        sf::Transformable local_transform;
+        sf::Transformable global_transform;
+        
     private:
         std::vector<StrongNode> children;
         WeakNode parent;
 
-        sf::Transformable local_transform;
-        sf::Transformable global_transform;
 
 
     protected:
