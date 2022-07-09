@@ -6,7 +6,7 @@
 #include "Layers.hpp"
 #include "ColorIDMap.hpp"
 #include "Node.hpp"
-#include "ResourceLoader.hpp"
+#include "Loaders/ResourceLoader.hpp"
 
 //#define COLOR_ID_MAP_DEBUG
 

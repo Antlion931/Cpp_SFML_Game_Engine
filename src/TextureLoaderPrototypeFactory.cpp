@@ -1,7 +1,7 @@
 #include <filesystem>
 #include <assert.h>
 
-#include "TextureLoaderPrototypeFactory.hpp"
+#include "Loaders/TextureLoaderPrototypeFactory.hpp"
 
 TextureLoaderPrototypeFactory* TextureLoaderPrototypeFactory::instance = nullptr;
 
