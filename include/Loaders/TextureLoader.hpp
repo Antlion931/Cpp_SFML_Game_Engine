@@ -2,7 +2,7 @@
 #include <iostream>
 #include<SFML/Graphics/Texture.hpp>
 #include<map>
-#include <memory>
+#include<memory>
 #include<string>
 
 class TextureLoader{

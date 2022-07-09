@@ -21,7 +21,6 @@ SoundSystem::SoundSystem(std::string directoryPath)
         sounds[soundName] = sf::Sound(*sb);
         volumes[soundName]  = 50.0;
         sounds[soundName].setVolume(volumes[soundName] * masterVolume / 100.0);
-        std::cout << sounds[soundName].getBuffer() << std::endl;
     }
 }
 

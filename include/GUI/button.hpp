@@ -10,8 +10,6 @@ public:
     void onClick() { eventEmitter.emit(); }
 protected:
     EventEmitter<> eventEmitter;
-public:
-    virtual void onCreate() {}
 protected:
     virtual void onDraw() const {
 

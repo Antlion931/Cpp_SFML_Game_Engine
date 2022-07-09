@@ -7,6 +7,7 @@
 #include "ColorIDMap.hpp"
 #include "Nodes/Node.hpp"
 #include "Loaders/ResourceLoader.hpp"
+#include "AtlasManager.hpp"
 
 //#define COLOR_ID_MAP_DEBUG
 

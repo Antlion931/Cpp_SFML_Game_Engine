@@ -13,8 +13,11 @@
 #include "Standard/line.hpp"
 #include <memory>
 #include "GUI/text.hpp"
+#include "Loaders/ResourceLoader.hpp"
+#include "Nodes/Grid.hpp"
 
 class game : public engine::engineer{
+    using animation_map = std::unordered_map<std::string,AtlasManager::animation>;
     public:
     void onStart() override
     {
@@ -25,9 +28,9 @@ class game : public engine::engineer{
         soundSystem->playSound("dead.wav");
         soundSystem->setVolume("dead.wav", 100.0f);
         soundSystem->playSound("punch.wav");
-        track = Track::create<Track>(sf::Vector2f{100.0, 100.0}, sf::Vector2f{150.0, 100.0});
-        isNewTrackUnderConstruct = false;
-        spriteNode = Node::create<SpriteNode>();
+        animation_map m;
+        m["test"] = {1.f,{0,0},4};
+        atlasManager = new AtlasManager("indoors.png",{16,16},m);
     }
     void update(const sf::Time& delta) override
     {
@@ -38,19 +41,7 @@ class game : public engine::engineer{
                 window.close();
             if (event.type == sf::Event::MouseButtonPressed)
             { 
-                if(!isNewTrackUnderConstruct)
-                {
-                    newTrack[0].x = sf::Mouse::getPosition(window).x;
-                    newTrack[0].y = sf::Mouse::getPosition(window).y;
-                    isNewTrackUnderConstruct = true;
-                }
-                else
-                {
-                    newTrack[1].x = sf::Mouse::getPosition(window).x;
-                    newTrack[1].y = sf::Mouse::getPosition(window).y;
-                    isNewTrackUnderConstruct = false;
-                    track->add(newTrack[0], newTrack[1]);
-                }
+
             }
             
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
@@ -61,40 +52,41 @@ class game : public engine::engineer{
                 //pl.append_vertex(sf::Vertex({(float)event.mouseButton.x,(float)event.mouseButton.y}, sf::Color(255,0,0,255)));
             }
         }
-        spriteNode->update(delta);
+        atlasManager->update(delta);
     }
     void draw() override
     {
-        sf::RectangleShape rect;
-        rect.setSize(sf::Vector2f(100, 50));
-        Layers* layers = Layers::get_instance();
-        //layers->get_layer(0))->draw(testCircle->draw());
-        track->Draw(window);
-        sf::Text text("text", *ResourceLoader::get_instance()->get_font(0).get());
-        text.setPosition(sf::Vector2f(100.f,0.f));
-        (*layers)[0]->draw(text);
+        sf::VertexArray triangle(sf::Quads, 4);
+        // 35 x 30
+        // define the position of the triangle's points
+        sf::Vector2f a(10.f, 10.f), b(200.f, 10.f), c(200.f, 200.f), d(10.f, 200.f);
 
-        spriteNode->draw();
-        auto l = (*layers)[0];
-        pl.draw(*l, sf::RenderStates());
-        if(colorIDMap->get_hovered_object())
-            std::cout << "hover!\n";
-        std::shared_ptr<engine::Text> eng_text = engine::Text::create<engine::Text>();
-        eng_text->draw();
+        triangle[0].position = a;
+        triangle[1].position = b;
+        triangle[2].position = c;
+        triangle[3].position = d;
+
+        // define the color of the triangle's points
+        auto[x,y,z,w] = atlasManager->get_texture_coords_at(atlasManager->get_frame("test"));
+        triangle[0].texCoords = x;
+        triangle[1].texCoords = y;
+        triangle[2].texCoords = z;
+        triangle[3].texCoords = w;
+
+        sf::RenderStates state;
+
+        state.texture = atlasManager->get_texture().get();
+
+        (*layers)[1]->draw(triangle,state);
+        //(*layers)[1]->draw(triangle);
+        
+
     }
     private:
     // systems
     MusicSystem* musicSystem;
-    SoundSystem* soundSystem;
-    std::shared_ptr<Track> track; 
-    sf::Vector2f newTrack[2];
-    bool isNewTrackUnderConstruct;
-
-    std::shared_ptr<SpriteNode> spriteNode;
-    engine::PolyLine pl = engine::PolyLine(sf::Vertex({100,100}, sf::Color(255,0,0,255)), 20); 
-
-    
-
+    SoundSystem* soundSystem;  
+    AtlasManager* atlasManager;
 };
 
 int main()
