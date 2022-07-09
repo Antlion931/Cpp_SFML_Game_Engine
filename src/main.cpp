@@ -25,7 +25,7 @@ class game : public engine::engineer{
         soundSystem->playSound("dead.wav");
         soundSystem->setVolume("dead.wav", 100.0f);
         soundSystem->playSound("punch.wav");
-        track = new Track({100.0, 100.0}, {150.0, 100.0});
+        track = Track::create<Track>(sf::Vector2f{100.0, 100.0}, sf::Vector2f{150.0, 100.0});
         isNewTrackUnderConstruct = false;
         spriteNode = Node::create<SpriteNode>();
     }
@@ -86,7 +86,7 @@ class game : public engine::engineer{
     // systems
     MusicSystem* musicSystem;
     SoundSystem* soundSystem;
-    Track* track; 
+    std::shared_ptr<Track> track; 
     sf::Vector2f newTrack[2];
     bool isNewTrackUnderConstruct;
 
