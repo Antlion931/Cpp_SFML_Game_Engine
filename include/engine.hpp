@@ -34,6 +34,8 @@ namespace engine
             layers = Layers::get_instance();
             layers->add_layer(window, "GUI");
             layers->add_layer(window, "Objects");
+            layers->add_layer(window, "Objects 2");
+            layers->add_layer(window, "Tilemap");
 
             ResourceLoader* resourceLoader = ResourceLoader::get_instance();
             resourceLoader->load_font("arial.ttf");

@@ -1,7 +1,7 @@
 #include "Train.hpp"
 #include "Layers.hpp"
 
-const float M_PI = 3.14159;
+//const float M_PI = 3.14159;
 
 Train::Train() :  animationManager("train", {{"idle", 1}}, "idle"), body({100.0, 200.0})
 {

@@ -32,6 +32,10 @@ class game : public engine::engineer{
         animation_map m;
         m["test"] = {1.f,{0,0},4};
         atlasManager = new AtlasManager("indoors.png",{16,16},m);
+
+        grid = Node::create<Grid>(engine::Vec2i(5,5), std::string("indoors.png"), engine::Vec2i(16,16));
+        grid->scale({5.f,5.f});
+        grid->loadTileDataFromFile("");
     }
     void update(const sf::Time& delta) override
     {
@@ -57,7 +61,7 @@ class game : public engine::engineer{
     }
     void draw() override
     {
-        sf::VertexArray triangle(sf::Quads, 4);
+        /*sf::VertexArray triangle(sf::Quads, 4);
         // 35 x 30
         // define the position of the triangle's points
         sf::Vector2f a(10.f, 10.f), b(200.f, 10.f), c(200.f, 200.f), d(10.f, 200.f);
@@ -78,7 +82,8 @@ class game : public engine::engineer{
 
         state.texture = atlasManager->get_texture().get();
 
-        (*layers)[1]->draw(triangle,state);
+        (*layers)[1]->draw(triangle,state);*/
+        grid->draw();
         //(*layers)[1]->draw(triangle);
         
 
@@ -88,6 +93,7 @@ class game : public engine::engineer{
     MusicSystem* musicSystem;
     SoundSystem* soundSystem;  
     AtlasManager* atlasManager;
+    std::shared_ptr<Grid> grid;
 };
 
 int main()
