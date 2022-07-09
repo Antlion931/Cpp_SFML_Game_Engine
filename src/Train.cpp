@@ -1,6 +1,11 @@
 #include "Train.hpp"
 #include "Layers.hpp"
 
+<<<<<<< HEAD
+=======
+const float M_PI = 3.14159;
+
+>>>>>>> origin/ver1.0
 Train::Train() :  animationManager("train", {{"idle", 1}}, "idle"), body({100.0, 200.0})
 {
     body.setOrigin(50.0, 200.0);
@@ -8,7 +13,7 @@ Train::Train() :  animationManager("train", {{"idle", 1}}, "idle"), body({100.0,
 }
 
 void Train::onReady() {
-    track = Node::create<Track>(shared_from_this(), body.getPoint(2), body.getPoint(3));
+    track = Node::create<Track>(shared_from_this(),(global_transform.getTransform() * body.getTransform()) * ((body.getPoint(1) + body.getPoint(2))/2.f),(global_transform.getTransform() * body.getTransform()) * ((body.getPoint(3)+body.getPoint(4))/2.f));
 }
 
 void Train::onUpdate(const sf::Time& delta)
@@ -18,7 +23,7 @@ void Train::onUpdate(const sf::Time& delta)
     if(currentTime > tracksMakingTime)
     {
         currentTime -= tracksMakingTime;
-        track->add(body.getPoint(2), body.getPoint(3));
+        track->add((global_transform.getTransform() * body.getTransform()) * ((body.getPoint(1) + body.getPoint(2))/2.f),(global_transform.getTransform() * body.getTransform()) * ((body.getPoint(3)+body.getPoint(4))/2.f));
     }
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
@@ -57,5 +62,5 @@ void Train::onUpdate(const sf::Time& delta)
 
 void Train::onDraw() const
 {
-    Layers::get_instance()->get_layer(1)->draw(body);
+    Layers::get_instance()->get_layer(1)->draw(body, global_transform.getTransform());
 }
