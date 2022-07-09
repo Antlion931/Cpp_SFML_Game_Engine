@@ -15,6 +15,9 @@ namespace engine
         Text() {}
         void set_text(const std::string& _text)
         {
+            ResourceLoader* resourceLoader = ResourceLoader::get_instance();
+            resourceLoader->load_font("arial.ttf");
+            text.setFont(*resourceLoader->get_font(0));
             text.setString(_text);
         }
     private:

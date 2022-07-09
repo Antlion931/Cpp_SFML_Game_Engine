@@ -36,9 +36,9 @@ class game : public engine::engineer{
         train = Node::create<Train>();
         animation_map m;
         m["test"] = {1.f,{0,0},4};
-        atlasManager = new AtlasManager("indoors.png",{16,16},m);
+        atlasManager = new AtlasManager("tilesheet.png",{32,32},m);
 
-        grid = Node::create<Grid>(engine::Vec2i(5,5), std::string("indoors.png"), engine::Vec2i(16,16));
+        grid = Node::create<Grid>(engine::Vec2i(5,5), std::string("tilesheet.png"), engine::Vec2i(32,32));
         grid->scale({5.f,5.f});
         grid->loadTileDataFromFile("");
     }

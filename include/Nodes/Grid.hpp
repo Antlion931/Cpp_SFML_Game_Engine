@@ -22,12 +22,15 @@ public:
         for (unsigned int i = 0; i < size.x; ++i)
         for (unsigned int j = 0; j < size.y; ++j)
         {
+            float offsetx = (j % 2 == 1) * 16;
+            float offsety = j * 10;
+
             sf::Vertex *quad = &vertices[(i + j * size.x) * 4];
 
-            quad[0].position = sf::Vector2f(i * tileSize.x, j * tileSize.y);
-            quad[1].position = sf::Vector2f((i + 1) * tileSize.x, j * tileSize.y);
-            quad[2].position = sf::Vector2f((i + 1) * tileSize.x, (j + 1) * tileSize.y);
-            quad[3].position = sf::Vector2f(i * tileSize.x, (j + 1) * tileSize.y);
+            quad[0].position = sf::Vector2f(i * tileSize.x + offsetx, j * tileSize.y - offsety);
+            quad[1].position = sf::Vector2f((i + 1) * tileSize.x + offsetx, j * tileSize.y - offsety);
+            quad[2].position = sf::Vector2f((i + 1) * tileSize.x + offsetx, (j + 1) * tileSize.y - offsety);
+            quad[3].position = sf::Vector2f(i * tileSize.x + offsetx, (j + 1) * tileSize.y - offsety);
 
             // ustaw puste tekstury
             quad[0].texCoords = sf::Vector2f(); // left top
