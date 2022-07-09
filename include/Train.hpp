@@ -12,10 +12,12 @@ public:
 
 private:
     float currentTime = 0.0;
-    float tracksMakingTime = 1.0;
-    float speed = -100.0f;
+    float tracksMakingTime = 0.07;
+    float turningRate = 90.0;
+    float speed = -170.0f;
     float angle = 0.0f;
     std::shared_ptr<Track> track;
     AnimationManager animationManager;
     sf::RectangleShape body;
+    sf::RectangleShape trackModel;
 };

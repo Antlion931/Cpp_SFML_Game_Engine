@@ -69,9 +69,9 @@ public:
         
         virtual void onDraw() const {}
         virtual void onUpdate(const sf::Time& delta) {}
-        virtual void onReady() {};
 
     public:
+        virtual void onReady() {};
     // UPDATE FUNCTIONS
         void draw() const;
         void update(const sf::Time& delta);

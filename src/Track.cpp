@@ -2,9 +2,9 @@
 #include <iostream>
 
 Track::Track(sf::Vector2f left, sf::Vector2f right) : 
-    trackColor(100,100,100), barsColor(134,82,45), barsMultiplayer(1.9f), 
-    left_line(sf::Vertex(left, {100,100,100}), 5), right_line(sf::Vertex(right, {100,100,100}), 5),
-    bar_line(5)
+    trackColor(100,100,100), barsColor(134,82,45), barsMultiplayer(1.7f), 
+    left_line(sf::Vertex(left, {100,100,100}), 1), right_line(sf::Vertex(right, {100,100,100}), 1),
+    bar_line(4)
 {
     sf::Vertex* buffor = new sf::Vertex[2];
 

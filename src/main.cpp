@@ -12,6 +12,7 @@
 #include "test/SpriteNode.hpp"
 #include "Standard/line.hpp"
 #include "Train.hpp"
+#include "Town.hpp"
 #include <memory>
 #include "GUI/text.hpp"
 
@@ -27,7 +28,8 @@ class game : public engine::engineer{
         soundSystem->setVolume("dead.wav", 100.0f);
         soundSystem->playSound("punch.wav");
         spriteNode = Node::create<SpriteNode>();
-
+        warszawa = Node::create<Town>("Warszawa", true, sf::Vector2f(500.0f, 500.0f));
+        berlin = Node::create<Town>("Berlin", false, sf::Vector2f(600.0f, 500.0f));
         train = Node::create<Train>();
     }
     void update(const sf::Time& delta) override
@@ -40,13 +42,15 @@ class game : public engine::engineer{
             
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
             {
-                
+                warszawa->Repair();
             }
             if (event.type == sf::Event::MouseButtonPressed) {
                 //pl.append_vertex(sf::Vertex({(float)event.mouseButton.x,(float)event.mouseButton.y}, sf::Color(255,0,0,255)));
             }
         }
         spriteNode->update(delta);
+        warszawa->update(delta);
+        berlin->update(delta);
         train->update(delta);
     }
     void draw() override
@@ -60,12 +64,15 @@ class game : public engine::engineer{
         (*layers)[0]->draw(text);
 
         spriteNode->draw();
+        warszawa->draw();
+        berlin->draw();
         train->draw();
         auto l = (*layers)[0];
         pl.draw(*l, sf::RenderStates());
         if(colorIDMap->get_hovered_object())
             std::cout << "hover!\n";
-        std::shared_ptr<engine::Text> eng_text = engine::Text::create<engine::Text>();
+        std::string t("dwaijidja");
+        std::shared_ptr<engine::Text> eng_text = engine::Text::create<engine::Text>(t);
         eng_text->draw();
     }
     private:
@@ -74,6 +81,8 @@ class game : public engine::engineer{
     SoundSystem* soundSystem;
     std::shared_ptr<Train> train;
     std::shared_ptr<SpriteNode> spriteNode;
+    std::shared_ptr<Town> warszawa;
+    std::shared_ptr<Town> berlin;
     engine::PolyLine pl = engine::PolyLine(sf::Vertex({100,100}, sf::Color(255,0,0,255)), 20); 
 
 };
