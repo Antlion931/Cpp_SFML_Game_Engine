@@ -1,6 +1,9 @@
 #include "Train.hpp"
 #include "Layers.hpp"
 
+
+const float pi = 3.14159;
+
 Train::Train() :  animationManager("train", {{"idle", 1}}, "idle"), body({40.0, 80.0}),trackModel({12.5, 10.0})
 {
     body.setOrigin(20.0, 80.0);
@@ -46,6 +49,7 @@ void Train::onUpdate(const sf::Time& delta)
     trackModel.setRotation(body.getRotation());
     body.move({(float)(speed * delta.asSeconds() * std::sin(angle / 180.0 * M_PI)), (float)(speed * delta.asSeconds() * std::cos(angle / 180.0 * M_PI))});
     trackModel.setPosition(body.getPosition());
+    body.move({(float)(speed * delta.asSeconds() * std::sin(angle / 180.0 * pi)), (float)(speed * delta.asSeconds() * std::cos(angle / 180.0 * pi))});
     body.setTexture(animationManager.getTexture().get());
     body.setTextureRect(animationManager.getIntRect());
 
