@@ -2,12 +2,17 @@
 #include "ColorIDMap.hpp"
 
 ColorIDMap* ColorIDMap::m_instance = nullptr;
+sf::Shader* ColorIDMap::color_id_shader = nullptr;
 
 ColorIDMap* ColorIDMap::get_instance()
 {
     if(m_instance == nullptr)
     {
         m_instance = new ColorIDMap();
+        color_id_shader = new sf::Shader();
+        if(!color_id_shader->loadFromFile("res/shaders/color_id_shader.vert","res/shaders/color_id_shader.frag"))
+            std::cout << "Failed to load shaders!\n";
+        color_id_shader->setUniform("texture", sf::Shader::CurrentTexture);
     }
     return m_instance;
 }
@@ -29,7 +34,7 @@ sf::Color ColorIDMap::generate_unique_color_id(std::weak_ptr<Node> node)
     auto color = sf::Color(red,green,blue,255);
     m_color_map[color] = node;
 
-    curr_node_id++;
+    curr_node_id+=9777;
 
     return color;
 }

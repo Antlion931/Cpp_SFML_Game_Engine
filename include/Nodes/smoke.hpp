@@ -2,6 +2,7 @@
 #include "Node.hpp"
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <cmath>
 #include "Loaders/ResourceLoader.hpp"
 
 class SmokeParticles : public Node {
@@ -40,7 +41,7 @@ class SmokeParticles : public Node {
         float rand_angle = (std::rand() % variation) - float(variation/2);
         float rand_rad = rand_angle * 3.14f / 180.f;
 
-        float emitting_angle = std::atan2f(dir.y, dir.x);
+        float emitting_angle = atan2f(dir.y, dir.x);
 
         float sum_angle = rand_rad + emitting_angle;
 

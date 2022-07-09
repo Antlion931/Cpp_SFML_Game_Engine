@@ -56,9 +56,14 @@ class game : public engine::engineer{
 
             }
             
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+            if (event.type == sf::Event::KeyReleased)
             {
-                colorIDMap->print_map();
+                if(event.key.code == sf::Keyboard::Space)
+                {
+                    is_color_map_visible = !is_color_map_visible;
+                    std::cout << is_color_map_visible << std::endl;
+
+                }
             }
             if (event.type == sf::Event::MouseButtonPressed) {
                 //pl.append_vertex(sf::Vertex({(float)event.mouseButton.x,(float)event.mouseButton.y}, sf::Color(255,0,0,255)));
@@ -104,9 +109,6 @@ class game : public engine::engineer{
         train->draw();
         if(colorIDMap->get_hovered_object())
             std::cout << "hover!\n";
-        std::string t("dwaijidja");
-        std::shared_ptr<engine::Text> eng_text = engine::Text::create<engine::Text>(t);
-        eng_text->draw();
     }
     private:
     // systems

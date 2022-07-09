@@ -24,6 +24,8 @@ public:
     std::optional<std::weak_ptr<Node>> get_hovered_object();
 
     void set_window(sf::RenderWindow* _window);
+
+    static sf::Shader* color_id_shader;
     
     void print_map()
     {
@@ -36,7 +38,7 @@ public:
 private:
     static ColorIDMap* m_instance;
 
-    unsigned long long curr_node_id = 255;
+    unsigned long long curr_node_id = 240;
     std::unordered_map<sf::Color, std::weak_ptr<Node>> m_color_map;
 
     layer_ptr m_color_layer;

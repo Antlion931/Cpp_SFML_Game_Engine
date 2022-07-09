@@ -7,16 +7,15 @@ class SpriteNode : public Node{
 public:
     SpriteNode()
     {
-        if(!shader.loadFromFile("res/shaders/color_id_shader.vert","res/shaders/color_id_shader.frag"))
-            std::cout << "Failed to load shaders!\n";
-        shader.setParameter("texture", sf::Shader::CurrentTexture);
-        shader.setParameter("color_id", color_id);
+
     }
 protected:
     void onDraw() const override
     {
         Layers* layers = Layers::get_instance();
-        ColorIDMap::get_instance()->get_color_layer()->draw(sprite, &shader);
+        auto shader = ColorIDMap::color_id_shader;
+        shader->setUniform("color_id", sf::Glsl::Vec4(color_id));
+        ColorIDMap::get_instance()->get_color_layer()->draw(sprite, shader);
         (*layers)[1]->draw(sprite);
     }
     void onUpdate(const sf::Time& delta) override
@@ -29,6 +28,4 @@ protected:
 private:
     AnimationManager animationManager = AnimationManager("test", {{"run",1}},"run");
     sf::Sprite sprite;
-
-    sf::Shader shader;
 };

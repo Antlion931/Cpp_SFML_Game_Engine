@@ -9,9 +9,6 @@
 #include "Loaders/ResourceLoader.hpp"
 #include "AtlasManager.hpp"
 
-//#define COLOR_ID_MAP_DEBUG
-
-
 namespace engine
 {
     class engineer
@@ -62,17 +59,20 @@ namespace engine
 
                 // DRAW TO ALL LAYERS
                 draw();
-                #ifndef COLOR_ID_MAP_DEBUG
-                colorIDMap->get_color_layer()->display();
-                for(int i = layers_vec.size()-1; i >= 0; i--)
+                if(!is_color_map_visible)
                 {
-                    layers_vec[i]->display();
-                    window.draw(sf::Sprite(layers_vec[i]->getTexture()));
+                    colorIDMap->get_color_layer()->display();
+                    for(int i = layers_vec.size()-1; i >= 0; i--)
+                    {
+                        layers_vec[i]->display();
+                        window.draw(sf::Sprite(layers_vec[i]->getTexture()));
+                    }
                 }
-                #else
-                colorIDMap->get_color_layer()->display();
-                window.draw(sf::Sprite(colorIDMap->get_color_layer()->getTexture()));
-                #endif
+                else
+                {
+                    colorIDMap->get_color_layer()->display();
+                    window.draw(sf::Sprite(colorIDMap->get_color_layer()->getTexture()));
+                }
                 // DISPLAY
                 window.display();
             }
@@ -83,6 +83,7 @@ namespace engine
     protected:
     // glowne okno
         sf::RenderWindow window;
+        bool is_color_map_visible = false;
     // wartstwy renderowania
         Layers* layers;
         ColorIDMap* colorIDMap;
