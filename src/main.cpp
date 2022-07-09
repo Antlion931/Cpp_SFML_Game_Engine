@@ -104,9 +104,6 @@ class game : public engine::engineer{
         train->draw();
         if(colorIDMap->get_hovered_object())
             std::cout << "hover!\n";
-        std::string t("dwaijidja");
-        std::shared_ptr<engine::Text> eng_text = engine::Text::create<engine::Text>(t);
-        eng_text->draw();
     }
     private:
     // systems
