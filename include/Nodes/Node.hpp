@@ -68,6 +68,7 @@ public:
         
         virtual void onDraw() const {}
         virtual void onUpdate(const sf::Time& delta) {}
+        virtual void onReady() {};
 
     public:
     // UPDATE FUNCTIONS
@@ -122,6 +123,8 @@ std::shared_ptr<T> Node::create(Us... values) {
     std::shared_ptr<T> new_node = std::shared_ptr<T>(new T(values...));
     
     new_node->color_id = ColorIDMap::get_instance()->generate_unique_color_id(new_node);
+
+    new_node->onReady();
 
     return new_node;
 }

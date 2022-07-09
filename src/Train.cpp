@@ -1,10 +1,15 @@
 #include "Train.hpp"
 #include "Layers.hpp"
 
+const float M_PI = 3.14;
+
 Train::Train() :  animationManager("train", {{"idle", 1}}, "idle"), body({100.0, 200.0})
 {
     body.setOrigin(50.0, 200.0);
     body.setPosition(300.0, 300.0);
+}
+
+void Train::onReady() {
     track = Node::create<Track>(shared_from_this(), body.getPoint(2), body.getPoint(3));
 }
 
@@ -38,7 +43,7 @@ void Train::onUpdate(const sf::Time& delta)
     }
 
     body.setRotation(-angle);
-    body.move({speed * delta.asSeconds() * std::sin(angle / 180.0 * M_PI), speed * delta.asSeconds() * std::cos(angle / 180.0 * M_PI)});
+    body.move({(float)(speed * delta.asSeconds() * std::sin(angle / 180.0 * M_PI)), (float)(speed * delta.asSeconds() * std::cos(angle / 180.0 * M_PI))});
     body.setTexture(animationManager.getTexture().get());
     body.setTextureRect(animationManager.getIntRect());
 

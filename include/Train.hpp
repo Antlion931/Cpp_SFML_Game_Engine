@@ -8,6 +8,7 @@ public:
     Train();
     void onUpdate(const sf::Time& delta);
     void onDraw() const;
+    void onReady();
 
 private:
     float currentTime = 0.0;
