@@ -31,7 +31,7 @@ public:
     {
         for(auto[key,value] : m_color_map)
         {
-            std::cout << key.toInteger() << ": " << &value << "\n";
+            std::cout << key.toInteger() << ": " << value.lock() << "\n";
         }
     }
     

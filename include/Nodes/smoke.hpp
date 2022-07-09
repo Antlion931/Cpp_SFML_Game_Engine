@@ -12,7 +12,7 @@ class SmokeParticles : public Node {
         sf::Time life = sf::Time::Zero;
     };
 
-    int number_of_particles = 100;
+    int number_of_particles = 300;
     sf::Time lifetime_limit = sf::seconds(3.f);
     sf::VertexArray quadrupled_particles = sf::VertexArray(sf::Quads, number_of_particles * 4);
     std::vector<particle> particles = std::vector<particle>(number_of_particles);
@@ -47,11 +47,11 @@ class SmokeParticles : public Node {
 
         engine::Vec2f final_dir = {std::cos(sum_angle), std::sin(sum_angle)}; 
 
-        float speed = (std::rand() % 20) + 20.f;
+        float speed = (std::rand() % 20) + 100.f;
 
         particles[id].pos = origin;
         particles[id].vel = final_dir * speed;
-        particles[id].life = sf::milliseconds(std::rand() % lifetime_limit.asMilliseconds());
+        particles[id].life = sf::milliseconds((std::rand() % (lifetime_limit.asMilliseconds())));
     }
 
     void changeOrigin(engine::Vec2f new_origin) {
@@ -72,6 +72,10 @@ class SmokeParticles : public Node {
             quadrupled_particles[4*i+1].position = particles[i].pos + engine::Vec2f{particle_size, -particle_size};
             quadrupled_particles[4*i+2].position = particles[i].pos + engine::Vec2f{particle_size, particle_size};
             quadrupled_particles[4*i+3].position = particles[i].pos + engine::Vec2f{-particle_size, particle_size};
+            quadrupled_particles[4*i].color.a = (int)((1 - particles[i].life / lifetime_limit) * 120 + 135);
+            quadrupled_particles[4*i+1].color.a = (int)((1 - particles[i].life / lifetime_limit) * 120 + 135);
+            quadrupled_particles[4*i+2].color.a = (int)((1 - particles[i].life / lifetime_limit) * 120 + 135);
+            quadrupled_particles[4*i+3].color.a = (int)((1 - particles[i].life / lifetime_limit) * 120 + 135);
         }
     }
 
