@@ -83,7 +83,10 @@ class game : public engine::engineer{
         state.texture = atlasManager->get_texture().get();
 
         (*layers)[1]->draw(triangle,state);*/
-        grid->draw();
+        std::shared_ptr<engine::Text> text = engine::Text::create<engine::Text>();
+        text->set_text("dwajio");
+        text->draw();
+        //grid->draw();
         //(*layers)[1]->draw(triangle);
         
 
