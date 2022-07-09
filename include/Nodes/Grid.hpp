@@ -1,11 +1,7 @@
 #pragma once
 #include "Nodes/Node.hpp"
 
-class GUI : public Node
-{
-protected:
-    Layers::layer_ptr render_layer = Layers::get_instance()->get_layer(0);
-
+class Grid : public Node{
 public:
     virtual void onCreate() override {}
 protected:

@@ -2,7 +2,7 @@
 #include <memory>
 #include <vector>
 #include <algorithm>
-#include "Node.hpp" 
+#include "Nodes/Node.hpp" 
 
 using StrongNode = std::shared_ptr<Node>;
 using WeakNode = std::weak_ptr<Node>;
