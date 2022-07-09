@@ -9,11 +9,6 @@ Train::Train() :  animationManager("train", {{"idle", 1}}, "idle"), body({40.0, 
     trackModel.setOrigin(6.25, 10.0);
     body.setPosition(300.0, 300.0);
     trackModel.setPosition(300.0, 300.0);
-
-    if(!shader.loadFromFile("res/shaders/color_id_shader.vert","res/shaders/color_id_shader.frag"))
-        std::cout << "Failed to load shaders!\n";
-    shader.setParameter("texture", sf::Shader::CurrentTexture);
-    shader.setParameter("color_id", color_id);
 }
 
 void Train::onReady() {
@@ -74,5 +69,7 @@ void Train::onDraw() const
     //std::cout << color_id.r << ", " << color_id.g << ", " << color_id.b << std::endl;
     Layers* layers = Layers::get_instance();
     layers->get_layer(1)->draw(body, global_transform.getTransform());
-    ColorIDMap::get_instance()->get_color_layer()->draw(body, &shader);
+    auto shader = ColorIDMap::color_id_shader;
+    shader->setUniform("color_id", sf::Glsl::Vec4(color_id));
+    ColorIDMap::get_instance()->get_color_layer()->draw(body, shader);
 }

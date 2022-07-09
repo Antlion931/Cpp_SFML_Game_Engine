@@ -89,6 +89,11 @@ void Track::onDraw() const
     bar_line.draw(*render_layer, global_transform.getTransform());
     left_line.draw(*render_layer, global_transform.getTransform());
     right_line.draw(*render_layer, global_transform.getTransform());
+    auto shader = ColorIDMap::color_id_shader;
+    shader->setUniform("color_id", sf::Glsl::Vec4(color_id));
+    ColorIDMap::get_instance()->get_color_layer()->draw(bar_line, shader);
+    ColorIDMap::get_instance()->get_color_layer()->draw(left_line, shader);
+    ColorIDMap::get_instance()->get_color_layer()->draw(right_line, shader);
 }
 
 Track::~Track()

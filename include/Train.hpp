@@ -13,7 +13,6 @@ public:
     void onReady();
 
 private:
-    sf::Shader shader;
     float currentTime = 0.0;
     float tracksMakingTime = 0.07;
     float turningRate = 90.0;

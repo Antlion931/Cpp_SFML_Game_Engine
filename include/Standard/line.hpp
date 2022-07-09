@@ -4,7 +4,7 @@
 #include "math.hpp"
 
 namespace engine {
-    class PolyLine : sf::Drawable{
+    class PolyLine : public sf::Drawable{
         sf::VertexArray triangled_vertices = sf::VertexArray(sf::TriangleStrip);
         float thickness;
         sf::Vertex last_vertex;
@@ -47,7 +47,7 @@ namespace engine {
             }
     };
 
-    class DisconnectedLine : sf::Drawable {
+    class DisconnectedLine : public sf::Drawable {
         sf::VertexArray triangled_vertices = sf::VertexArray(sf::Quads);
         float thickness;
 
