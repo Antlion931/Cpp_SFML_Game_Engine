@@ -1,6 +1,7 @@
 #include "Train.hpp"
 #include "Layers.hpp"
 #include "ColorLookup.hpp"
+#include "SoundSystem.hpp"
 
 const float pi = 3.14159;
 
@@ -20,6 +21,9 @@ void Train::onReady() {
 void Train::die() {
     dead = true;
     sp->changeOrigin({-10000,-10000});
+    SoundSystem::getInstance()->setVolume("explosion.wav", 100.0f);
+    SoundSystem::getInstance()->playSound("explosion.wav");
+
 }
 
 void Train::onUpdate(const sf::Time& delta)
