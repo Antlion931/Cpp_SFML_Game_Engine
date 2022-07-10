@@ -8,10 +8,15 @@
 
 class Grid : public Node{
 public:
-    using hex_grid = std::vector<unsigned int>;
+    struct hex {
+        int current_tile;
+        int basic_tile;
+        int phase;
+    };
+    using hex_grid = std::vector<hex>;
 
-    unsigned int get(engine::Vec2i position) { return hexGrid[position.x % size.x + position.y % size.x];}
-    unsigned int get(unsigned int x, unsigned int y) { return hexGrid[x % size.x + y % size.x];}
+    //unsigned int get(engine::Vec2i position) { return hexGrid[position.x % size.x + position.y % size.x];}
+    //unsigned int get(unsigned int x, unsigned int y) { return hexGrid[x % size.x + y % size.x];}
 
     Grid(engine::Vec2i size, std::string tilesetName, engine::Vec2i tileSize) : size(size), tileSize(tileSize){
         atlasManager = new AtlasManager(tilesetName,tileSize,{});
@@ -69,6 +74,21 @@ public:
             for(int j = 0; j < size.y; j++)
             {
                 setTile({i,j},0);
+                hexGrid[i + j * size.x].basic_tile = 0; 
+                hexGrid[i + j * size.x].phase = std::rand()%frame_count; 
+            }
+        }
+    }
+
+    virtual void onUpdate(const sf::Time& delta) override {
+        elapsed_time += delta;
+        if(elapsed_time > time_between_frames) {
+            elapsed_time = sf::Time::Zero;
+            for (int i = 0; i < size.x; ++i)
+            for ( int j = 0; j < size.y; ++j)
+            {
+                hexGrid[i + j * size.x].current_tile = (hexGrid[i + j * size.x].current_tile + 1) % frame_count + hexGrid[i + j * size.x].basic_tile;
+                setTile({i,j}, (hexGrid[i + j * size.x].current_tile + hexGrid[i + j * size.x].phase)%4 + hexGrid[i + j * size.x].basic_tile);
             }
         }
     }
@@ -78,6 +98,10 @@ private:
 
     engine::Vec2i size;
     engine::Vec2i tileSize;
+    
+    int frame_count = 4;
+    sf::Time elapsed_time = sf::Time::Zero;
+    sf::Time time_between_frames = sf::seconds(0.5f);
 
     Layers* layers = Layers::get_instance();
 
@@ -89,5 +113,4 @@ protected:
         state.transform = global_transform.getTransform();
     (*layers)[3]->draw(vertices,state);
     }
-    virtual void onUpdate(const sf::Time& delta) {}
 };
