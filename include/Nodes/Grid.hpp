@@ -70,12 +70,17 @@ public:
         delete atlasManagerColl;
     }
 
-    void change_nearby_points(engine::Vec2f pos ,float radius) {
+    int change_nearby_points(engine::Vec2f pos ,float radius) {
+        int count = 0;
         for(auto &point : hexGrid) {
             if((pos - engine::Vec2f(global_transform.getTransform() * point.pos)).length_sq() < radius*radius) {
-                point.basic_tile = point.original_tile;
+                if(point.basic_tile != point.original_tile){
+                    point.basic_tile = point.original_tile;
+                    count++;
+                }
             }
         }
+        return count;
     }
 
     engine::Vec2f to_world_from_tile(engine::Vec2i tile_pos) {

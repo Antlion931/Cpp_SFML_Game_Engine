@@ -35,7 +35,7 @@ void Train::win() {
 
 void Train::onUpdate(const sf::Time& delta)
 {   
-    if(score > 100.f) {
+    if(cities >= 23) {
         win();
         return;
     }
