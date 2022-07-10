@@ -5,6 +5,7 @@
 #include <vector>
 #include "Layers.hpp"
 #include <fstream>
+#include "ColorLookup.hpp"
 
 class Grid : public Node{
 public:
@@ -117,6 +118,9 @@ public:
             }
         }
     }
+    void onReady() override {
+        ColorLookup::get_instance()->register_train_hit(color_id,el_train);
+    }
 private:
     AtlasManager* atlasManager;
     AtlasManager* atlasManagerColl;
@@ -132,11 +136,23 @@ private:
     Layers* layers = Layers::get_instance();
 
     sf::VertexArray vertices;
+
+    EventListener<std::shared_ptr<Node>> el_train = EventListener<std::shared_ptr<Node>>([this](std::shared_ptr<Node> train) {
+        std::dynamic_pointer_cast<Train>(train)->die();
+    });
+
 protected:
+
     virtual void onDraw() const {
         sf::RenderStates state;
         state.texture = atlasManager->get_texture().get();
         state.transform = global_transform.getTransform();
     (*layers)[3]->draw(vertices,state);
+
+        auto shader = ColorIDMap::color_id_shader;
+        shader->setUniform("color_id", sf::Glsl::Vec4(color_id));
+        sf::RenderStates rs;
+        rs.shader = shader; rs.transform = global_transform.getTransform(); rs.texture = atlasManagerColl->get_texture().get();
+        ColorIDMap::get_instance()->get_color_layer()->draw(vertices,rs);
     }
 };

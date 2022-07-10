@@ -1,5 +1,6 @@
 #include "Train.hpp"
 #include "Layers.hpp"
+#include "ColorLookup.hpp"
 
 const float pi = 3.14159;
 
@@ -16,8 +17,15 @@ void Train::onReady() {
     sp = Node::create<SmokeParticles>(shared_from_this());
 }
 
+void Train::die() {
+    dead = true;
+    sp->changeOrigin({-10000,-10000});
+}
+
 void Train::onUpdate(const sf::Time& delta)
 {
+    if(dead) return;
+
     currentTime += delta.asSeconds();
 
     if(currentTime > tracksMakingTime/speed)
@@ -63,18 +71,18 @@ void Train::onUpdate(const sf::Time& delta)
         animationManager.update(delta, false);
     }
 
-    if (check_collision((global_transform.getTransform() * body.getTransform()) * ((body.getPoint(0) + body.getPoint(1))/2.f))) {
-        std::cout << "oohohoh" << std::endl;
-    }
+    check_collision(getBodyFrontTranslation());
 }
 
-bool Train::check_collision(engine::Vec2f v) {
-    return false;
-
+void Train::check_collision(engine::Vec2f v) {
+    if(auto res = ColorIDMap::get_instance()->get_color_at_world(v)){
+        ColorLookup::get_instance()->emit_train_hit(res.value(),shared_from_this());
+    }
 }
 
 void Train::onDraw() const
 {
+    if(dead) return;
     //std::cout << color_id.r << ", " << color_id.g << ", " << color_id.b << std::endl;
     Layers* layers = Layers::get_instance();
     layers->get_layer(1)->draw(body, global_transform.getTransform());

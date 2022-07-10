@@ -8,10 +8,12 @@ class Train : public Node
 {
 public:
     Train(sf::Vector2f position);
-    bool check_collision(engine::Vec2f v);
+    void check_collision(engine::Vec2f v);
     void onUpdate(const sf::Time& delta);
     void onDraw() const;
     void onReady();
+
+    void die();
 
     sf::Vector2f getBodyFrontTranslation(){ return (global_transform.getTransform() * body.getTransform()) * ((body.getPoint(0) + body.getPoint(1))/2.f); }
     sf::Vector2f getBodyBackTranslation(){ return body.getPosition(); }
@@ -19,6 +21,7 @@ public:
     float turningRate = 90.0;
     float speed = 200.0f;
 private:
+    bool dead = false;
     float currentTime = 0.0;
     float tracksMakingTime = 14;
     float angle = 0.0f;

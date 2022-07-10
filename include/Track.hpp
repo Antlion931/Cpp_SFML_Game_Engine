@@ -11,6 +11,7 @@ public:
     ~Track();
     void add(sf::Vector2f left, sf::Vector2f right);
     void onDraw() const;
+    void onReady() override;
 
 private:
     std::vector<sf::Vertex*> bars;
@@ -22,6 +23,7 @@ private:
     sf::Color trackColor;
     sf::Color barsColor;
     float barsMultiplayer;
+    EventListener<std::shared_ptr<Node>> el_train;
 
     sf::Vertex* makeBar(sf::Vector2f left, sf::Vector2f right);
 };
