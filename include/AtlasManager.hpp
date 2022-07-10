@@ -19,8 +19,8 @@ public:
 public:
     using animation_map = std::unordered_map<std::string,animation>;
 
-    AtlasManager(const std::string& tileSetName, engine::Vec2i tileSize,
-    animation_map animation) : tileSize(tileSize), animationMap(animation)
+    AtlasManager(const std::string& tileSetName, engine::Vec2i tileSize,animation_map animation) 
+        : tileSize(tileSize), animationMap(animation)
     {
         std::cout << "res/textures/tilesets/"+tileSetName << std::endl;
         ResourceLoader* resourceLoader = ResourceLoader::get_instance();

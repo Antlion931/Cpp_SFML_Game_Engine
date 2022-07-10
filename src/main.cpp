@@ -72,6 +72,7 @@ class game : public engine::engineer{
         berlin->update(delta);
         train->update(delta);
         atlasManager->update(delta);
+        grid->update(delta);
 
 
 
