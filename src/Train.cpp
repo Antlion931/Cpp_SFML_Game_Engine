@@ -26,14 +26,11 @@ void Train::die() {
     SoundSystem::getInstance()->playSound("explosion.wav");
 
     fp = Node::create<FireParticles>(shared_from_this(), getBodyFrontTranslation());
-<<<<<<< HEAD
     std::shared_ptr<engine::Text> text;
     text = Node::create<engine::Text>(shared_from_this());
     text->set_text("Press R to restart");
     text->setSize(50);
     text->setTranslation({30.0, 800.0});
-=======
->>>>>>> origin/ver1.0
 }
 
 void Train::win() {
@@ -44,11 +41,7 @@ void Train::win() {
 
 void Train::onUpdate(const sf::Time& delta)
 {   
-<<<<<<< HEAD
-    if(round(score) >= 100.f) {
-=======
     if(cities >= 23) {
->>>>>>> origin/ver1.0
         win();
         return;
     }
