@@ -49,7 +49,7 @@ std::optional<sf::Color> ColorIDMap::get_color_at(engine::Vec2i at) {
     if(!((position.x < 0 || position.x > image.getSize().x) || (position.y < 0 || position.y > image.getSize().y)) )
     {
         auto color = image.getPixel(position.x,position.y);
-        if(color.r != 0 && color.g != 0 && color.b != 0 && color.a != 0) {
+        if(color.r != 0 || color.g != 0 || color.b != 0 || color.a != 0) {
             return std::optional<sf::Color>(color);
         }
     }

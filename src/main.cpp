@@ -36,8 +36,8 @@ class game : public engine::engineer{
         //animation_map m; m["test"] = {1.f,{0,0},4};
         //atlasManager = new AtlasManager("tilesheet.png",{32,32},m);
 
-        mainMenuScene = new MainMenuScene();
-        playLevelScene = new PlayLevelScene();
+        playLevelScene = new PlayLevelScene(window);
+        mainMenuScene = new MainMenuScene(&curr_scene, playLevelScene);
         curr_scene = (Scene*)mainMenuScene;
 
         //grid = Node::create<Grid>(engine::Vec2i(5,5), std::string("tilesheet.png"), engine::Vec2i(32,32));
@@ -52,11 +52,16 @@ class game : public engine::engineer{
         {
             if (event.type == sf::Event::Closed)
                 window.close();
-            if (event.type == sf::Event::MouseButtonPressed)
+            else if (event.type == sf::Event::MouseButtonReleased)
             { 
-
+                if (event.mouseButton.button == sf::Mouse::Left)
+                {
+                    if(auto v = ColorIDMap::get_instance()->get_color_at({event.mouseButton.x,event.mouseButton.y})){
+                        ColorLookup::get_instance()->emit_click(v.value());
+                    }
+                }
             }
-            if (event.type == sf::Event::KeyReleased)
+            else if (event.type == sf::Event::KeyReleased)
             {
                 if(event.key.code == sf::Keyboard::Space)
                 {
@@ -64,19 +69,13 @@ class game : public engine::engineer{
                     std::cout << is_color_map_visible << std::endl;
                 }
             }
-            if (event.type == sf::Event::MouseButtonPressed) {
+            else if (event.type == sf::Event::MouseButtonPressed) {
                 //pl.append_vertex(sf::Vertex({(float)event.mouseButton.x,(float)event.mouseButton.y}, sf::Color(255,0,0,255)));
             }
         }
 
 
-        // UPDATE VIEW (CAMERA FOLLOWS PLAYER)
-        /*sf::View new_view = window.getView();
-        new_view.setCenter(train->getBodyTranslation());
-        auto layers_vec = Layers::get_instance()->get_layers();
-        for(int i = layers_vec.size()-1; i >= 0; i--)
-            layers_vec[i]->setView(new_view);
-        ColorIDMap::get_instance()->get_color_layer()->setView(new_view);*/
+        
         curr_scene->update(delta);
     }
     void draw() override
