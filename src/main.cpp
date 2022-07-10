@@ -113,6 +113,7 @@ class game : public engine::engineer{
 
 int main()
 {
+    srand(time(NULL));
     game test;
     test.start();
     return 0;
