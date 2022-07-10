@@ -22,7 +22,7 @@ private:
         if(!repaired){
             std::dynamic_pointer_cast<Train>(train)->speed -= 2;
             std::dynamic_pointer_cast<Train>(train)->turningRate += 5;
-            std::dynamic_pointer_cast<Train>(train)->score += 1.f/24.f * 100.f;
+            std::dynamic_pointer_cast<Train>(train)->score += 1.f/23.f * 100.f;
             Repair();
             repaired = true;
         }

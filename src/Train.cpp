@@ -41,7 +41,7 @@ void Train::win() {
 
 void Train::onUpdate(const sf::Time& delta)
 {   
-    if(score > 100.f) {
+    if(round(score) >= 100.f) {
         win();
         return;
     }
