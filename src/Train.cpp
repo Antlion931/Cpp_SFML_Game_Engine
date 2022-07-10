@@ -23,8 +23,19 @@ void Train::die() {
     fp = Node::create<FireParticles>(shared_from_this(), getBodyFrontTranslation());
 }
 
+void Train::win() {
+    speed = 0.f;
+    sp->changeOrigin({-10000,-10000});
+    won = true;
+}
+
 void Train::onUpdate(const sf::Time& delta)
-{
+{   
+    if(score > 100.f) {
+        win();
+        return;
+    }
+
     if(dead) return;
 
     currentTime += delta.asSeconds();

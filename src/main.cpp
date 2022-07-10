@@ -70,6 +70,15 @@ class game : public engine::engineer{
                     is_color_map_visible = !is_color_map_visible;
                     std::cout << is_color_map_visible << std::endl;
                 }
+                else if(event.key.code == sf::Keyboard::R) {
+                    curr_scene = mainMenuScene;
+                    delete playLevelScene;
+                    playLevelScene = new PlayLevelScene(window);
+                    curr_scene = playLevelScene;
+                }
+                else if(event.key.code == sf::Keyboard::T) {
+                    playLevelScene->train->win();
+                }
             }
             else if (event.type == sf::Event::MouseButtonPressed) {
                 //pl.append_vertex(sf::Vertex({(float)event.mouseButton.x,(float)event.mouseButton.y}, sf::Color(255,0,0,255)));

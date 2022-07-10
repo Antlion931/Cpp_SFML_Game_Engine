@@ -14,12 +14,15 @@ public:
     void onReady();
 
     void die();
+    void win();
 
     sf::Vector2f getBodyFrontTranslation(){ return (global_transform.getTransform() * body.getTransform()) * ((body.getPoint(0) + body.getPoint(1))/2.f); }
     sf::Vector2f getBodyBackTranslation(){ return body.getPosition(); }
 
     float turningRate = 90.0;
     float speed = 200.0f;
+    float score = 0.f;
+    bool won = false;
 private:
     bool dead = false;
     float currentTime = 0.0;
