@@ -20,6 +20,7 @@ void Train::onReady() {
 void Train::die() {
     dead = true;
     sp->changeOrigin({-10000,-10000});
+    fp = Node::create<FireParticles>(shared_from_this(), getBodyFrontTranslation());
 }
 
 void Train::onUpdate(const sf::Time& delta)

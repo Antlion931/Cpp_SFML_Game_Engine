@@ -30,4 +30,5 @@ private:
     sf::RectangleShape body;
     sf::RectangleShape trackModel;
     std::shared_ptr<SmokeParticles> sp;
+    std::shared_ptr<FireParticles> fp;
 };
