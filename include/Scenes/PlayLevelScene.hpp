@@ -10,8 +10,8 @@ class PlayLevelScene : public Scene
     sf::RenderWindow& window;
 public:
     PlayLevelScene(sf::RenderWindow& window) : window(window) {
-        grid = Node::create<Grid>(engine::Vec2i(34,33), std::string("tilesheet.png"), engine::Vec2i(32,32));
-        grid->scale({5.f,5.f});
+        grid = Node::create<Grid>(engine::Vec2i(34,33), std::string("tilesheet3.png"), engine::Vec2i(32,32));
+        grid->scale({4.f,4.f});
         train = Node::create<Train>();
     }
 
