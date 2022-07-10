@@ -51,9 +51,8 @@ std::optional<std::weak_ptr<Node>> ColorIDMap::get_hovered_object()
     if(!((position.x < 0 || position.x > image.getSize().x) || (position.y < 0 || position.y > image.getSize().y)) )
     {
         auto color = image.getPixel(position.x,position.y);
-        if(m_color_map.count(color) > 0)
-        {
-            return std::optional<std::weak_ptr<Node>>(m_color_map[color]);
+        if(color.r != 0 || color.g != 0 || color.b != 0 || color.a != 0) {
+            return std::optional<sf::Color>(color);
         }
     }
     return {};

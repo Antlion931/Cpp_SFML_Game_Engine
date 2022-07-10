@@ -3,7 +3,7 @@
 #include "Standard/Events/event_emitter.hpp"
 #include "AnimationManager.hpp"
 #include "Loaders/ResourceLoader.hpp"
-
+#include "ColorLookup.hpp"
 
 class Button : public GUI
 {
@@ -15,9 +15,11 @@ public:
         texture = sf::Sprite(*(resourceLoader->get_texture(name)));
         texture.setScale({3.5f,3.5f});
     }
-    void onClick() { eventEmitter.emit(); }
-protected:
-    EventEmitter<> eventEmitter;
+
+    void wire_callback(EventListener<> listener) {
+        ColorLookup::get_instance()->register_click(color_id, listener);
+    }
+
 protected:
     virtual void onDraw() const {
         render_layer->draw(texture);
@@ -30,10 +32,6 @@ protected:
     }
 private:
     sf::Sprite texture;
-    EventListener<int> el = EventListener<int>([this](int n) {
-            std::cout << n << std::endl;
-          });
-
 };
 
 
