@@ -25,7 +25,10 @@ public:
     float cities = 0;
     bool won = false;
 private:
+    sf::Vector2f getRoundPosition();
+    int count = 3;
     bool dead = false;
+    bool started = true;
     float currentTime = 0.0;
     float tracksMakingTime = 14;
     float angle = 0.0f;

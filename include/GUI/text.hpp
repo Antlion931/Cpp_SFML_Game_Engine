@@ -27,8 +27,8 @@ namespace engine
             text.setCharacterSize(x);
         }
 
-    protected:
         sf::Text text;
+    protected:
         virtual void onDraw() const {
             render_layer->draw(text, global_transform.getTransform());
         }

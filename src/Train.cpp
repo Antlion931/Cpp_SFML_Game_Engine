@@ -3,6 +3,7 @@
 #include "ColorLookup.hpp"
 #include "SoundSystem.hpp"
 #include "GUI/text.hpp"
+#include "GUI/CountText.hpp"
 
 const float pi = 3.14159;
 
@@ -12,11 +13,19 @@ Train::Train(sf::Vector2f position) :  animationManager("train", {{"idle", 1}}, 
     trackModel.setOrigin(6.25, 10.0);
     body.setPosition(position);
     trackModel.setPosition(body.getPosition());
+
+    body.setTexture(animationManager.getTexture().get());
+    body.setTextureRect(animationManager.getIntRect());
 }
 
 void Train::onReady() {
     track = Node::create<Track>(shared_from_this(),(global_transform.getTransform() * trackModel.getTransform()) * ((trackModel.getPoint(1) + trackModel.getPoint(2))/2.f),(global_transform.getTransform() * trackModel.getTransform()) * ((trackModel.getPoint(3)+trackModel.getPoint(4))/2.f));
     sp = Node::create<SmokeParticles>(shared_from_this());
+}
+
+sf::Vector2f Train::getRoundPosition()
+{
+    return {body.getPosition().x + rand()%500 - 250, body.getPosition().y + rand()%500 - 250 };
 }
 
 void Train::die() {
@@ -49,6 +58,62 @@ void Train::onUpdate(const sf::Time& delta)
     if(dead) return;
 
     currentTime += delta.asSeconds();
+
+    if(started)
+    {
+        if(currentTime > 0.8f)
+        {
+            switch (count)
+            {
+            case 3:
+                {
+                    SoundSystem::getInstance()->playSound("blipSelect.wav");
+
+                    std::shared_ptr<CountText> ct = Node::create<CountText>(shared_from_this(), "3");
+                    ct->setLayer(1);
+                    ct->text.setOutlineThickness(4);
+                    ct->setTranslation(getRoundPosition());
+                }
+            break;
+
+            case 2:
+                {
+                    SoundSystem::getInstance()->playSound("blipSelect.wav");
+                    std::shared_ptr<CountText> ct = Node::create<CountText>(shared_from_this(), "2");
+                    ct->setLayer(1);
+                    ct->text.setOutlineThickness(4);
+                    ct->setTranslation(getRoundPosition());
+                }
+            break;
+
+            case 1:
+                {
+                    SoundSystem::getInstance()->playSound("blipSelect.wav");
+
+                    std::shared_ptr<CountText> ct = Node::create<CountText>(shared_from_this(), "1");
+                    ct->setLayer(1);
+                    ct->text.setOutlineThickness(4);
+                    ct->setTranslation(getRoundPosition());
+                }
+            break;
+
+            case 0:
+                {
+                    SoundSystem::getInstance()->playSound("Go.wav");
+
+                    std::shared_ptr<CountText> ct = Node::create<CountText>(shared_from_this(), "GO!");
+                    ct->setLayer(1);
+                    ct->text.setOutlineThickness(4);
+                    ct->setTranslation(body.getPosition());
+                    started = false;
+                }
+
+            }
+            currentTime = 0.0f;
+            count--;
+        }
+        return;
+    }
 
     if(currentTime > tracksMakingTime/speed)
     {
