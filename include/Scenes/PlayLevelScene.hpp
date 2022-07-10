@@ -39,12 +39,14 @@ public:
         warszawa->draw();
     }
     virtual void update(const sf::Time& delta) {
-        grid->update(delta);
         train->update(delta);
+        grid->change_nearby_points(train->getBodyTranslation(), 150);
+        grid->update(delta);
         playersScore->update(delta);
         playersSpeed->update(delta);
         playersTurnSpeed->update(delta);
         warszawa->update(delta);
+
 
         // UPDATE VIEW (CAMERA FOLLOWS PLAYER)
         sf::View new_view = window.getView();
