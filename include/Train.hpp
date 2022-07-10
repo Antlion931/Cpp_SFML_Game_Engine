@@ -13,7 +13,8 @@ public:
     void onDraw() const;
     void onReady();
 
-    sf::Vector2f getBodyTranslation(){ return body.getPosition(); }
+    sf::Vector2f getBodyFrontTranslation(){ return (global_transform.getTransform() * body.getTransform()) * ((body.getPoint(0) + body.getPoint(1))/2.f); }
+    sf::Vector2f getBodyBackTranslation(){ return body.getPosition(); }
 
     float turningRate = 90.0;
     float speed = 200.0f;

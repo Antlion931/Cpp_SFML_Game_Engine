@@ -30,7 +30,7 @@ sf::Color ColorIDMap::generate_unique_color_id(std::weak_ptr<Node> node)
     green = id % 256;
     id /= 256;
     red =   id % 256;
-    
+
     auto color = sf::Color(red,green,blue,255);
 
     curr_node_id+=9777;

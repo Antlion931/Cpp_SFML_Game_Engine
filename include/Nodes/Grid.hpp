@@ -11,7 +11,9 @@ public:
     struct hex {
         int current_tile;
         int basic_tile;
+        int original_tile;
         int phase;
+        engine::Vec2f pos;
     };
     using hex_grid = std::vector<hex>;
 
@@ -25,7 +27,6 @@ public:
         vertices.setPrimitiveType(sf::Quads);
         vertices.resize(size.x * size.y * 4);
         hexGrid.resize(size.x * size.y);
-        tileIDs.resize(size.x * size.y);
         loadTileDataFromFile("res/mapa.csv");
 
         for (int i = 0; i < size.x; ++i)
@@ -42,6 +43,7 @@ public:
             quad[1].position = sf::Vector2f((i + 1) * tileSize.x + offsetx, j * tileSize.y - offsety);
             quad[2].position = sf::Vector2f((i + 1) * tileSize.x + offsetx, (j + 1) * tileSize.y - offsety);
             quad[3].position = sf::Vector2f(i * tileSize.x + offsetx, (j + 1) * tileSize.y - offsety);
+            hexGrid[(i + j * size.x)].pos = {i * tileSize.x + offsetx + 0.5f * tileSize.x, j * tileSize.y - offsety + 0.5f * tileSize.y};
         }
 
     }
@@ -64,6 +66,21 @@ public:
     ~Grid(){
         delete atlasManager;
     }
+
+    void change_nearby_points(engine::Vec2f pos ,float radius) {
+        for(auto &point : hexGrid) {
+            if((pos - engine::Vec2f(global_transform.getTransform() * point.pos)).length_sq() < radius*radius) {
+                point.basic_tile = point.original_tile;
+            }
+        }
+    }
+
+    engine::Vec2f to_world_from_tile(engine::Vec2i tile_pos) {
+        float offsetx = (tile_pos.y % 2 == 1) * 16;
+        float offsety = tile_pos.y * 10;
+        return engine::Vec2f(global_transform.getTransform() * engine::Vec2f{tile_pos.x * tileSize.x + offsetx + 0.5f * tileSize.x, tile_pos.y * tileSize.y - offsety + 0.5f * tileSize.y});
+    }
+
     void loadTileDataFromFile(std::string filePath)
     {
         std::ifstream in(filePath);
@@ -73,13 +90,11 @@ public:
             {
                 int id;
                 in >> id;
-                tileIDs[i + j * size.x] = id;
-                
-                // wyjalowanie mapy
+                hexGrid[i + j * size.x].original_tile = id; 
                 if(id == 4 || id == 8)
                     id = 0;
-                if(id == 16) id = 20;
-
+                if(id == 16) 
+                    id = 20;
                 setTile({i,j},id);
                 hexGrid[i + j * size.x].basic_tile = id; 
                 hexGrid[i + j * size.x].phase = std::rand()%frame_count; 
@@ -103,7 +118,6 @@ public:
 private:
     AtlasManager* atlasManager;
     hex_grid hexGrid;
-    std::vector<unsigned int> tileIDs;
 
     engine::Vec2i size;
     engine::Vec2i tileSize;

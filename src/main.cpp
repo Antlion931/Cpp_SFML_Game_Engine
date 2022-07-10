@@ -74,6 +74,12 @@ class game : public engine::engineer{
             else if (event.type == sf::Event::MouseButtonPressed) {
                 //pl.append_vertex(sf::Vertex({(float)event.mouseButton.x,(float)event.mouseButton.y}, sf::Color(255,0,0,255)));
             }
+            // else if (event.type == sf::Event::MouseMoved)
+            // {
+            //     if(auto v = ColorIDMap::get_instance()->get_color_at({event.mouseMove.x,event.mouseMove.y})){
+            //             ColorLookup::get_instance()->emit_hover(v.value());
+            //     }
+            // }
         }
 
 
