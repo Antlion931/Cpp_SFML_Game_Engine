@@ -2,11 +2,15 @@
 #include "SoundSystem.hpp"
 #include "ColorLookup.hpp"
 
-Town::Town(std::string _name, bool isItBig, sf::Vector2f position) : animationManager((isItBig ? "bigTown" : "smallTown"), {{"dead", 2}, {"idle", 14.5 }}, "dead"), body({80, 80})
+Town::Town(std::string _name, bool isItBig, sf::Vector2f position) 
+    : animationManager((isItBig ? "bigTown" : "smallTown"), {{"dead", 2}, {"idle", 14.5 }}, "dead"), 
+    body({80, 80}), collision({120,120})
 {
     name = _name;
     body.setOrigin(40, 40);
+    collision.setOrigin(60,60);
     body.setPosition(position);
+    collision.setPosition(position);
 }
 
 void Town::Repair()
@@ -43,7 +47,7 @@ void Town::onDraw() const
     shader->setUniform("color_id", sf::Glsl::Vec4(color_id));
     sf::RenderStates rs;
     rs.shader = shader; rs.transform = global_transform.getTransform();
-    ColorIDMap::get_instance()->get_color_layer()->draw(body,rs);
+    ColorIDMap::get_instance()->get_color_layer()->draw(collision,rs);
 
 }
     

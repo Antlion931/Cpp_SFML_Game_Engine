@@ -21,13 +21,10 @@ void Train::onReady() {
 void Train::die() {
     dead = true;
     sp->changeOrigin({-10000,-10000});
-<<<<<<< HEAD
     SoundSystem::getInstance()->setVolume("explosion.wav", 100.0f);
     SoundSystem::getInstance()->playSound("explosion.wav");
 
-=======
     fp = Node::create<FireParticles>(shared_from_this(), getBodyFrontTranslation());
->>>>>>> origin/ver1.0
 }
 
 void Train::win() {

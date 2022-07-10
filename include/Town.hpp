@@ -17,6 +17,7 @@ private:
     std::string name;
     AnimationManager animationManager;
     sf::RectangleShape body;
+    sf::RectangleShape collision;
     std::shared_ptr<engine::Text> text;
     EventListener<std::shared_ptr<Node>> el_train = EventListener<std::shared_ptr<Node>>([this](std::shared_ptr<Node> train) {
         if(!repaired){
