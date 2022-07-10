@@ -9,7 +9,7 @@ class MainMenuScene : public Scene
 public:
     MainMenuScene(Scene** curr_scene_ptr, PlayLevelScene* playLevelScene) : curr_scene_ptr(curr_scene_ptr), playLevelScene(playLevelScene)
     {
-        playButton = Node::create<Button>(std::string("play_button.png"));
+        playButton = Node::create<Button>(std::string("play_sign.png"));
         playButton->wire_callback(el);
     }
     virtual void draw() {
