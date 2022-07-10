@@ -1,3 +1,4 @@
+#include "ColorLookup.hpp"
 #include "Track.hpp"
 #include "ColorLookup.hpp"
 #include <iostream>
@@ -5,7 +6,9 @@
 Track::Track(sf::Vector2f left, sf::Vector2f right) : 
     trackColor(100,100,100), barsColor(134,82,45), barsMultiplayer(1.7f), 
     left_line(sf::Vertex(left, {100,100,100}), 1), right_line(sf::Vertex(right, {100,100,100}), 1),
-    bar_line(4)
+    bar_line(4), el_train([this](std::shared_ptr<Node> train) {
+        std::dynamic_pointer_cast<Train>(train)->die();
+    })
 {
     sf::Vertex* buffor = new sf::Vertex[2];
 
@@ -111,4 +114,9 @@ Track::~Track()
     {
         delete[] line;
     }
+}
+
+void Track::onReady() {
+    ColorLookup::get_instance()->register_train_hit(color_id,el_train);
+
 }

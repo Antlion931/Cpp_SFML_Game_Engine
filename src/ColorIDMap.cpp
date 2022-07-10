@@ -46,7 +46,7 @@ ColorIDMap::layer_ptr ColorIDMap::get_color_layer()
 std::optional<sf::Color> ColorIDMap::get_color_at(engine::Vec2i at) {
     sf::Vector2i position = at;
     auto image = m_color_layer->getTexture().copyToImage();
-    if(!((position.x < 0 || position.x > image.getSize().x) || (position.y < 0 || position.y > image.getSize().y)) )
+    if(!((position.x < 0 || position.x >= image.getSize().x) || (position.y < 0 || position.y >= image.getSize().y)) )
     {
         auto color = image.getPixel(position.x,position.y);
         if(color.r != 0 || color.g != 0 || color.b != 0 || color.a != 0) {
@@ -54,6 +54,10 @@ std::optional<sf::Color> ColorIDMap::get_color_at(engine::Vec2i at) {
         }
     }
     return {};
+}
+
+std::optional<sf::Color> ColorIDMap::get_color_at_world(engine::Vec2f at) {
+    return get_color_at(m_color_layer->mapCoordsToPixel(at));
 }
 
 void ColorIDMap::set_window(sf::RenderWindow* _window)

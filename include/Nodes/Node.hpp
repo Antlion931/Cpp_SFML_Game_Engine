@@ -24,6 +24,7 @@ public:
     layer_ptr get_color_layer();
 
     std::optional<sf::Color> get_color_at(engine::Vec2i at);
+    std::optional<sf::Color> get_color_at_world(engine::Vec2f at);
 
     void set_window(sf::RenderWindow* _window);
 
@@ -33,7 +34,7 @@ private:
     static ColorIDMap* m_instance;
 
     layer_ptr m_color_layer;
-    int curr_node_id = 1050;
+    int curr_node_id = 2215;
 
     const sf::RenderWindow* window;
 
