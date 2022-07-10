@@ -19,6 +19,7 @@
 #include "Nodes/Grid.hpp"
 #include "Standard/CenterString.hpp"
 #include "Nodes/smoke.hpp"
+#include "GUI/InGameText.hpp"
 
 class game : public engine::engineer{
     using animation_map = std::unordered_map<std::string,AtlasManager::animation>;
@@ -29,14 +30,20 @@ class game : public engine::engineer{
         musicSystem = MusicSystem::getInstance("res/musics/");
         soundSystem = SoundSystem::getInstance("res/sounds/");
         musicSystem->playMusic("winter.wav");
+        musicSystem->setVolume("winter.wav", 100.0);
         musicSystem->setRepeat("winter.wav", true);
-        spriteNode = Node::create<SpriteNode>();
-        warszawa = Node::create<Town>(center("Warszawa"), true, sf::Vector2f(500.0f, 500.0f));
-        berlin = Node::create<Town>(center("Berlin"), false, sf::Vector2f(350.0f, 500.0f));
         train = Node::create<Train>();
         animation_map m;
         m["test"] = {1.f,{0,0},4};
         atlasManager = new AtlasManager("tilesheet.png",{32,32},m);
+
+        PlayersScore = Node::create<InGameText>("Score: ", &score, " %", true);
+        PlayersSpeed = Node::create<InGameText>("Speed: ", &train->speed, "", false);
+        PlayersTurningSpeed = Node::create<InGameText>("Turning Speed: ", &train->turningRate, "", true);
+
+        PlayersScore->setTranslation({20.0, 30.0});
+        PlayersSpeed->setTranslation({20.0, 60.0});
+        PlayersTurningSpeed->setTranslation({20.0, 90.0});
 
         grid = Node::create<Grid>(engine::Vec2i(5,5), std::string("tilesheet.png"), engine::Vec2i(32,32));
         grid->scale({5.f,5.f});
@@ -45,6 +52,9 @@ class game : public engine::engineer{
     }
     void update(const sf::Time& delta) override
     {
+        PlayersScore->update(delta);
+        PlayersSpeed->update(delta);
+        PlayersTurningSpeed->update(delta);
         sf::Event event;
         while (window.pollEvent(event))
         {
@@ -62,29 +72,43 @@ class game : public engine::engineer{
                     is_color_map_visible = !is_color_map_visible;
                     std::cout << is_color_map_visible << std::endl;
                 }
+                if(event.key.code == sf::Keyboard::Q)
+                {
+                    train->speed += 30.0; 
+                }
+                if(event.key.code == sf::Keyboard::A)
+                {
+                    train->speed -= 30.0;
+                }
+                if(event.key.code == sf::Keyboard::W)
+                {
+                    train->turningRate += 10.0;
+                }
+                if(event.key.code == sf::Keyboard::S)
+                {
+                    train->turningRate -= 10.0;
+                }
             }
             if (event.type == sf::Event::MouseButtonPressed) {
                 //pl.append_vertex(sf::Vertex({(float)event.mouseButton.x,(float)event.mouseButton.y}, sf::Color(255,0,0,255)));
             }
         }
-        spriteNode->update(delta);
-        warszawa->update(delta);
-        berlin->update(delta);
         train->update(delta);
         atlasManager->update(delta);
-
-
 
         // UPDATE VIEW (CAMERA FOLLOWS PLAYER)
         sf::View new_view = window.getView();
         new_view.setCenter(train->getBodyTranslation());
         auto layers_vec = Layers::get_instance()->get_layers();
-        for(int i = layers_vec.size()-1; i >= 0; i--)
+        for(int i = layers_vec.size()-1; i > 0; i--)
             layers_vec[i]->setView(new_view);
         ColorIDMap::get_instance()->get_color_layer()->setView(new_view);
     }
     void draw() override
     {
+        PlayersScore->draw();
+        PlayersSpeed->draw();
+        PlayersTurningSpeed->draw();
         /*sf::VertexArray triangle(sf::Quads, 4);
         // 35 x 30
         // define the position of the triangle's points
@@ -112,20 +136,17 @@ class game : public engine::engineer{
         
 
         train->draw();
-        spriteNode->draw();
-        warszawa->draw();
-        berlin->draw();
         train->draw();
     }
     private:
+    float score;
     // systems
     MusicSystem* musicSystem;
     SoundSystem* soundSystem;
     std::shared_ptr<Train> train;
-    std::shared_ptr<SpriteNode> spriteNode;
-    std::shared_ptr<Town> warszawa;
-    std::shared_ptr<Town> berlin;
-
+    std::shared_ptr<InGameText> PlayersTurningSpeed;
+    std::shared_ptr<InGameText> PlayersSpeed;
+    std::shared_ptr<InGameText> PlayersScore;
     AtlasManager* atlasManager;
     std::shared_ptr<Grid> grid;
 };

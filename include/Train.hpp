@@ -15,11 +15,11 @@ public:
 
     sf::Vector2f getBodyTranslation(){ return body.getPosition(); }
 
+    float turningRate = 90.0;
+    float speed = 200.0f;
 private:
     float currentTime = 0.0;
-    float tracksMakingTime = 0.07;
-    float turningRate = 90.0;
-    float speed = -200.0f;
+    float tracksMakingTime = 14;
     float angle = 0.0f;
     std::shared_ptr<Track> track;
     AnimationManager animationManager;

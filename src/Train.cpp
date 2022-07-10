@@ -20,9 +20,9 @@ void Train::onUpdate(const sf::Time& delta)
 {
     currentTime += delta.asSeconds();
 
-    if(currentTime > tracksMakingTime)
+    if(currentTime > tracksMakingTime/speed)
     {
-        currentTime -= tracksMakingTime;
+        currentTime -= tracksMakingTime/speed;
         track->add((global_transform.getTransform() * trackModel.getTransform()) * ((trackModel.getPoint(1) + trackModel.getPoint(2))/2.f),(global_transform.getTransform() * trackModel.getTransform()) * ((trackModel.getPoint(3)+trackModel.getPoint(4))/2.f));
     }
 
@@ -47,7 +47,7 @@ void Train::onUpdate(const sf::Time& delta)
 
     body.setRotation(-angle);
     trackModel.setRotation(body.getRotation());
-    engine::Vec2f vel = {(float)(speed * delta.asSeconds() * std::sin(angle / 180.0 * pi)), (float)(speed * delta.asSeconds() * std::cos(angle / 180.0 * pi))};
+    engine::Vec2f vel = {(float)(-speed * delta.asSeconds() * std::sin(angle / 180.0 * pi)), (float)(-speed * delta.asSeconds() * std::cos(angle / 180.0 * pi))};
     body.move(vel);
     trackModel.setPosition(body.getPosition());
     body.setTexture(animationManager.getTexture().get());
