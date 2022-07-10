@@ -22,6 +22,7 @@ public:
     float turningRate = 90.0;
     float speed = 200.0f;
     float score = 0.f;
+    float cities = 0;
     bool won = false;
 private:
     bool dead = false;

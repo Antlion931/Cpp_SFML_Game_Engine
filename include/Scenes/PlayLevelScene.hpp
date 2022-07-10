@@ -9,6 +9,7 @@ public:
     std::shared_ptr<Grid> grid;
     std::shared_ptr<Train> train;
     std::shared_ptr<InGameText> playersScore;
+    std::shared_ptr<InGameText> playersCities;
     std::shared_ptr<InGameText> playersSpeed;
     std::shared_ptr<InGameText> playersTurnSpeed;
     std::vector<std::shared_ptr<Town>> towns;
@@ -21,13 +22,15 @@ public:
         grid = Node::create<Grid>(engine::Vec2i(39,44), std::string("tilesheet3.png"), engine::Vec2i(32,32));
         grid->scale({4.f,4.f});
         train = Node::create<Train>(grid->to_world_from_tile({21,22}));
-        playersScore = Node::create<InGameText>("Score: ", &train->score, " %", true);
+        playersScore = Node::create<InGameText>("Score: ", &train->score, "", true);
+        playersCities = Node::create<InGameText>("Connected Cities: ", &train->cities, " / 23", true);
         playersSpeed = Node::create<InGameText>("Speed: ", &train->speed, "", false);
-        playersTurnSpeed = Node::create<InGameText>("TurningSpeed: ", &train->turningRate, "", true);
+        playersTurnSpeed = Node::create<InGameText>("Turning Speed: ", &train->turningRate, "", true);
 
         playersScore->setTranslation({30.0, 30.0});
-        playersSpeed->setTranslation({30.0, 60.0});
-        playersTurnSpeed->setTranslation({30.0, 90.0});
+        playersCities->setTranslation({30.0, 60.0});
+        playersSpeed->setTranslation({30.0, 90.0});
+        playersTurnSpeed->setTranslation({30.0, 120.0});
 
         towns.push_back(Node::create<Town>(center("Warsaw"), true, grid->to_world_from_tile({17,18})));
         towns.push_back(Node::create<Town>(center("Berlin"), true, grid->to_world_from_tile({12,18})));
@@ -59,6 +62,7 @@ public:
         grid->draw();
         train->draw();
         playersScore->draw();
+        playersCities->draw();
         playersSpeed->draw();
         playersTurnSpeed->draw();
         for(auto t : towns)
@@ -68,9 +72,10 @@ public:
     }
     virtual void update(const sf::Time& delta) {
         train->update(delta);
-        grid->change_nearby_points(train->getBodyFrontTranslation(), 100);
+        train->score += 10 * grid->change_nearby_points(train->getBodyFrontTranslation(), 100);
         grid->update(delta);
         playersScore->update(delta);
+        playersCities->update(delta);
         playersSpeed->update(delta);
         playersTurnSpeed->update(delta);
         for(auto t : towns)

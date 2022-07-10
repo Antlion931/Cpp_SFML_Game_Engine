@@ -17,12 +17,18 @@ private:
     std::string name;
     AnimationManager animationManager;
     sf::RectangleShape body;
+    sf::RectangleShape collision;
     std::shared_ptr<engine::Text> text;
     EventListener<std::shared_ptr<Node>> el_train = EventListener<std::shared_ptr<Node>>([this](std::shared_ptr<Node> train) {
         if(!repaired){
             std::dynamic_pointer_cast<Train>(train)->speed -= 2;
             std::dynamic_pointer_cast<Train>(train)->turningRate += 5;
+<<<<<<< HEAD
             std::dynamic_pointer_cast<Train>(train)->score += 1.f/23.f * 100.f;
+=======
+            std::dynamic_pointer_cast<Train>(train)->score += 500;
+            std::dynamic_pointer_cast<Train>(train)->cities += 1;
+>>>>>>> origin/ver1.0
             Repair();
             repaired = true;
         }
