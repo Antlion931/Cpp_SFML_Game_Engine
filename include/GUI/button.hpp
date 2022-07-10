@@ -25,10 +25,12 @@ public:
 
 protected:
     virtual void onDraw() const {
-        render_layer->draw(texture);
+        render_layer->draw(texture, global_transform.getTransform());
         auto shader = ColorIDMap::color_id_shader;
         shader->setUniform("color_id", sf::Glsl::Vec4(color_id));
-        ColorIDMap::get_instance()->get_color_layer()->draw(texture, shader);
+        sf::RenderStates rs;
+        rs.shader = shader; rs.transform = global_transform.getTransform();
+        ColorIDMap::get_instance()->get_color_layer()->draw(texture,rs);
     }
     virtual void onUpdate(const sf::Time& delta) {  
         if(hovered) {

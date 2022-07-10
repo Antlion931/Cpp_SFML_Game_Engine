@@ -40,7 +40,7 @@ private:
     ColorIDMap()
     {
         m_color_layer = std::make_shared<sf::RenderTexture>();
-        m_color_layer->create(800,800);
+        m_color_layer->create(1600,900);
     }
 };
 

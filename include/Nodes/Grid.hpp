@@ -22,6 +22,7 @@ public:
 
     Grid(engine::Vec2i size, std::string tilesetName, engine::Vec2i tileSize) : size(size), tileSize(tileSize){
         atlasManager = new AtlasManager(tilesetName,tileSize,{});
+        atlasManagerColl = new AtlasManager("tilesheetcoll.png",tileSize,{});
 
         // LOAD VERTICES
         vertices.setPrimitiveType(sf::Quads);
@@ -65,6 +66,7 @@ public:
     }
     ~Grid(){
         delete atlasManager;
+        delete atlasManagerColl;
     }
 
     void change_nearby_points(engine::Vec2f pos ,float radius) {
@@ -117,6 +119,7 @@ public:
     }
 private:
     AtlasManager* atlasManager;
+    AtlasManager* atlasManagerColl;
     hex_grid hexGrid;
 
     engine::Vec2i size;

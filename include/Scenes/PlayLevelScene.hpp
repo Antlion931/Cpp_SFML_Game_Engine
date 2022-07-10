@@ -30,7 +30,7 @@ public:
         towns.push_back(Node::create<Town>(center("Warsaw"), true, grid->to_world_from_tile({15,12})));
         towns.push_back(Node::create<Town>(center("Berlin"), true, grid->to_world_from_tile({10,12})));
         towns.push_back(Node::create<Town>(center("Kiev"), true, grid->to_world_from_tile({22,16})));
-        towns.push_back(Node::create<Town>(center("Tirana"), false, grid->to_world_from_tile({14,20})));
+        towns.push_back(Node::create<Town>(center("Tirana"), false, grid->to_world_from_tile({14,29})));
         towns.push_back(Node::create<Town>(center("Bratislava"), false, grid->to_world_from_tile({12,19})));
         towns.push_back(Node::create<Town>(center("Vienna"), true, grid->to_world_from_tile({11,19})));
         towns.push_back(Node::create<Town>(center("Minsk"), true, grid->to_world_from_tile({20,10})));
@@ -42,7 +42,7 @@ public:
         towns.push_back(Node::create<Town>(center("Chisinau"), false, grid->to_world_from_tile({20,21})));
         towns.push_back(Node::create<Town>(center("Ljubljana"), false, grid->to_world_from_tile({11,22})));
         towns.push_back(Node::create<Town>(center("Bucharest"), true, grid->to_world_from_tile({18,25})));
-        towns.push_back(Node::create<Town>(center("Budapest"), true, sf::Vector2f(500.0, 2000.0)));
+        towns.push_back(Node::create<Town>(center("Budapest"), true, grid->to_world_from_tile({14,20})));
         towns.push_back(Node::create<Town>(center("Prague"), true, grid->to_world_from_tile({11,16})));
         towns.push_back(Node::create<Town>(center("Belgrade"), true, grid->to_world_from_tile({15,24})));
         towns.push_back(Node::create<Town>(center("Zagreb"), false, grid->to_world_from_tile({12,23})));
