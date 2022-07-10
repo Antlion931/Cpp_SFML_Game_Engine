@@ -8,15 +8,18 @@ class Train : public Node
 {
 public:
     Train();
+    bool check_collision(engine::Vec2f v);
     void onUpdate(const sf::Time& delta);
     void onDraw() const;
     void onReady();
+
+    sf::Vector2f getBodyTranslation(){ return body.getPosition(); }
 
 private:
     float currentTime = 0.0;
     float tracksMakingTime = 0.07;
     float turningRate = 90.0;
-    float speed = -100.0f;
+    float speed = -200.0f;
     float angle = 0.0f;
     std::shared_ptr<Track> track;
     AnimationManager animationManager;

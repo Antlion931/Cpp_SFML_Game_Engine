@@ -1,4 +1,5 @@
 #include "Track.hpp"
+#include "ColorLookup.hpp"
 #include <iostream>
 
 Track::Track(sf::Vector2f left, sf::Vector2f right) : 
@@ -27,8 +28,6 @@ Track::Track(sf::Vector2f left, sf::Vector2f right) :
     rightTrack.push_back(buffor);
 
     bars.push_back(makeBar(left, right));
-
-
 }
 
 sf::Vertex* Track::makeBar(sf::Vector2f left, sf::Vector2f right)

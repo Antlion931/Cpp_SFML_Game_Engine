@@ -61,7 +61,6 @@ class game : public engine::engineer{
                 {
                     is_color_map_visible = !is_color_map_visible;
                     std::cout << is_color_map_visible << std::endl;
-
                 }
             }
             if (event.type == sf::Event::MouseButtonPressed) {
@@ -73,6 +72,16 @@ class game : public engine::engineer{
         berlin->update(delta);
         train->update(delta);
         atlasManager->update(delta);
+
+
+
+        // UPDATE VIEW (CAMERA FOLLOWS PLAYER)
+        sf::View new_view = window.getView();
+        new_view.setCenter(train->getBodyTranslation());
+        auto layers_vec = Layers::get_instance()->get_layers();
+        for(int i = layers_vec.size()-1; i >= 0; i--)
+            layers_vec[i]->setView(new_view);
+        ColorIDMap::get_instance()->get_color_layer()->setView(new_view);
     }
     void draw() override
     {
@@ -107,8 +116,6 @@ class game : public engine::engineer{
         warszawa->draw();
         berlin->draw();
         train->draw();
-        if(colorIDMap->get_hovered_object())
-            std::cout << "hover!\n";
     }
     private:
     // systems

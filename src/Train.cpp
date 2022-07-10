@@ -47,9 +47,9 @@ void Train::onUpdate(const sf::Time& delta)
 
     body.setRotation(-angle);
     trackModel.setRotation(body.getRotation());
-    body.move({(float)(speed * delta.asSeconds() * std::sin(angle / 180.0 * pi)), (float)(speed * delta.asSeconds() * std::cos(angle / 180.0 * pi))});
+    engine::Vec2f vel = {(float)(speed * delta.asSeconds() * std::sin(angle / 180.0 * pi)), (float)(speed * delta.asSeconds() * std::cos(angle / 180.0 * pi))};
+    body.move(vel);
     trackModel.setPosition(body.getPosition());
-    body.move({(float)(speed * delta.asSeconds() * std::sin(angle / 180.0 * pi)), (float)(speed * delta.asSeconds() * std::cos(angle / 180.0 * pi))});
     body.setTexture(animationManager.getTexture().get());
     body.setTextureRect(animationManager.getIntRect());
     sp->changeOrigin((global_transform.getTransform() * body.getTransform()) * (body.getPoint(angle > 0.0) + sf::Vector2f{0,10}));
@@ -62,6 +62,15 @@ void Train::onUpdate(const sf::Time& delta)
     {
         animationManager.update(delta, false);
     }
+
+    if (check_collision((global_transform.getTransform() * body.getTransform()) * ((body.getPoint(0) + body.getPoint(1))/2.f))) {
+        std::cout << "oohohoh" << std::endl;
+    }
+}
+
+bool Train::check_collision(engine::Vec2f v) {
+    return false;
+
 }
 
 void Train::onDraw() const
@@ -69,7 +78,4 @@ void Train::onDraw() const
     //std::cout << color_id.r << ", " << color_id.g << ", " << color_id.b << std::endl;
     Layers* layers = Layers::get_instance();
     layers->get_layer(1)->draw(body, global_transform.getTransform());
-    auto shader = ColorIDMap::color_id_shader;
-    shader->setUniform("color_id", sf::Glsl::Vec4(color_id));
-    ColorIDMap::get_instance()->get_color_layer()->draw(body, shader);
 }
