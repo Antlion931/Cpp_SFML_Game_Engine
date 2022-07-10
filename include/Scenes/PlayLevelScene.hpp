@@ -40,7 +40,7 @@ public:
     }
     virtual void update(const sf::Time& delta) {
         train->update(delta);
-        grid->change_nearby_points(train->getBodyTranslation(), 150);
+        grid->change_nearby_points(train->getBodyFrontTranslation(), 100);
         grid->update(delta);
         playersScore->update(delta);
         playersSpeed->update(delta);
@@ -50,7 +50,7 @@ public:
 
         // UPDATE VIEW (CAMERA FOLLOWS PLAYER)
         sf::View new_view = window.getView();
-        new_view.setCenter(train->getBodyTranslation());
+        new_view.setCenter(train->getBodyBackTranslation());
         auto layers_vec = Layers::get_instance()->get_layers();
         for(int i = layers_vec.size()-1; i > 0; i--)
             layers_vec[i]->setView(new_view);
