@@ -19,7 +19,7 @@ namespace engine
             
             text.setFont(*resourceLoader->get_font(1));
             text.setOutlineColor(sf::Color::Black);
-            text.setOutlineThickness(2);
+            text.setOutlineThickness(1);
             text.setString(_text);
         }
 
@@ -32,7 +32,7 @@ namespace engine
     public:
         virtual void onReady() override{
             ResourceLoader* resourceLoader = ResourceLoader::get_instance();
-            text.setCharacterSize(15);
+            text.setCharacterSize(20);
             text.setFont(*resourceLoader->get_font(1));
         }
     };

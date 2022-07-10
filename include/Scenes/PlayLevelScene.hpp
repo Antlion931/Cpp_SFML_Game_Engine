@@ -27,30 +27,30 @@ public:
         playersSpeed->setTranslation({30.0, 60.0});
         playersTurnSpeed->setTranslation({30.0, 90.0});
 
-        towns.push_back(Node::create<Town>(center("Warsaw"), true, sf::Vector2f(500.0, 500.0)));
-        towns.push_back(Node::create<Town>(center("Berlin"), true, sf::Vector2f(500.0, 600.0)));
-        towns.push_back(Node::create<Town>(center("Kiev"), true, sf::Vector2f(500.0, 700.0)));
-        towns.push_back(Node::create<Town>(center("Tirana"), false, sf::Vector2f(500.0, 800.0)));
-        towns.push_back(Node::create<Town>(center("Bratislava"), false, sf::Vector2f(500.0, 900.0)));
-        towns.push_back(Node::create<Town>(center("Vienna"), true, sf::Vector2f(500.0, 1000.0)));
-        towns.push_back(Node::create<Town>(center("Minsk"), true, sf::Vector2f(500.0, 1100.0)));
-        towns.push_back(Node::create<Town>(center("Vilnius"), false, sf::Vector2f(500.0, 1200.0)));
-        towns.push_back(Node::create<Town>(center("Bern"), false, sf::Vector2f(500.0, 1300.0)));
-        towns.push_back(Node::create<Town>(center("Riga"), false, sf::Vector2f(500.0, 1400.0)));
-        towns.push_back(Node::create<Town>(center("Tallinn"), false, sf::Vector2f(500.0, 1500.0)));
-        towns.push_back(Node::create<Town>(center("Rome"), true, sf::Vector2f(500.0, 1600.0)));
-        towns.push_back(Node::create<Town>(center("Chisinau"), false, sf::Vector2f(500.0, 1700.0)));
-        towns.push_back(Node::create<Town>(center("Ljubljana"), false, sf::Vector2f(500.0, 1800.0)));
-        towns.push_back(Node::create<Town>(center("Bucharest"), true, sf::Vector2f(500.0, 1900.0)));
+        towns.push_back(Node::create<Town>(center("Warsaw"), true, grid->to_world_from_tile({15,12})));
+        towns.push_back(Node::create<Town>(center("Berlin"), true, grid->to_world_from_tile({10,12})));
+        towns.push_back(Node::create<Town>(center("Kiev"), true, grid->to_world_from_tile({22,16})));
+        towns.push_back(Node::create<Town>(center("Tirana"), false, grid->to_world_from_tile({14,20})));
+        towns.push_back(Node::create<Town>(center("Bratislava"), false, grid->to_world_from_tile({12,19})));
+        towns.push_back(Node::create<Town>(center("Vienna"), true, grid->to_world_from_tile({11,19})));
+        towns.push_back(Node::create<Town>(center("Minsk"), true, grid->to_world_from_tile({20,10})));
+        towns.push_back(Node::create<Town>(center("Vilnius"), false, grid->to_world_from_tile({18,8})));
+        towns.push_back(Node::create<Town>(center("Bern"), false, grid->to_world_from_tile({5,21})));
+        towns.push_back(Node::create<Town>(center("Riga"), false, grid->to_world_from_tile({18,4})));
+        towns.push_back(Node::create<Town>(center("Tallinn"), false, grid->to_world_from_tile({18,0})));
+        towns.push_back(Node::create<Town>(center("Rome"), true, grid->to_world_from_tile({9,28})));
+        towns.push_back(Node::create<Town>(center("Chisinau"), false, grid->to_world_from_tile({20,21})));
+        towns.push_back(Node::create<Town>(center("Ljubljana"), false, grid->to_world_from_tile({11,22})));
+        towns.push_back(Node::create<Town>(center("Bucharest"), true, grid->to_world_from_tile({18,25})));
         towns.push_back(Node::create<Town>(center("Budapest"), true, sf::Vector2f(500.0, 2000.0)));
-        towns.push_back(Node::create<Town>(center("Prague"), true, sf::Vector2f(500.0, 2100.0)));
-        towns.push_back(Node::create<Town>(center("Belgrade"), true, sf::Vector2f(500.0, 2200.0)));
-        towns.push_back(Node::create<Town>(center("Zagreb"), false, sf::Vector2f(500.0, 2300.0)));
-        towns.push_back(Node::create<Town>(center("Sarajevo"), false, sf::Vector2f(500.0, 2400.0)));
-        towns.push_back(Node::create<Town>(center("Sofia"), true, sf::Vector2f(500.0, 2500.0)));
-        towns.push_back(Node::create<Town>(center("Skopje"), false, sf::Vector2f(500.0, 2600.0)));
-        towns.push_back(Node::create<Town>(center("Tirana"), false, sf::Vector2f(500.0, 2700.0)));
-        towns.push_back(Node::create<Town>(center("Podgorica"), false, sf::Vector2f(500.0, 2800.0)));
+        towns.push_back(Node::create<Town>(center("Prague"), true, grid->to_world_from_tile({11,16})));
+        towns.push_back(Node::create<Town>(center("Belgrade"), true, grid->to_world_from_tile({15,24})));
+        towns.push_back(Node::create<Town>(center("Zagreb"), false, grid->to_world_from_tile({12,23})));
+        towns.push_back(Node::create<Town>(center("Sarajevo"), false, grid->to_world_from_tile({13,25})));
+        towns.push_back(Node::create<Town>(center("Sofia"), true, grid->to_world_from_tile({17,27})));
+        towns.push_back(Node::create<Town>(center("Skopje"), false, grid->to_world_from_tile({16,28})));
+        towns.push_back(Node::create<Town>(center("Tirana"), false, grid->to_world_from_tile({14,29})));
+        towns.push_back(Node::create<Town>(center("Podgorica"), false, grid->to_world_from_tile({14,27})));
     }
 
     virtual void draw() {
