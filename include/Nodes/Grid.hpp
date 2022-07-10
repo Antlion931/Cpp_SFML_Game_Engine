@@ -1,6 +1,5 @@
 #pragma once
 #include "Node.hpp"
-#include "Hex.hpp"
 #include "Standard/math.hpp"
 #include "AtlasManager.hpp"
 #include <vector>
@@ -26,6 +25,7 @@ public:
         vertices.setPrimitiveType(sf::Quads);
         vertices.resize(size.x * size.y * 4);
         hexGrid.resize(size.x * size.y);
+        tileIDs.resize(size.x * size.y);
         loadTileDataFromFile("res/mapa.csv");
 
         for (int i = 0; i < size.x; ++i)
@@ -73,6 +73,13 @@ public:
             {
                 int id;
                 in >> id;
+                tileIDs[i + j * size.x] = id;
+                
+                // wyjalowanie mapy
+                if(id == 4 || id == 8)
+                    id = 0;
+                if(id == 16) id = 20;
+
                 setTile({i,j},id);
                 hexGrid[i + j * size.x].basic_tile = id; 
                 hexGrid[i + j * size.x].phase = std::rand()%frame_count; 
@@ -96,6 +103,7 @@ public:
 private:
     AtlasManager* atlasManager;
     hex_grid hexGrid;
+    std::vector<unsigned int> tileIDs;
 
     engine::Vec2i size;
     engine::Vec2i tileSize;
