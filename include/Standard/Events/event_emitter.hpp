@@ -2,6 +2,7 @@
 #include <unordered_set>
 #include <algorithm>
 #include <functional>
+#include <list>
 #include "event_listener.hpp"
 
 template<typename... Ts>
