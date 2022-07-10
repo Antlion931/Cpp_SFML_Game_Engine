@@ -4,12 +4,12 @@
 
 const float pi = 3.14159;
 
-Train::Train() :  animationManager("train", {{"idle", 1}}, "idle"), body({40.0, 80.0}),trackModel({12.5, 10.0})
+Train::Train(sf::Vector2f position) :  animationManager("train", {{"idle", 1}}, "idle"), body({40.0, 80.0}),trackModel({12.5, 10.0})
 {
     body.setOrigin(20.0, 80.0);
     trackModel.setOrigin(6.25, 10.0);
-    body.setPosition(300.0, 300.0);
-    trackModel.setPosition(300.0, 300.0);
+    body.setPosition(position);
+    trackModel.setPosition(body.getPosition());
 }
 
 void Train::onReady() {

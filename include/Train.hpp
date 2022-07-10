@@ -7,8 +7,8 @@
 class Train : public Node
 {
 public:
-    Train();
-    void check_collision(engine::Vec2f v);
+    Train(sf::Vector2f position);
+    bool check_collision(engine::Vec2f v);
     void onUpdate(const sf::Time& delta);
     void onDraw() const;
     void onReady();

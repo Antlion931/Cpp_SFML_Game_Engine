@@ -118,11 +118,6 @@ public:
         sf::Vector2f getLocalTranslation() {return local_transform.getPosition();}
         float getLocalRotation() {return local_transform.getRotation();}
         sf::Vector2f getLocalScale() {return local_transform.getScale();}
-        void setLayer(unsigned int index)
-        {
-            render_layer = Layers::get_instance()->get_layer(index);
-        }
-        
 };
 
 template<class T, typename... Us>

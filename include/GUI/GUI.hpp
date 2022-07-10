@@ -11,4 +11,8 @@ protected:
     virtual void onUpdate(const sf::Time& delta) {}
 public:
     virtual void onReady() override {}
+    void setLayer(unsigned int index)
+    {
+        render_layer = Layers::get_instance()->get_layer(index);
+    }
 };
