@@ -5,6 +5,7 @@
 #include "AtlasManager.hpp"
 #include <vector>
 #include "Layers.hpp"
+#include <fstream>
 
 class Grid : public Node{
 public:
@@ -24,6 +25,9 @@ public:
         // LOAD VERTICES
         vertices.setPrimitiveType(sf::Quads);
         vertices.resize(size.x * size.y * 4);
+        hexGrid.resize(size.x * size.y);
+        loadTileDataFromFile("res/mapa.csv");
+
         for (int i = 0; i < size.x; ++i)
         for ( int j = 0; j < size.y; ++j)
         {
@@ -38,15 +42,8 @@ public:
             quad[1].position = sf::Vector2f((i + 1) * tileSize.x + offsetx, j * tileSize.y - offsety);
             quad[2].position = sf::Vector2f((i + 1) * tileSize.x + offsetx, (j + 1) * tileSize.y - offsety);
             quad[3].position = sf::Vector2f(i * tileSize.x + offsetx, (j + 1) * tileSize.y - offsety);
-
-            // ustaw puste tekstury
-            quad[0].texCoords = sf::Vector2f(); // left top
-            quad[1].texCoords = sf::Vector2f(); // right top
-            quad[2].texCoords = sf::Vector2f(); // right bottom
-            quad[3].texCoords = sf::Vector2f(); // left bottom
         }
 
-        hexGrid.resize(size.x * size.y);
     }
     void setTile(engine::Vec2i position, unsigned int tileID)
     {
@@ -69,15 +66,19 @@ public:
     }
     void loadTileDataFromFile(std::string filePath)
     {
-        for(int i = 0; i < size.x; i++)
+        std::ifstream in(filePath);
+        for(int j = 0; j < size.y; j++)
         {
-            for(int j = 0; j < size.y; j++)
+            for(int i = 0; i < size.x; i++)
             {
-                setTile({i,j},0);
-                hexGrid[i + j * size.x].basic_tile = 0; 
+                int id;
+                in >> id;
+                setTile({i,j},id);
+                hexGrid[i + j * size.x].basic_tile = id; 
                 hexGrid[i + j * size.x].phase = std::rand()%frame_count; 
             }
         }
+        in.close();
     }
 
     virtual void onUpdate(const sf::Time& delta) override {

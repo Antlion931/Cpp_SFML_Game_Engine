@@ -38,10 +38,8 @@ class game : public engine::engineer{
         m["test"] = {1.f,{0,0},4};
         atlasManager = new AtlasManager("tilesheet.png",{32,32},m);
 
-        grid = Node::create<Grid>(engine::Vec2i(5,5), std::string("tilesheet.png"), engine::Vec2i(32,32));
+        grid = Node::create<Grid>(engine::Vec2i(34,33), std::string("tilesheet.png"), engine::Vec2i(32,32));
         grid->scale({5.f,5.f});
-        grid->loadTileDataFromFile("");
-        grid->setTile({0,0},5);
     }
     void update(const sf::Time& delta) override
     {
