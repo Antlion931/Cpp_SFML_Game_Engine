@@ -38,6 +38,7 @@ protected:
         else{
             texture.setColor(sf::Color(255,255,255,255));
         }
+        texture.setScale({5.f,5.f});
     }
 private:
     sf::Sprite texture;

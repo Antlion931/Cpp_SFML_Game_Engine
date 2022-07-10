@@ -13,10 +13,18 @@ public:
         playButton->wire_callback(el);
     }
     virtual void draw() {
+        Layers* layers = Layers::get_instance();
+
+        auto spr = sf::Sprite(*animationManager.getTexture());
+        spr.setScale({5.7f,5.7f});
+        spr.setPosition({0.f,-30.f});
+        (*layers)[0]->draw(spr);
+
+        playButton->setScale({5.f,5.f});
         playButton->draw();
     }
     virtual void update(const sf::Time& delta) {
-
+        animationManager.update(delta,false);
     }
 private:
     std::shared_ptr<Button> playButton;
@@ -27,5 +35,5 @@ private:
     PlayLevelScene* playLevelScene;
     Scene** curr_scene_ptr;
 
-    sf::Sprite background;
+    AnimationManager animationManager = AnimationManager("menuArt", {{"idle",2}},"idle");
 };
