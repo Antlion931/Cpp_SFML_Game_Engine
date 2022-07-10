@@ -20,6 +20,8 @@
 #include "Standard/CenterString.hpp"
 #include "Nodes/smoke.hpp"
 #include "GUI/InGameText.hpp"
+#include "Scenes/MainMenuScene.hpp"
+#include "Scenes/PlayLevelScene.hpp"
 
 class game : public engine::engineer{
     using animation_map = std::unordered_map<std::string,AtlasManager::animation>;
@@ -32,123 +34,66 @@ class game : public engine::engineer{
         musicSystem->playMusic("winter.wav");
         musicSystem->setVolume("winter.wav", 100.0);
         musicSystem->setRepeat("winter.wav", true);
-        train = Node::create<Train>();
-        animation_map m;
-        m["test"] = {1.f,{0,0},4};
-        atlasManager = new AtlasManager("tilesheet.png",{32,32},m);
+        //train = Node::create<Train>();
+        //animation_map m; m["test"] = {1.f,{0,0},4};
+        //atlasManager = new AtlasManager("tilesheet.png",{32,32},m);
 
-        PlayersScore = Node::create<InGameText>("Score: ", &score, " %", true);
-        PlayersSpeed = Node::create<InGameText>("Speed: ", &train->speed, "", false);
-        PlayersTurningSpeed = Node::create<InGameText>("Turning Speed: ", &train->turningRate, "", true);
+        playLevelScene = new PlayLevelScene(window);
+        mainMenuScene = new MainMenuScene(&curr_scene, playLevelScene);
+        curr_scene = (Scene*)mainMenuScene;
 
-        PlayersScore->setTranslation({20.0, 30.0});
-        PlayersSpeed->setTranslation({20.0, 60.0});
-        PlayersTurningSpeed->setTranslation({20.0, 90.0});
-
-        grid = Node::create<Grid>(engine::Vec2i(5,5), std::string("tilesheet.png"), engine::Vec2i(32,32));
-        grid->scale({5.f,5.f});
-        grid->loadTileDataFromFile("");
-        grid->setTile({0,0},5);
+        //grid = Node::create<Grid>(engine::Vec2i(5,5), std::string("tilesheet.png"), engine::Vec2i(32,32));
+        //grid->scale({5.f,5.f});
+        //grid->loadTileDataFromFile("");
+        //grid->setTile({0,0},5);
     }
     void update(const sf::Time& delta) override
     {
-        PlayersScore->update(delta);
-        PlayersSpeed->update(delta);
-        PlayersTurningSpeed->update(delta);
         sf::Event event;
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
                 window.close();
-            if (event.type == sf::Event::MouseButtonPressed)
+            else if (event.type == sf::Event::MouseButtonReleased)
             { 
-
+                if (event.mouseButton.button == sf::Mouse::Left)
+                {
+                    if(auto v = ColorIDMap::get_instance()->get_color_at({event.mouseButton.x,event.mouseButton.y})){
+                        ColorLookup::get_instance()->emit_click(v.value());
+                    }
+                }
             }
-            
-            if (event.type == sf::Event::KeyReleased)
+            else if (event.type == sf::Event::KeyReleased)
             {
                 if(event.key.code == sf::Keyboard::Space)
                 {
                     is_color_map_visible = !is_color_map_visible;
                     std::cout << is_color_map_visible << std::endl;
                 }
-                if(event.key.code == sf::Keyboard::Q)
-                {
-                    train->speed += 30.0; 
-                }
-                if(event.key.code == sf::Keyboard::A)
-                {
-                    train->speed -= 30.0;
-                }
-                if(event.key.code == sf::Keyboard::W)
-                {
-                    train->turningRate += 10.0;
-                }
-                if(event.key.code == sf::Keyboard::S)
-                {
-                    train->turningRate -= 10.0;
-                }
             }
-            if (event.type == sf::Event::MouseButtonPressed) {
+            else if (event.type == sf::Event::MouseButtonPressed) {
                 //pl.append_vertex(sf::Vertex({(float)event.mouseButton.x,(float)event.mouseButton.y}, sf::Color(255,0,0,255)));
             }
         }
-        train->update(delta);
-        atlasManager->update(delta);
 
-        // UPDATE VIEW (CAMERA FOLLOWS PLAYER)
-        sf::View new_view = window.getView();
-        new_view.setCenter(train->getBodyTranslation());
-        auto layers_vec = Layers::get_instance()->get_layers();
-        for(int i = layers_vec.size()-1; i > 0; i--)
-            layers_vec[i]->setView(new_view);
-        ColorIDMap::get_instance()->get_color_layer()->setView(new_view);
+
+        
+        curr_scene->update(delta);
     }
     void draw() override
     {
-        PlayersScore->draw();
-        PlayersSpeed->draw();
-        PlayersTurningSpeed->draw();
-        /*sf::VertexArray triangle(sf::Quads, 4);
-        // 35 x 30
-        // define the position of the triangle's points
-        sf::Vector2f a(10.f, 10.f), b(200.f, 10.f), c(200.f, 200.f), d(10.f, 200.f);
-
-        triangle[0].position = a;
-        triangle[1].position = b;
-        triangle[2].position = c;
-        triangle[3].position = d;
-
-        // define the color of the triangle's points
-        auto[x,y,z,w] = atlasManager->get_texture_coords_at(atlasManager->get_frame("test"));
-        triangle[0].texCoords = x;
-        triangle[1].texCoords = y;
-        triangle[2].texCoords = z;
-        triangle[3].texCoords = w;
-
-        sf::RenderStates state;
-
-        state.texture = atlasManager->get_texture().get();
-
-        (*layers)[1]->draw(triangle,state);*/
-        grid->draw();
-        //(*layers)[1]->draw(triangle);
-        
-
-        train->draw();
-        train->draw();
+        curr_scene->draw();
     }
     private:
     float score;
     // systems
     MusicSystem* musicSystem;
     SoundSystem* soundSystem;
-    std::shared_ptr<Train> train;
-    std::shared_ptr<InGameText> PlayersTurningSpeed;
-    std::shared_ptr<InGameText> PlayersSpeed;
-    std::shared_ptr<InGameText> PlayersScore;
-    AtlasManager* atlasManager;
-    std::shared_ptr<Grid> grid;
+
+    MainMenuScene* mainMenuScene;
+    PlayLevelScene* playLevelScene;
+
+    Scene* curr_scene;
 };
 
 int main()

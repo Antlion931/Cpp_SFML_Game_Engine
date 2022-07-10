@@ -1,17 +1,22 @@
 #pragma once
 #include "Node.hpp"
-#include "Hex.hpp"
 #include "Standard/math.hpp"
 #include "AtlasManager.hpp"
 #include <vector>
 #include "Layers.hpp"
+#include <fstream>
 
 class Grid : public Node{
 public:
-    using hex_grid = std::vector<unsigned int>;
+    struct hex {
+        int current_tile;
+        int basic_tile;
+        int phase;
+    };
+    using hex_grid = std::vector<hex>;
 
-    unsigned int get(engine::Vec2i position) { return hexGrid[position.x % size.x + position.y % size.x];}
-    unsigned int get(unsigned int x, unsigned int y) { return hexGrid[x % size.x + y % size.x];}
+    //unsigned int get(engine::Vec2i position) { return hexGrid[position.x % size.x + position.y % size.x];}
+    //unsigned int get(unsigned int x, unsigned int y) { return hexGrid[x % size.x + y % size.x];}
 
     Grid(engine::Vec2i size, std::string tilesetName, engine::Vec2i tileSize) : size(size), tileSize(tileSize){
         atlasManager = new AtlasManager(tilesetName,tileSize,{});
@@ -19,6 +24,10 @@ public:
         // LOAD VERTICES
         vertices.setPrimitiveType(sf::Quads);
         vertices.resize(size.x * size.y * 4);
+        hexGrid.resize(size.x * size.y);
+        tileIDs.resize(size.x * size.y);
+        loadTileDataFromFile("res/mapa.csv");
+
         for (int i = 0; i < size.x; ++i)
         for ( int j = 0; j < size.y; ++j)
         {
@@ -33,15 +42,8 @@ public:
             quad[1].position = sf::Vector2f((i + 1) * tileSize.x + offsetx, j * tileSize.y - offsety);
             quad[2].position = sf::Vector2f((i + 1) * tileSize.x + offsetx, (j + 1) * tileSize.y - offsety);
             quad[3].position = sf::Vector2f(i * tileSize.x + offsetx, (j + 1) * tileSize.y - offsety);
-
-            // ustaw puste tekstury
-            quad[0].texCoords = sf::Vector2f(); // left top
-            quad[1].texCoords = sf::Vector2f(); // right top
-            quad[2].texCoords = sf::Vector2f(); // right bottom
-            quad[3].texCoords = sf::Vector2f(); // left bottom
         }
 
-        hexGrid.resize(size.x * size.y);
     }
     void setTile(engine::Vec2i position, unsigned int tileID)
     {
@@ -64,20 +66,51 @@ public:
     }
     void loadTileDataFromFile(std::string filePath)
     {
-        for(int i = 0; i < size.x; i++)
+        std::ifstream in(filePath);
+        for(int j = 0; j < size.y; j++)
         {
-            for(int j = 0; j < size.y; j++)
+            for(int i = 0; i < size.x; i++)
             {
-                setTile({i,j},0);
+                int id;
+                in >> id;
+                tileIDs[i + j * size.x] = id;
+                
+                // wyjalowanie mapy
+                if(id == 4 || id == 8)
+                    id = 0;
+                if(id == 16) id = 20;
+
+                setTile({i,j},id);
+                hexGrid[i + j * size.x].basic_tile = id; 
+                hexGrid[i + j * size.x].phase = std::rand()%frame_count; 
+            }
+        }
+        in.close();
+    }
+
+    virtual void onUpdate(const sf::Time& delta) override {
+        elapsed_time += delta;
+        if(elapsed_time > time_between_frames) {
+            elapsed_time = sf::Time::Zero;
+            for (int i = 0; i < size.x; ++i)
+            for ( int j = 0; j < size.y; ++j)
+            {
+                hexGrid[i + j * size.x].current_tile = (hexGrid[i + j * size.x].current_tile + 1) % frame_count + hexGrid[i + j * size.x].basic_tile;
+                setTile({i,j}, (hexGrid[i + j * size.x].current_tile + hexGrid[i + j * size.x].phase)%4 + hexGrid[i + j * size.x].basic_tile);
             }
         }
     }
 private:
     AtlasManager* atlasManager;
     hex_grid hexGrid;
+    std::vector<unsigned int> tileIDs;
 
     engine::Vec2i size;
     engine::Vec2i tileSize;
+    
+    int frame_count = 4;
+    sf::Time elapsed_time = sf::Time::Zero;
+    sf::Time time_between_frames = sf::seconds(0.5f);
 
     Layers* layers = Layers::get_instance();
 
@@ -89,5 +122,4 @@ protected:
         state.transform = global_transform.getTransform();
     (*layers)[3]->draw(vertices,state);
     }
-    virtual void onUpdate(const sf::Time& delta) {}
 };

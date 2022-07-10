@@ -1,3 +1,4 @@
+#pragma once
 #include "Nodes/Node.hpp"
 #include "GUI/text.hpp"
 #include "AnimationManager.hpp"
