@@ -32,8 +32,9 @@ sf::Color ColorIDMap::generate_unique_color_id(std::weak_ptr<Node> node)
     red =   id % 256;
     
     auto color = sf::Color(red,green,blue,255);
+    m_color_map[color] = node;
 
-    curr_node_id+=9777;
+    curr_node_id+=977;
 
     return color;
 }
@@ -43,14 +44,16 @@ ColorIDMap::layer_ptr ColorIDMap::get_color_layer()
     return m_color_layer;
 }
 
-std::optional<sf::Color> ColorIDMap::get_color_at(engine::Vec2i at) {
-    sf::Vector2i position = at;
+std::optional<std::weak_ptr<Node>> ColorIDMap::get_hovered_object()
+{
+    sf::Vector2i position = sf::Mouse::getPosition(*window);
     auto image = m_color_layer->getTexture().copyToImage();
     if(!((position.x < 0 || position.x > image.getSize().x) || (position.y < 0 || position.y > image.getSize().y)) )
     {
         auto color = image.getPixel(position.x,position.y);
-        if(color.r != 0 && color.g != 0 && color.b != 0 && color.a != 0) {
-            return std::optional<sf::Color>(color);
+        if(m_color_map.count(color) > 0)
+        {
+            return std::optional<std::weak_ptr<Node>>(m_color_map[color]);
         }
     }
     return {};
