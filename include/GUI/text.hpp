@@ -22,6 +22,10 @@ namespace engine
             text.setOutlineThickness(1);
             text.setString(_text);
         }
+        void setSize(int x)
+        {
+            text.setCharacterSize(x);
+        }
 
     protected:
         sf::Text text;

@@ -33,13 +33,7 @@ protected:
         ColorIDMap::get_instance()->get_color_layer()->draw(texture,rs);
     }
     virtual void onUpdate(const sf::Time& delta) {  
-        if(hovered) {
-            texture.setColor(sf::Color(245,225,225,255));
-            hovered = false;
-        }
-        else{
-            texture.setColor(sf::Color(255,255,255,255));
-        }
+        
     }
 private:
     sf::Sprite texture;

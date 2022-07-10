@@ -2,6 +2,7 @@
 #include "Layers.hpp"
 #include "ColorLookup.hpp"
 #include "SoundSystem.hpp"
+#include "GUI/text.hpp"
 
 const float pi = 3.14159;
 
@@ -21,13 +22,15 @@ void Train::onReady() {
 void Train::die() {
     dead = true;
     sp->changeOrigin({-10000,-10000});
-<<<<<<< HEAD
     SoundSystem::getInstance()->setVolume("explosion.wav", 100.0f);
     SoundSystem::getInstance()->playSound("explosion.wav");
 
-=======
     fp = Node::create<FireParticles>(shared_from_this(), getBodyFrontTranslation());
->>>>>>> origin/ver1.0
+    std::shared_ptr<engine::Text> text;
+    text = Node::create<engine::Text>(shared_from_this());
+    text->set_text("Press R to restart");
+    text->setSize(50);
+    text->setTranslation({30.0, 800.0});
 }
 
 void Train::onUpdate(const sf::Time& delta)
