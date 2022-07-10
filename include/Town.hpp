@@ -3,10 +3,13 @@
 #include "GUI/text.hpp"
 #include "AnimationManager.hpp"
 #include "Train.hpp"
+#include <SFML/Graphics.hpp>
 
 class Town : public Node
 {
 public:
+    sf::Shader post_fx_town_shader;
+
     Town(std::string _name, bool isItBig, sf::Vector2f position);
     void onReady();
     void Repair();

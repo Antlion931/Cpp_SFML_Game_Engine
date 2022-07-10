@@ -22,6 +22,9 @@ void Town::Repair()
 
 void Town::onReady()
 {
+    post_fx_town_shader.loadFromFile("res/shaders/post_fx_town_shader.frag", sf::Shader::Fragment);
+    post_fx_town_shader.setUniform("texture", sf::Shader::CurrentTexture);
+
     text = engine::Text::create<engine::Text>(shared_from_this());
     sf::Vector2f newTextPosition = body.getPosition();
     newTextPosition.y -= body.getSize().y / 5.0 + 45;
@@ -41,7 +44,9 @@ void Town::onUpdate(const sf::Time& delta)
 
 void Town::onDraw() const
 {
-     Layers::get_instance()->get_layer(1)->draw(body, global_transform.getTransform());
+    sf::RenderStates rs1;
+    rs1.shader = &post_fx_town_shader; rs1.transform = global_transform.getTransform();
+    Layers::get_instance()->get_layer(1)->draw(body, rs1);
     
     auto shader = ColorIDMap::color_id_shader;
     shader->setUniform("color_id", sf::Glsl::Vec4(color_id));
