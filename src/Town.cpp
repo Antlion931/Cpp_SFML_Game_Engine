@@ -18,7 +18,7 @@ void Town::onReady()
     text = engine::Text::create<engine::Text>(shared_from_this());
     sf::Vector2f newTextPosition = body.getPosition();
     newTextPosition.y -= body.getSize().y / 5.0 + 45;
-    newTextPosition.x -= 45;
+    newTextPosition.x -= 70;
     text->setTranslation(newTextPosition);
     text->setLayer(1);
     text->set_text(name);

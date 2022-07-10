@@ -18,7 +18,7 @@ public:
     PlayLevelScene(sf::RenderWindow& window) : window(window) {
         grid = Node::create<Grid>(engine::Vec2i(34,33), std::string("tilesheet3.png"), engine::Vec2i(32,32));
         grid->scale({4.f,4.f});
-        train = Node::create<Train>();
+        train = Node::create<Train>(grid->to_world_from_tile({19,16}));
         playersScore = Node::create<InGameText>("Score: ", &score, " %", true);
         playersSpeed = Node::create<InGameText>("Speed: ", &train->speed, "", false);
         playersTurnSpeed = Node::create<InGameText>("TurningSpeed: ", &train->turningRate, "", true);
