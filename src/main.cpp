@@ -19,6 +19,7 @@
 #include "Nodes/Grid.hpp"
 #include "Standard/CenterString.hpp"
 #include "Nodes/smoke.hpp"
+#include "GUI/InGameText.hpp"
 #include "Scenes/MainMenuScene.hpp"
 #include "Scenes/PlayLevelScene.hpp"
 
@@ -31,6 +32,7 @@ class game : public engine::engineer{
         musicSystem = MusicSystem::getInstance("res/musics/");
         soundSystem = SoundSystem::getInstance("res/sounds/");
         musicSystem->playMusic("winter.wav");
+        musicSystem->setVolume("winter.wav", 100.0);
         musicSystem->setRepeat("winter.wav", true);
         //train = Node::create<Train>();
         //animation_map m; m["test"] = {1.f,{0,0},4};
@@ -83,6 +85,7 @@ class game : public engine::engineer{
         curr_scene->draw();
     }
     private:
+    float score;
     // systems
     MusicSystem* musicSystem;
     SoundSystem* soundSystem;

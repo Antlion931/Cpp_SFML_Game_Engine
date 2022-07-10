@@ -18,7 +18,7 @@ void Town::onReady()
     sf::Vector2f newTextPosition = body.getPosition();
     newTextPosition.y -= body.getSize().y / 5.0;
     text->setTranslation(newTextPosition);
-
+    text->setLayer(1);
     text->set_text(name);
 }
 
