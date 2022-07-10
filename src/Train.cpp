@@ -33,8 +33,19 @@ void Train::die() {
     text->setTranslation({30.0, 800.0});
 }
 
+void Train::win() {
+    speed = 0.f;
+    sp->changeOrigin({-10000,-10000});
+    won = true;
+}
+
 void Train::onUpdate(const sf::Time& delta)
-{
+{   
+    if(score > 100.f) {
+        win();
+        return;
+    }
+
     if(dead) return;
 
     currentTime += delta.asSeconds();

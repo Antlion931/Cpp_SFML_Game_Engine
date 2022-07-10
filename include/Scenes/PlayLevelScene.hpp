@@ -5,7 +5,7 @@
 
 class PlayLevelScene : public Scene
 {
-    float score;
+public:
     std::shared_ptr<Grid> grid;
     std::shared_ptr<Train> train;
     std::shared_ptr<InGameText> playersScore;
@@ -13,13 +13,15 @@ class PlayLevelScene : public Scene
     std::shared_ptr<InGameText> playersTurnSpeed;
     std::vector<std::shared_ptr<Town>> towns;
 
+    sf::Time elapsed_from_win;
+
     sf::RenderWindow& window;
 public:
     PlayLevelScene(sf::RenderWindow& window) : window(window) {
         grid = Node::create<Grid>(engine::Vec2i(39,44), std::string("tilesheet3.png"), engine::Vec2i(32,32));
         grid->scale({4.f,4.f});
         train = Node::create<Train>(grid->to_world_from_tile({21,22}));
-        playersScore = Node::create<InGameText>("Score: ", &score, " %", true);
+        playersScore = Node::create<InGameText>("Score: ", &train->score, " %", true);
         playersSpeed = Node::create<InGameText>("Speed: ", &train->speed, "", false);
         playersTurnSpeed = Node::create<InGameText>("TurningSpeed: ", &train->turningRate, "", true);
 
@@ -78,8 +80,16 @@ public:
 
 
         // UPDATE VIEW (CAMERA FOLLOWS PLAYER)
+        engine::Vec2f goal = grid->to_world_from_tile({19,21});
         sf::View new_view = window.getView();
-        new_view.setCenter(train->getBodyBackTranslation());
+        if(train->won) {
+            elapsed_from_win += delta;
+            float new_size_x = std::min(new_view.getSize().x * (1 + 0.2f*elapsed_from_win.asSeconds()), 1600.f * 3.05f); 
+            float new_size_y = std::min(new_view.getSize().y * (1 + 0.2f*elapsed_from_win.asSeconds()), 900.f * 3.05f);
+            grid->change_nearby_points(train->getBodyBackTranslation(), 200.f*elapsed_from_win.asSeconds());
+            new_view.setSize(new_size_x, new_size_y);
+        }
+        new_view.setCenter(engine::Vec2f(train->getBodyBackTranslation()) + (goal - engine::Vec2f(train->getBodyBackTranslation())).interpolate(std::min(elapsed_from_win.asSeconds()/2.f,1.f)));
         auto layers_vec = Layers::get_instance()->get_layers();
         for(int i = layers_vec.size()-1; i > 0; i--)
             layers_vec[i]->setView(new_view);
