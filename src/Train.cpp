@@ -19,6 +19,7 @@ void Train::onReady() {
 
 void Train::die() {
     dead = true;
+    sp->changeOrigin({-10000,-10000});
 }
 
 void Train::onUpdate(const sf::Time& delta)
