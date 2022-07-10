@@ -13,11 +13,14 @@ public:
         ResourceLoader* resourceLoader = ResourceLoader::get_instance();
         resourceLoader->load_texture("res/textures/GUI/"+name);
         texture = sf::Sprite(*(resourceLoader->get_texture(name)));
-        texture.setScale({3.5f,3.5f});
     }
 
     void wire_callback(EventListener<> listener) {
         ColorLookup::get_instance()->register_click(color_id, listener);
+    }
+
+    virtual void onReady() override {
+        ColorLookup::get_instance()->register_hover(color_id, hover_el);
     }
 
 protected:
@@ -27,11 +30,23 @@ protected:
         shader->setUniform("color_id", sf::Glsl::Vec4(color_id));
         ColorIDMap::get_instance()->get_color_layer()->draw(texture, shader);
     }
-    virtual void onUpdate(const sf::Time& delta) {
-        
+    virtual void onUpdate(const sf::Time& delta) {  
+        if(hovered) {
+            texture.setColor(sf::Color(245,225,225,255));
+            hovered = false;
+        }
+        else{
+            texture.setColor(sf::Color(255,255,255,255));
+        }
     }
 private:
     sf::Sprite texture;
+    bool hovered = false;
+    
+    EventListener<> hover_el = EventListener<>([this]() {
+        hovered = true;
+    });
+
 };
 
 

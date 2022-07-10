@@ -26,4 +26,6 @@ private:
 
     PlayLevelScene* playLevelScene;
     Scene** curr_scene_ptr;
+
+    sf::Sprite background;
 };
