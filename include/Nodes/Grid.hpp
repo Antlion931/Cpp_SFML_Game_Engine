@@ -127,7 +127,7 @@ private:
     
     int frame_count = 4;
     sf::Time elapsed_time = sf::Time::Zero;
-    sf::Time time_between_frames = sf::seconds(0.5f);
+    sf::Time time_between_frames = sf::seconds(0.25f);
 
     Layers* layers = Layers::get_instance();
 
