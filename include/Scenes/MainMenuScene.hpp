@@ -20,11 +20,13 @@ public:
         spr.setPosition({0.f,-30.f});
         (*layers)[0]->draw(spr);
 
-        playButton->setScale({5.f,5.f});
+        playButton->setScale({4.f,4.f});
+        playButton->setTranslation({1000.f,20.f});
         playButton->draw();
     }
     virtual void update(const sf::Time& delta) {
         animationManager.update(delta,false);
+        playButton->update(delta);
     }
 private:
     std::shared_ptr<Button> playButton;
